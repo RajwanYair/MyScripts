@@ -170,7 +170,7 @@ coverage>=7.3.0
 ruff>=0.4.0
 
 # Code formatting (fallback — prefer ruff format)
-black>=23.9.1
+black>=25.11.0
 
 # Code linting (fallback — prefer ruff check)
 flake8>=6.1.0
