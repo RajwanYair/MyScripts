@@ -1,0 +1,67 @@
+# =============================================================================
+# CODEOWNERS
+# =============================================================================
+# Defines code owners for all projects in this workspace.
+# Owners are requested for review when a pull request changes matching files.
+# Syntax: <pattern> <owner> [<owner> ...]
+# =============================================================================
+
+# Default: all files
+* @RajwanYair
+
+# =============================================================================
+# WORKSPACE-LEVEL CONFIGS
+# =============================================================================
+/.github/                   @RajwanYair
+/pyproject.toml             @RajwanYair
+/pyrightconfig.json         @RajwanYair
+/.editorconfig              @RajwanYair
+/.gitignore                 @RajwanYair
+/.gitattributes             @RajwanYair
+/.markdownlint.json         @RajwanYair
+/requirements.txt           @RajwanYair
+/apt-packages.txt           @RajwanYair
+/package.json               @RajwanYair
+
+# =============================================================================
+# SHARED TOOLING
+# =============================================================================
+/tooling/                   @RajwanYair
+/scripts/                   @RajwanYair
+/templates/                 @RajwanYair
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+/.github/instructions/      @RajwanYair
+/.github/prompts/           @RajwanYair
+/docs/                      @RajwanYair
+/README.md                  @RajwanYair
+/ROADMAP.md                 @RajwanYair
+
+# =============================================================================
+# WEB PROJECTS
+# =============================================================================
+/BudgetManager/             @RajwanYair
+/CrossTide/                 @RajwanYair
+/CrossTideWeb/              @RajwanYair
+/FamilyDashBoard/           @RajwanYair
+/Wedding/                   @RajwanYair
+/WoodworkingShop/           @RajwanYair
+/rajwanyair.github.io/      @RajwanYair
+
+# =============================================================================
+# PYTHON PROJECTS
+# =============================================================================
+/DupDetector/               @RajwanYair
+/FileNameManipulator/       @RajwanYair
+/FileProcessor/             @RajwanYair
+/OptimizeBrowsers/          @RajwanYair
+/OptimizeWIN_n_WSL/         @RajwanYair
+/PPA/                       @RajwanYair
+/SingleMethod/              @RajwanYair
+/SortComics/                @RajwanYair
+/UbuntuEnhancer/            @RajwanYair
+/VHDXCompress/              @RajwanYair
+/VSCode.RemoteSSH.Verifier/ @RajwanYair
+

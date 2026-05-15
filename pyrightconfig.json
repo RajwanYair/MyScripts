@@ -1,0 +1,49 @@
+{
+  // ==========================================================================
+  // GENERIC PYRIGHT / PYLANCE CONFIGURATION
+  // Universal Project Enhancement Framework v15.0.0
+  // ==========================================================================
+  //
+  // Scope: Workspace-level defaults for all Python projects.
+  // Override in project-specific pyrightconfig.json for stricter settings.
+  //
+  // Reference: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+  // ==========================================================================
+  "pythonVersion": "3.9",
+  "typeCheckingMode": "basic",
+  // Search paths — include common source layouts
+  "extraPaths": [
+    ".",
+    "src",
+    "src/core",
+    "src/cli",
+    "src/gui",
+    "src/utils"
+  ],
+  // ==========================================================================
+  // WORKSPACE EXCLUSIONS
+  // ==========================================================================
+  "exclude": [
+    "**/node_modules",
+    "**/.venv",
+    "**/venv",
+    "**/build",
+    "**/dist",
+    "**/.mypy_cache",
+    "**/__pycache__",
+    "**/external",
+    "**/archive",
+    "**/*.egg-info"
+  ],
+  // ==========================================================================
+  // TYPE STUBS & IMPORT RESOLUTION
+  // ==========================================================================
+  // Don't error when stub source is unavailable (cross-platform modules)
+  "reportMissingModuleSource": false,
+  // Third-party packages without stubs are expected
+  "reportMissingTypeStubs": false
+  // ==========================================================================
+  // No additional suppressions in the generic template.
+  // Project-specific suppressions belong in the child project's pyrightconfig.json.
+  // ==========================================================================
+}

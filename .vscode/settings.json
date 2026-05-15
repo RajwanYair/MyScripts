@@ -1,0 +1,843 @@
+{
+    // ============================================================================
+    // CONSOLIDATED VS CODE SETTINGS — Sorted by Section
+    // Universal Project Enhancement Framework v15.0.0
+    // Wildcards applied to files.associations, files.exclude, search.exclude
+    // ============================================================================
+    // ============================================================================
+    // SECTION: @azure — Azure Configuration
+    // ============================================================================
+    "@azure.argTenant": "",
+    // ============================================================================
+    // SECTION: C_Cpp — C/C++ Configuration
+    // ============================================================================
+    "C_Cpp.autocomplete": "default",
+    "C_Cpp.clang_format_fallbackStyle": "LLVM",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.runAutomatically": true,
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "C_Cpp.default.compilerPath": "",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.defines": [
+        "WIN32_LEAN_AND_MEAN",
+        "NOMINMAX",
+        "UNICODE",
+        "_UNICODE",
+        "_WIN64",
+        "_AMD64_",
+        "NDEBUG"
+    ],
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/src"
+    ],
+    "C_Cpp.default.intelliSenseMode": "",
+    "C_Cpp.enhancedColorization": "enabled",
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.vcFormat.indent.braces": false,
+    "C_Cpp.vcFormat.indent.namespaceContents": false,
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
+    // ============================================================================
+    // SECTION: chat — GitHub Copilot Chat
+    // ============================================================================
+    "chat.agent.maxRequests": 999,
+    "chat.checkpoints.showFileChanges": true,
+    "chat.instructionsFilesLocations": {
+        "~/.aitk/instructions": true,
+        ".github/instructions": true
+    },
+    "chat.mcp.gallery.enabled": true,
+    "chat.mcp.autoStart": true,
+    "chat.promptFilesLocations": {
+        ".github/prompts": true
+    },
+    "chat.tools.terminal.autoApprove": {
+        "*.md": true,
+        "cmake": true,
+        "code": true,
+        "copy": true,
+        "dir": true,
+        "do": true,
+        "else": true,
+        "exist": true,
+        "f": true,
+        "memory": true,
+        "mkdir": true,
+        "more": true,
+        "move": true,
+        "msbuild": true,
+        "New-Item": true,
+        "py": true,
+        "ssh": true,
+        "test": true,
+        "time": true,
+        "timeout": true,
+        "type": true,
+        "unzip": true,
+        "wait": true,
+        "where": true,
+        "wsl": true
+    },
+    "chat.tools.terminal.ignoreDefaultAutoApproveRules": true,
+    "chat.viewSessions.orientation": "stacked",
+    // ============================================================================
+    // SECTION: cmake — CMake Configuration
+    // ============================================================================
+    "cmake.allowCommentsInPresetsFile": true,
+    "cmake.allowUnsupportedPresetsVersions": true,
+    "cmake.automaticReconfigure": false,
+    "cmake.buildBeforeRun": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureEnvironment": {
+        "CMAKE_GENERATOR_PLATFORM": "x64"
+    },
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false,
+    "cmake.configureSettings": {},
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "cmake.ctest.allowParallelJobs": true,
+    "cmake.defaultBuildPreset": "default-release",
+    "cmake.defaultConfigurePreset": "default-release",
+    "cmake.defaultTestPreset": "default-release-test",
+    "cmake.generator": "Ninja",
+    "cmake.options.statusBarVisibility": "visible",
+    "cmake.parallelJobs": 8,
+    "cmake.showConfigureWithDebuggerNotification": false,
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.useCMakePresets": "always",
+    // ============================================================================
+    // SECTION: cSpell — Spell Checker
+    // ============================================================================
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.words": [
+        "AVX",
+        "camelCase",
+        "CMake",
+        "CVSS",
+        "DirectX",
+        "LZMA",
+        "MSVC",
+        "NEON",
+        "Ninja",
+        "PascalCase",
+        "SBOM",
+        "SIMD",
+        "SSE",
+        "STRIDE",
+        "vcpkg",
+        "vcvars",
+        "zstd"
+    ],
+    // ============================================================================
+    // SECTION: DVT — Design Verification Tools
+    // ============================================================================
+    "DVT.automaticallyOpenConnectionWebview.enable": false,
+    // ============================================================================
+    // SECTION: editor — Editor Configuration
+    // ============================================================================
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.guides.bracketPairs": true,
+    "editor.insertSpaces": true,
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.parameterHints.enabled": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        {
+            "color": "#00FF0010",
+            "column": 80
+        },
+        {
+            "color": "#BDB76B15",
+            "column": 100
+        },
+        {
+            "color": "#FA807219",
+            "column": 120
+        }
+    ],
+    "editor.stickyScroll.enabled": true,
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 4,
+    "editor.unicodeHighlight.includeComments": true,
+    "editor.wordWrap": "off",
+    // ============================================================================
+    // SECTION: emmet — Emmet Configuration
+    // ============================================================================
+    "emmet.variables": {
+        "lang": "en"
+    },
+    // ============================================================================
+    // SECTION: errorLens — Error Lens Extension
+    // ============================================================================
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning"
+    ],
+    // ============================================================================
+    // SECTION: explorer — File Explorer
+    // ============================================================================
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    // ============================================================================
+    // SECTION: extensions — Extensions Management
+    // ============================================================================
+    "extensions.autoUpdate": false,
+    // ============================================================================
+    // SECTION: files — File Configuration
+    // ============================================================================
+    "files.associations": {
+        "*.cmake": "cmake",
+        "*.fish": "fish",
+        "*.h.in": "cpp",
+        "*.json": "jsonc",
+        "*.ps{,d,m}1": "powershell",
+        "*.py{i,w}": "python",
+        "*.toml": "toml",
+        "*.{bash,sh,zsh}": "shellscript",
+        "*.{bat,cmd}": "bat",
+        "*.{c,h}": "c",
+        "*.{cc,cpp,cxx,def,hpp,rc}": "cpp",
+        "*.{csh,tcsh}": "tcsh",
+        "*.{manifest,vcxproj}": "xml",
+        "*.{yaml,yml}": "yaml",
+        "*akefile": "makefile",
+        ".bash*": "shellscript",
+        ".env*": "dotenv",
+        ".profile": "shellscript",
+        ".zprofile": "shellscript",
+        ".zshrc": "shellscript",
+        ".{c,tc}shrc": "tcsh",
+        "algorithm": "cpp",
+        "apt-packages*.txt": "plaintext",
+        "CMakeLists.txt": "cmake",
+        "CODEOWNERS": "plaintext",
+        "codeowners": "plaintext",
+        "Dockerfile*": "dockerfile",
+        "requirements*.txt": "pip-requirements",
+        "xstring": "cpp"
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/*.{egg-info,pyc,suo,user}": true,
+        "**/.{coverage,eggs,hypothesis,nox,tox,vs}": true,
+        "**/.{mypy,pytest,ruff}_cache": true,
+        "**/__pycache__": true,
+        "**/x64/Debug": true,
+        "**/{build,dist,htmlcov,ipch}": true
+    },
+    "files.hotExit": "off",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.git/{objects,subtree-cache}/**": true,
+        "**/build-logs": false,
+        "**/external/**/{build*,src}/**": true,
+        "**/node_modules/**": true,
+        "**/{build,build-vcpkg,gtest,packages,x64}/**": true
+    },
+    // ============================================================================
+    // SECTION: Proxy — Network Proxy (ftp/http/https)
+    // ============================================================================
+    "http.proxyStrictSSL": false,
+    "http.proxySupport": "off",
+    "http.noProxy": [
+        "localhost",
+        "127.0.0.1",
+        "intel.com"
+    ],
+    "http.proxy": "http://proxy-dmz.intel.com:912",
+    "https.proxy": "http://proxy-dmz.intel.com:912",
+    // ============================================================================
+    // SECTION: git — Git Configuration
+    // ============================================================================
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.openRepositoryInParentFolders": "always",
+    // ============================================================================
+    // SECTION: github — GitHub Copilot
+    // ============================================================================
+    "github.copilot.chat.allowFileOperations": true,
+    "github.copilot.chat.anthropic.tools.websearch.enabled": true,
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Use Conventional Commits format: type(scope): description. Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build. Keep subject under 72 chars. Reference issues with 'Closes #N' in body."
+        }
+    ],
+    "github.copilot.chat.editing.enabled": true,
+    "github.copilot.chat.edits.enabled": true,
+    "github.copilot.chat.executeCommands": "on",
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "file": ".github/instructions/python.instructions.md"
+        },
+        {
+            "file": ".github/instructions/workspace.instructions.md"
+        }
+    ],
+    "github.copilot.chat.runCommand.enabled": true,
+    "github.copilot.chat.search.enabled": true,
+    "github.copilot.chat.terminalChatLocation": "terminal",
+    "github.copilot.chat.tools.enabled": true,
+    "github.copilot.chat.tools.memory.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": true,
+        "plaintext": true,
+        "python": true,
+        "yaml": true
+    },
+    "github.copilot.inlineSuggest.enable": true,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    // ============================================================================
+    // SECTION: github-actions — GitHub Actions
+    // ============================================================================
+    "github-actions.workflows.pinned.enabled": true,
+    // ============================================================================
+    // SECTION: gitlens — GitLens Extension
+    // ============================================================================
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+    // ============================================================================
+    // SECTION: java — Java Configuration
+    // ============================================================================
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.detectJdksAtStart": false,
+    "java.configuration.runtimes": [
+        {
+            "default": true,
+            "name": "JavaSE-25",
+            "path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
+        },
+        {
+            "name": "JavaSE-21",
+            "path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21"
+        },
+        {
+            "name": "JavaSE-17",
+            "path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17"
+        }
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.import.gradle.home": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\gradle\\latest",
+    "java.import.gradle.java.home": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
+    "java.maxConcurrentBuilds": 8,
+    "java.sources.organizeImports.staticStarThreshold": 1,
+    "java.test.config": {
+        "vmArgs": [
+            "-Dstdout.encoding=UTF-8",
+            "-Dstderr.encoding=UTF-8"
+        ]
+    },
+    // ============================================================================
+    // SECTION: makefile — Makefile Configuration
+    // ============================================================================
+    "makefile.configureOnOpen": true,
+    // ============================================================================
+    // SECTION: markdownlint — Markdown Linting
+    // ============================================================================
+    "markdownlint.config": {
+        "MD013": false,
+        "MD024": {
+            "siblings_only": true
+        },
+        "MD029": {
+            "style": "ordered"
+        }
+    },
+    "markdownlint.ignore": [
+        "**/CODEOWNERS",
+        "**/.github/CODEOWNERS"
+    ],
+    // ============================================================================
+    // SECTION: maven — Maven Configuration
+    // ============================================================================
+    "maven.executable.path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\maven\\latest\\bin\\mvn",
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
+        }
+    ],
+    // ============================================================================
+    // SECTION: powershell — PowerShell Extension
+    // ============================================================================
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.integratedConsole.focusConsoleOnExecute": true,
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.integratedConsole.startInBackground": false,
+    "powershell.integratedConsole.suppressStartupBanner": true,
+    "powershell.powerShellDefaultVersion": "",
+    "powershell.promptToUpdatePowerShell": true,
+    "powershell.scriptAnalysis.enable": true,
+    // ============================================================================
+    // SECTION: prettier — Prettier Formatter
+    // ============================================================================
+    "prettier.printWidth": 100,
+    "prettier.tabWidth": 4,
+    // ============================================================================
+    // SECTION: python — Python Configuration
+    // ============================================================================
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.indexing": true,
+    "python.defaultInterpreterPath": "python",
+    "python.languageServer": "Pylance",
+    "python.terminal.activateEnvironment": false,
+    "python.testing.pytestArgs": [
+        "tests",
+        "--timeout=30",
+        "--tb=short",
+        "--strict-markers"
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    // ============================================================================
+    // SECTION: redhat — Red Hat Extensions
+    // ============================================================================
+    "redhat.telemetry.enabled": false,
+    // ============================================================================
+    // SECTION: remote — Remote Development (SSH/WSL)
+    // ============================================================================
+    "remote.SSH.connectTimeout": 30,
+    "remote.SSH.localServerDownload": "on",
+    "remote.SSH.remotePlatform": {},
+    "remote.SSH.serverInstallPath": {},
+    "remote.SSH.showLoginTerminal": true,
+    "remote.SSH.useCurlAndWgetConfigurationFiles": false,
+    "remote.SSH.useExecServer": false,
+    "remote.SSH.useLocalServer": false,
+    // ============================================================================
+    // SECTION: ruff — Ruff Linter & Formatter
+    // ============================================================================
+    "ruff.format.enable": true,
+    "ruff.lint.enable": true,
+    "ruff.organizeImports": true,
+    // ============================================================================
+    // SECTION: search — Search Configuration
+    // ============================================================================
+    "search.exclude": {
+        "**/*.egg-info/**": true,
+        "**/*.{dll,exe,lib,obj,pdb}": true,
+        "**/.{mypy,pytest,ruff}_cache/**": true,
+        "**/.{venv,vs}/**": true,
+        "**/__pycache__/**": true,
+        "**/build-logs": false,
+        "**/{archive,build,build-vcpkg,dist,external,gtest,htmlcov,legacy,node_modules,packages,venv,x64}/**": true
+    },
+    // ============================================================================
+    // SECTION: security — Workspace Trust
+    // ============================================================================
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    // ============================================================================
+    // SECTION: task — Task Runner
+    // ============================================================================
+    "task.autoDetect": "on",
+    "task.problemMatchers.neverPrompt": false,
+    "task.quickOpen.detail": true,
+    "task.quickOpen.history": 30,
+    "task.slowProviderWarning": false,
+    // ============================================================================
+    // SECTION: terminal — Terminal Configuration
+    // ============================================================================
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.automationProfile.windows": {
+        "path": "cmd"
+    },
+    "terminal.integrated.commandsToSkipShell": [],
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "terminal.integrated.confirmOnKill": "editor",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.enableFileLinks": "on",
+    "terminal.integrated.enableMultiLinePasteWarning": "auto",
+    "terminal.integrated.enablePersistentSessions": true,
+    "terminal.integrated.env.linux": {
+        "PATH": "${workspaceFolder}/scripts:${env:PATH}",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "${workspaceFolder}/src",
+        "PYTHONUNBUFFERED": "1"
+    },
+    "terminal.integrated.env.osx": {
+        "PATH": "${workspaceFolder}/scripts:${env:PATH}",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": "${workspaceFolder}/src",
+        "PYTHONUNBUFFERED": "1"
+    },
+    "terminal.integrated.env.windows": {
+        "JAVA_HOME": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
+        "MSBUILDDISABLENODEREUSE": "1",
+        "PATH": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONPATH": "${workspaceFolder}\\src;${workspaceFolder}",
+        "PYTHONUNBUFFERED": "1"
+    },
+    "terminal.integrated.fontFamily": "Cascadia Code, Consolas, 'Courier New', monospace",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.gpuAcceleration": "auto",
+    "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash",
+            "path": "/bin/bash"
+        },
+        "csh": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal",
+            "path": "/bin/csh"
+        },
+        "fish": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal",
+            "path": "/usr/bin/fish"
+        },
+        "Python": {
+            "args": [
+                "-i"
+            ],
+            "icon": "python",
+            "path": "python3"
+        },
+        "sh": {
+            "icon": "terminal",
+            "path": "/bin/sh"
+        },
+        "tcsh": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal",
+            "path": "/bin/tcsh"
+        },
+        "zsh": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-linux",
+            "path": "/bin/zsh"
+        }
+    },
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash",
+            "path": "/bin/bash"
+        },
+        "fish": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal",
+            "path": "/opt/homebrew/bin/fish"
+        },
+        "Python": {
+            "args": [
+                "-i"
+            ],
+            "icon": "python",
+            "path": "python3"
+        },
+        "tcsh": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal",
+            "path": "/bin/tcsh"
+        },
+        "zsh": {
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal",
+            "path": "/bin/zsh"
+        }
+    },
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "args": [],
+            "icon": "terminal-cmd",
+            "path": "cmd.exe"
+        },
+        "Developer PowerShell": {
+            "args": [
+                "-NoLogo",
+                "-NoProfile",
+                "-Command",
+                "& { if (Test-Path env:VSINSTALLDIR) { Import-Module (Join-Path $env:VSINSTALLDIR 'Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll'); Enter-VsDevShell -VsInstallPath $env:VSINSTALLDIR -SkipAutomaticLocation } }"
+            ],
+            "icon": "terminal-powershell",
+            "source": "PowerShell"
+        },
+        "Git Bash": {
+            "icon": "terminal-bash",
+            "source": "Git Bash"
+        },
+        "JavaSE-17 LTS": {
+            "env": {
+                "JAVA_HOME": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17",
+                "PATH": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17\\bin;${env:PATH}"
+            },
+            "overrideName": true,
+            "path": "cmd"
+        },
+        "JavaSE-21 LTS": {
+            "args": [
+                "/k",
+                "chcp",
+                "65001"
+            ],
+            "env": {
+                "JAVA_HOME": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21",
+                "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
+                "PATH": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21\\bin;${env:PATH}"
+            },
+            "overrideName": true,
+            "path": "cmd"
+        },
+        "JavaSE-25 LTS": {
+            "args": [
+                "/k",
+                "chcp",
+                "65001"
+            ],
+            "env": {
+                "JAVA_HOME": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
+                "JAVA_TOOL_OPTIONS": "-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8",
+                "PATH": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest\\bin;${env:PATH}"
+            },
+            "overrideName": true,
+            "path": "cmd"
+        },
+        "PowerShell": {
+            "args": [
+                "-NoLogo"
+            ],
+            "icon": "terminal-powershell",
+            "source": "PowerShell"
+        },
+        "MyScripts Dev": {
+            "args": [
+                "-NoExit",
+                "-Command",
+                "& '${workspaceFolder}\\.vscode\\scripts\\Initialize-CommonTooling.ps1' -WorkspaceRoot '${workspaceFolder}'"
+            ],
+            "icon": "terminal-powershell",
+            "source": "PowerShell"
+        },
+        "Python": {
+            "args": [
+                "-i"
+            ],
+            "icon": "python",
+            "path": "${env:LOCALAPPDATA}\\Python\\bin\\python3.exe"
+        },
+        "Ubuntu (WSL)": {
+            "args": [
+                "-d",
+                "Ubuntu"
+            ],
+            "icon": "terminal-ubuntu",
+            "path": "${env:WINDIR}\\System32\\wsl.exe"
+        },
+        "Windows PowerShell": {
+            "args": [
+                "-NoLogo",
+                "-NoProfile"
+            ],
+            "icon": "terminal-powershell",
+            "path": "${env:WINDIR}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        },
+        "WSL": {
+            "args": [],
+            "icon": "terminal-linux",
+            "path": "${env:WINDIR}\\System32\\wsl.exe"
+        }
+    },
+    "terminal.integrated.rightClickBehavior": "default",
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.shellIntegration.decorationsEnabled": "both",
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.shellIntegration.history": 1000,
+    "terminal.integrated.shellIntegration.showWelcome": false,
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.tabs.hideCondition": "never",
+    "terminal.integrated.wordSeparators": " ()[]{}',\"`",
+    // ============================================================================
+    // SECTION: trailing-spaces — Trailing Spaces Extension
+    // ============================================================================
+    "trailing-spaces.backgroundColor": "rgba(255,0,0,0.1)",
+    "trailing-spaces.includeEmptyLines": false,
+    // ============================================================================
+    // SECTION: vscode-edge-devtools — Edge DevTools
+    // ============================================================================
+    "vscode-edge-devtools.webhint": false,
+    // ============================================================================
+    // SECTION: vsicons — VSCode Icons
+    // ============================================================================
+    "vsicons.dontShowNewVersionMessage": true,
+    // ============================================================================
+    // SECTION: workbench — Workbench Configuration
+    // ============================================================================
+    "workbench.colorCustomizations": {
+        "editor.selectionHighlightBorder": "#A9A9A9",
+        "editor.wordHighlightBorder": "#FFD700",
+        "editor.wordHighlightStrongBorder": "#FF6347",
+        "[Default Dark Modern]": {
+            "tab.activeBorderTop": "#00FF00",
+            "tab.unfocusedActiveBorderTop": "#00FF0088",
+            "textCodeBlock.background": "#00000055"
+        }
+    },
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.revealIfOpen": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "none",
+    "workbench.view.alwaysShowHeaderActions": true,
+    // ============================================================================
+    // SECTION: xml — XML Extension
+    // ============================================================================
+    "xml.server.binary.trustedHashes": [
+        "0fa2a471cccced39068dbb7f738d4f527557ebd3d35db4cb48501bbd68f1a74a"
+    ],
+    // ============================================================================
+    // SECTION: yaml — YAML Extension
+    // ============================================================================
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+    },
+    // ============================================================================
+    // SECTION: Language-Specific Overrides (alphabetical)
+    // ============================================================================
+    "[bat]": {
+        "files.eol": "\r\n"
+    },
+    "[buildconfig]": {
+        "editor.formatOnType": true,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        }
+    },
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[e]": {
+        "editor.formatOnType": true,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        }
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "editor.quickSuggestions": {
+            "comments": false,
+            "other": true,
+            "strings": true
+        },
+        "editor.wordWrap": "on",
+        "files.trimTrailingWhitespace": false
+    },
+    "[powershell]": {
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[shellscript]": {
+        "editor.formatOnSave": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[systemverilog]": {
+        "editor.formatOnType": true,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        }
+    },
+    "[vhdl]": {
+        "editor.formatOnType": true,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        }
+    },
+    "[xml]": {
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": false
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    }
+}

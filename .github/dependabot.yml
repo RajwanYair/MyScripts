@@ -1,0 +1,104 @@
+# Dependabot Configuration
+# Automated dependency updates for all projects
+
+version: 2
+updates:
+  # ============================================================================
+  # PYTHON DEPENDENCIES
+  # ============================================================================
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # Group updates to reduce PR noise
+    groups:
+      dev-dependencies:
+        patterns:
+          - "pytest*"
+          - "ruff"
+          - "mypy"
+          - "coverage"
+          - "bandit"
+          - "pre-commit"
+      web-frameworks:
+        patterns:
+          - "fastapi*"
+          - "uvicorn*"
+          - "flask*"
+          - "jinja2"
+      data-processing:
+        patterns:
+          - "pandas*"
+          - "numpy*"
+          - "pillow*"
+
+  # ============================================================================
+  # GITHUB ACTIONS
+  # ============================================================================
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+
+  # ============================================================================
+  # NPM / NODE.JS DEPENDENCIES
+  # ============================================================================
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      build-tools:
+        patterns:
+          - "vite*"
+          - "vitest*"
+          - "@vitest/*"
+          - "typescript*"
+          - "eslint*"
+          - "@eslint/*"
+          - "prettier"
+      testing:
+        patterns:
+          - "@playwright/*"
+          - "playwright"
+          - "@testing-library/*"
+          - "happy-dom"
+          - "jsdom"
+      security-quality:
+        patterns:
+          - "stylelint*"
+          - "markdownlint*"
+          - "htmlhint"
+          - "@commitlint/*"
+          - "lint-staged"
+

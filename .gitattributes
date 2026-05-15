@@ -1,0 +1,204 @@
+# =============================================================================
+# GIT ATTRIBUTES
+# Universal Project Enhancement Framework v15.0.0
+# =============================================================================
+#
+# Controls how Git handles end-of-line normalization, diff behavior,
+# and binary file handling across platforms (Windows, Linux, macOS, WSL).
+#
+# Rule of thumb:
+#   - Windows scripts (.ps1, .bat, .cmd): CRLF
+#   - Cross-platform scripts (.sh, .py): LF
+#   - Config/data files (.json, .yml, .toml, .md): LF
+#   - Binary files: binary (no normalization)
+# =============================================================================
+
+# Default: auto detect text files and perform LF normalization in the repo.
+# Checked-out copies use the platform native line ending.
+* text=auto
+
+# =============================================================================
+# SOURCE CODE
+# =============================================================================
+
+# Python
+*.py    text eol=lf
+*.pyi   text eol=lf
+*.pyw   text eol=lf
+
+# C / C++
+*.c     text eol=lf
+*.cc    text eol=lf
+*.cpp   text eol=lf
+*.cxx   text eol=lf
+*.h     text eol=lf
+*.hpp   text eol=lf
+*.hxx   text eol=lf
+*.inl   text eol=lf
+
+# C#
+*.cs    text eol=lf
+*.csx   text eol=lf
+
+# Java / Kotlin
+*.java  text eol=lf
+*.kt    text eol=lf
+*.kts   text eol=lf
+
+# Web
+*.html  text eol=lf
+*.htm   text eol=lf
+*.css   text eol=lf
+*.scss  text eol=lf
+*.less  text eol=lf
+*.js    text eol=lf
+*.ts    text eol=lf
+*.jsx   text eol=lf
+*.tsx   text eol=lf
+
+# =============================================================================
+# SHELL SCRIPTS
+# =============================================================================
+
+# Unix/Linux/macOS — always LF
+*.sh    text eol=lf
+*.bash  text eol=lf
+*.zsh   text eol=lf
+*.fish  text eol=lf
+
+# Windows — always CRLF (PowerShell requires CRLF on some hosts)
+*.ps1   text eol=crlf
+*.psm1  text eol=crlf
+*.psd1  text eol=crlf
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# =============================================================================
+# CONFIGURATION FILES
+# =============================================================================
+
+# Data / Config — LF universally to maximise cross-platform editing
+*.json          text eol=lf
+*.jsonc         text eol=lf
+*.toml          text eol=lf
+*.yaml          text eol=lf
+*.yml           text eol=lf
+*.ini           text eol=lf
+*.cfg           text eol=lf
+*.conf          text eol=lf
+*.env           text eol=lf
+.editorconfig   text eol=lf
+.gitignore      text eol=lf
+.gitattributes  text eol=lf
+.flake8         text eol=lf
+Makefile        text eol=lf
+makefile        text eol=lf
+
+# CMake
+*.cmake         text eol=lf
+CMakeLists.txt  text eol=lf
+
+# Visual Studio solution / project files — CRLF (VS editor requirement)
+*.sln           text eol=crlf
+*.csproj        text eol=crlf
+*.vcxproj       text eol=crlf
+*.vcxproj.filters text eol=crlf
+*.vcxproj.user  text eol=crlf
+*.props         text eol=crlf
+*.targets       text eol=crlf
+*.config        text eol=crlf
+
+# =============================================================================
+# DOCUMENTATION
+# =============================================================================
+
+*.md    text eol=lf
+*.rst   text eol=lf
+*.txt   text eol=lf
+*.rtf   text eol=lf
+
+# =============================================================================
+# BINARY FILES (no normalization — ever)
+# =============================================================================
+
+# Compiled / executable
+*.exe   binary
+*.dll   binary
+*.so    binary
+*.dylib binary
+*.lib   binary
+*.a     binary
+*.o     binary
+*.obj   binary
+*.pdb   binary
+*.ilk   binary
+*.exp   binary
+*.pyc   binary
+*.pyo   binary
+
+# Archives
+*.zip   binary
+*.7z    binary
+*.rar   binary
+*.gz    binary
+*.tar   binary
+*.bz2   binary
+*.xz    binary
+*.lz4   binary
+*.zst   binary
+*.cab   binary
+*.msi   binary
+
+# Images
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.bmp   binary
+*.ico   binary
+*.tif   binary
+*.tiff  binary
+*.webp  binary
+*.avif  binary
+*.heic  binary
+*.svg   text eol=lf
+
+# Fonts
+*.ttf   binary
+*.otf   binary
+*.woff  binary
+*.woff2 binary
+*.eot   binary
+
+# Audio / Video
+*.mp3   binary
+*.mp4   binary
+*.avi   binary
+*.mkv   binary
+*.wav   binary
+*.flac  binary
+*.ogg   binary
+
+# Documents
+*.pdf   binary
+*.doc   binary
+*.docx  binary
+*.xls   binary
+*.xlsx  binary
+*.ppt   binary
+*.pptx  binary
+
+# Database
+*.db    binary
+*.sqlite binary
+*.sqlite3 binary
+
+# =============================================================================
+# DIFF DRIVERS (cosmetic improvement for git diff output)
+# =============================================================================
+
+# Python files — use Python-aware diff hunk header
+*.py diff=python
+
+# Markdown — use word-diff-friendly markup
+*.md diff=markdown

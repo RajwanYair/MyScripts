@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MyScripts workspace — local development hub linking to all sub-projects and their published GitHub Pages endpoints." />
+  <title>MyScripts — Dev Hub</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f1e8;
+      --surface: rgba(255, 253, 249, 0.9);
+      --line: rgba(55, 65, 81, 0.14);
+      --ink: #1f2933;
+      --ink-soft: #53606d;
+      --accent: #0f766e;
+      --accent-soft: rgba(15, 118, 110, 0.12);
+      --gold: #b45309;
+      --gold-soft: rgba(180, 83, 9, 0.1);
+      --radius: 16px;
+      --shadow: 0 8px 32px rgba(50, 38, 23, 0.09);
+      --max: 1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(160deg, #f9f5ef 0%, var(--bg) 60%, #ede3d3 100%);
+    }
+
+    header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 1.5rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    header a.hub-link {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    header a.hub-link:hover { border-color: var(--accent); }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 2.5rem 0 0.75rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .card-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      flex: 1;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .card-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      transition: opacity 0.15s;
+    }
+
+    .card-links a:hover { opacity: 0.75; }
+
+    .card-links a.pages { background: var(--gold-soft); color: var(--gold); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--line);
+      color: var(--ink-soft);
+      align-self: flex-start;
+    }
+
+    .badge.ts { background: rgba(0, 100, 255, 0.1); color: #1d4ed8; }
+    .badge.py { background: rgba(250, 204, 21, 0.2); color: #92400e; }
+    .badge.cpp { background: rgba(190, 18, 60, 0.1); color: #9f1239; }
+    .badge.cs { background: rgba(124, 58, 237, 0.1); color: #6d28d9; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MyScripts — Dev Hub</h1>
+    <p>Local workspace index. Links to sub-projects and their published GitHub Pages endpoints.</p>
+    <a class="hub-link" href="https://rajwanyair.github.io/" target="_blank" rel="noopener">
+      &#127758; rajwanyair.github.io (live hub) &rarr;
+    </a>
+  </header>
+
+  <main>
+    <h2>Web / TypeScript Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">BudgetManager</div>
+        <div class="card-desc">Budget tracking web app with Google Sheets integration.</div>
+        <div class="card-links">
+          <a href="BudgetManager/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/BudgetManager/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/BudgetManager" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">CrossTide</div>
+        <div class="card-desc">Stock crossover analysis app with service worker and Cloudflare Worker backend.</div>
+        <div class="card-links">
+          <a href="CrossTide/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/CrossTide/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/CrossTide" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">CrossTideWeb</div>
+        <div class="card-desc">CrossTide web companion — lightweight standalone page.</div>
+        <div class="card-links">
+          <a href="CrossTideWeb/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/CrossTideWeb/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/CrossTideWeb" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">FamilyDashBoard</div>
+        <div class="card-desc">Family TV dashboard — fullscreen kiosk display.</div>
+        <div class="card-links">
+          <a href="FamilyDashBoard/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/FamilyDashBoard/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/FamilyDashBoard" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">Wedding</div>
+        <div class="card-desc">Wedding event manager — timeline, guests, RSVP.</div>
+        <div class="card-links">
+          <a href="Wedding/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/Wedding/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/Wedding" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">WoodworkingShop</div>
+        <div class="card-desc">Woodworking project manager — cut lists, materials, plans.</div>
+        <div class="card-links">
+          <a href="WoodworkingShop/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/WoodworkingShop/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/WoodworkingShop" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge ts">TypeScript</span>
+        <div class="card-name">rajwanyair.github.io</div>
+        <div class="card-desc">GitHub user site — dynamic project catalog loaded from GitHub API.</div>
+        <div class="card-links">
+          <a href="rajwanyair.github.io/index.html">Local</a>
+          <a class="pages" href="https://rajwanyair.github.io/" target="_blank" rel="noopener">Pages &rarr;</a>
+          <a href="https://github.com/RajwanYair/rajwanyair.github.io" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Python Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">DupDetector</div>
+        <div class="card-desc">Duplicate file finder — hash-based deduplication with CLI, GUI and web interfaces.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/DupDetector" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">FileNameManipulator</div>
+        <div class="card-desc">Batch filename utility — rename, case, regex, numbering.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/FileNameManipulator" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">FileProcessor</div>
+        <div class="card-desc">File processing pipeline — transform, filter, route files.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/FileProcessor" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">OptimizeBrowsers</div>
+        <div class="card-desc">Browser optimizer — profile cleanup, cache management.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/OptimizeBrowsers" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">OptimizeWIN_n_WSL</div>
+        <div class="card-desc">Windows/WSL optimizer — debloat, tuning, setup automation.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/OptimizeWIN_n_WSL" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">SortComics</div>
+        <div class="card-desc">Comic and media sorter — metadata-aware file organisation.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/SortComics" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">UbuntuEnhancer</div>
+        <div class="card-desc">Ubuntu setup utility — opinionated post-install automation.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/UbuntuEnhancer" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge py">Python</span>
+        <div class="card-name">VHDXCompress</div>
+        <div class="card-desc">VHDX compressor — safe offline compaction for Hyper-V disks.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/VHDXCompress" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Native Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <span class="badge cpp">C++</span>
+        <div class="card-name">ExplorerLens.io</div>
+        <div class="card-desc">Windows Shell extension — context-menu tools for file analysis.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/ExplorerLens.io" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge cs">C#</span>
+        <div class="card-name">RegiLattice</div>
+        <div class="card-desc">Registry tweaks toolkit — curated Windows registry optimisations.</div>
+        <div class="card-links">
+          <a href="https://github.com/RajwanYair/RegiLattice" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2>Workspace Tooling</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-name">Shared Tooling</div>
+        <div class="card-desc">ESLint, TypeScript, Vitest, Vite, Stylelint, Playwright base configs used by all web projects.</div>
+        <div class="card-links">
+          <a href="tooling/README.md">Tooling README</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Workspace Guide</div>
+        <div class="card-desc">Operating procedures, centralization policy, adding new repos.</div>
+        <div class="card-links">
+          <a href="docs/WORKSPACE_GUIDE.md">Open</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-name">Roadmap</div>
+        <div class="card-desc">Phased improvement plan, sprint backlog, tech debt register.</div>
+        <div class="card-links">
+          <a href="ROADMAP.md">Open</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    MyScripts workspace &mdash; local dev only &mdash;
+    <a href="https://github.com/RajwanYair" target="_blank" rel="noopener">github.com/RajwanYair</a>
+  </footer>
+</body>
+</html>

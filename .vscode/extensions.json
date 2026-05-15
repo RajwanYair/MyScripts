@@ -1,0 +1,75 @@
+{
+    // ============================================================================
+    // CONSOLIDATED VS CODE EXTENSIONS — All Sub-Workspaces
+    // Sources: root, ExplorerLens.io, Scripts.FileProcessor, RegiLattice
+    // ============================================================================
+    //
+    // Run: code --install-extension <extension-id>
+    // Or use: Ctrl+Shift+P > Extensions: Show Recommended Extensions
+    // ============================================================================
+    "recommendations": [
+        // ── C/C++ Development ──
+        "jeff-hykin.better-cpp-syntax",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "twxs.cmake",
+        "xaver.clang-format",
+        // ── Code Quality ──
+        "streetsidesoftware.code-spell-checker",
+        "usernamehw.errorlens",
+        // ── Configuration Files ──
+        "editorconfig.editorconfig",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        // ── Debugging & Analysis ──
+        "ms-python.debugpy",
+        "ms-vscode.test-adapter-converter",
+        "vadimcn.vscode-lldb",
+        // ── Docker & Containers ──
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        // ── Git & Version Control ──
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "mhutchie.git-graph",
+        // ── GitHub Copilot ──
+        "github.copilot-chat",
+        // ── Markdown & Documentation ──
+        "bierner.markdown-preview-github-styles",
+        "davidanson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        // ── Productivity ──
+        "christian-kohler.path-intellisense",
+        "gruntfuggly.todo-tree",
+        "mechatroner.rainbow-csv",
+        "ms-vscode.hexeditor",
+        "ms-vscode.live-server",
+        // ── Python Development ──
+        "charliermarsh.ruff",
+        "littlefoxteam.vscode-python-test-adapter",
+        "ms-python.mypy-type-checker",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        // ── Remote Development ──
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-wsl",
+        // ── Shell & Scripting ──
+        "bmalehorn.vscode-fish",
+        "foxundermoon.shell-format",
+        "mads-hartmann.bash-ide-vscode",
+        "ms-vscode.powershell",
+        "timonwong.shellcheck",
+        // ── Utility & Formatting ──
+        "esbenp.prettier-vscode",
+        // ── Windows Development ──
+        "ms-vscode.windows-registry"
+    ],
+    "unwantedRecommendations": [
+        "ms-python.black-formatter",
+        "ms-python.flake8",
+        "ms-python.isort",
+        "ms-python.pylint",
+        "ms-vscode.cpptools-themes"
+    ]
+}

@@ -1,0 +1,42 @@
+# Recommended .gitignore — C++ Projects (CMake / vcpkg)
+
+# Build outputs
+build/
+build-*/
+out/
+x64/
+x86/
+cmake-build-*/
+compile_commands.json
+
+# vcpkg
+vcpkg_installed/
+packages/
+
+# Object files / libraries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.pdb
+
+# IDE / editor
+.vscode/
+.idea/
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+.env.*

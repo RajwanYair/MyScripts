@@ -1,0 +1,40 @@
+# Recommended .gitignore — C# / .NET Projects
+
+# Build outputs
+bin/
+obj/
+out/
+publish/
+TestResults/
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# IDE / editor
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+*.sln.iml
+
+# Stryker
+StrykerOutput/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+.env.*
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json

@@ -1,0 +1,1 @@
+export const sharedVitestTestConfig: import('vitest/config').InlineConfig;

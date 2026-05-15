@@ -1,0 +1,109 @@
+name: Release — Workspace Template Archive
+
+# Creates a GitHub Release containing a zip of all workspace-level
+# shared tooling (tooling/, scripts/, templates/, .github/).
+# Triggered on semver tags (e.g. v2.1.0) or manually.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release (e.g. v2.1.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package & Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "tag=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate workspace (lint + config check)
+        run: |
+          for f in scripts/validate-mermaid.mjs scripts/check-bundle-size.mjs scripts/check-test-focus-skip.mjs; do
+            node --check "$f" && echo "OK: $f" || { echo "FAIL: $f"; exit 1; }
+          done
+
+      - name: Build template archive
+        run: |
+          TAG="${{ steps.version.outputs.tag }}"
+          ARCHIVE="myscripts-template-${TAG}.zip"
+          zip -r "$ARCHIVE" \
+            tooling/ \
+            scripts/ \
+            templates/ \
+            .github/instructions/ \
+            .github/prompts/ \
+            .github/CONTRIBUTING.md \
+            .github/PULL_REQUEST_TEMPLATE.md \
+            .github/SECURITY.md \
+            .github/CODEOWNERS \
+            .github/dependabot.yml \
+            .editorconfig \
+            .gitattributes \
+            .markdownlint.json \
+            .pre-commit-config.yaml \
+            pyproject.toml \
+            package.json \
+            README.md \
+            ROADMAP.md \
+            -x "*/node_modules/*" -x "*/.git/*" -x "*/__pycache__/*"
+          sha256sum "$ARCHIVE" > "${ARCHIVE}.sha256"
+          echo "archive=$ARCHIVE" >> "$GITHUB_OUTPUT"
+        id: archive
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: "MyScripts Workspace Template ${{ steps.version.outputs.tag }}"
+          body: |
+            ## Workspace Template Release ${{ steps.version.outputs.tag }}
+
+            This release packages all shared workspace tooling for use as a
+            starting point for new multi-project development environments.
+
+            ### Included
+            - `tooling/` — shared ESLint, TypeScript, Vitest, Vite, Stylelint base configs
+            - `scripts/` — Mermaid validator, bundle-size checker, test-focus guard
+            - `templates/` — CI workflows, gitignore starters, readme template
+            - `.github/` — Copilot instructions, prompts, PR/issue templates, CONTRIBUTING, SECURITY
+            - Root config files (`.editorconfig`, `.gitattributes`, `pyproject.toml`, etc.)
+
+            ### Install
+            Download the zip, extract to your workspace root, and run `npm install`.
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(steps.version.outputs.tag, '-') }}
+          files: |
+            ${{ steps.archive.outputs.archive }}
+            ${{ steps.archive.outputs.archive }}.sha256
+

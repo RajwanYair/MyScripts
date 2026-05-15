@@ -1,0 +1,40 @@
+# =============================================================================
+# Copilot Coding Agent Setup Steps
+# Generic template — defines environment setup for GitHub Copilot coding agent.
+# Used automatically when Copilot creates PRs or responds to issues.
+# =============================================================================
+name: "Copilot Setup Steps"
+
+on: workflow_dispatch
+
+jobs:
+  copilot-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup Python (if needed)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies (if requirements.txt exists)
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Install MCP server dependencies
+        run: |
+          npx -y @modelcontextprotocol/server-fetch --version || true
+          npx -y @microsoft/mcp-server-playwright --version || true

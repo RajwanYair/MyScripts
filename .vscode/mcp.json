@@ -1,0 +1,49 @@
+{
+    "servers": {
+        "github": {
+            "type": "http",
+            "url": "https://api.githubcopilot.com/mcp/",
+            "description": "Official GitHub MCP server — pull requests, issues, workflows, repository context, and code search in Copilot chat."
+        },
+        "fetch": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-fetch"
+            ],
+            "description": "Fetch and parse web content, test API endpoints, and retrieve documentation directly in chat."
+        },
+        "filesystem": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "${workspaceFolder}",
+                "--exclude",
+                "node_modules,.git,build,dist,coverage,htmlcov,external,packages,x64"
+            ],
+            "description": "Scoped read/write access to the workspace. Heavy directories excluded for performance."
+        },
+        "playwright": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@microsoft/mcp-server-playwright"
+            ],
+            "description": "Browser automation, visual debugging, and E2E interaction directly in chat."
+        },
+        "gitkraken": {
+            "type": "http",
+            "url": "https://mcp.gitkraken.com/mcp",
+            "description": "GitKraken MCP — git blame, log, diff, branch ops, pull request workflow, and Launchpad issue tracking."
+        },
+        "cloudflare": {
+            "type": "streamableHttp",
+            "url": "https://mcp.cloudflare.com/mcp",
+            "description": "Cloudflare Workers, Pages, D1, KV, and R2 management from chat."
+        }
+    }
+}

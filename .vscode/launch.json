@@ -1,0 +1,160 @@
+{
+    // ============================================================================
+    // LAUNCH CONFIGURATIONS — Generic Templates
+    // Universal Project Enhancement Framework v15.0.0
+    // ============================================================================
+    "version": "0.2.0",
+    "configurations": [
+        // ============================================================================
+        // PYTHON — Generic Debug Configurations
+        // ============================================================================
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        {
+            "name": "Python: Current File with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "args": "${input:args}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        {
+            "name": "Python: Module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "${input:moduleName}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        // ============================================================================
+        // PYTHON — Testing
+        // ============================================================================
+        {
+            "name": "Python: pytest",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "tests/",
+                "-v",
+                "-s"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        {
+            "name": "Python: pytest Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${file}",
+                "-v",
+                "-s"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        // ============================================================================
+        // PYTHON — Web Servers
+        // ============================================================================
+        {
+            "name": "Python: FastAPI",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "${input:uvicornApp}",
+                "--reload",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "8080"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        {
+            "name": "Python: Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "args": [
+                "run",
+                "--debug",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "5000"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "FLASK_APP": "${input:flaskApp}",
+                "PYTHONPATH": "${workspaceFolder}/src"
+            }
+        },
+        // ============================================================================
+        // POWERSHELL — Generic
+        // ============================================================================
+        {
+            "name": "PS: Current Script",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "cwd": "${fileDirname}",
+            "createTemporaryIntegratedConsole": false
+        }
+    ],
+    "inputs": [
+        {
+            "id": "args",
+            "description": "Command line arguments",
+            "type": "promptString",
+            "default": ""
+        },
+        {
+            "id": "moduleName",
+            "description": "Module name to run (e.g., src.cli.main_cli)",
+            "type": "promptString",
+            "default": "src.cli.main_cli"
+        },
+        {
+            "id": "uvicornApp",
+            "description": "Uvicorn app string (e.g., src.gui.web_app:app)",
+            "type": "promptString",
+            "default": "src.gui.web_app:app"
+        },
+        {
+            "id": "flaskApp",
+            "description": "Flask app module path (e.g., src/gui/web_app.py)",
+            "type": "promptString",
+            "default": "src/gui/web_app.py"
+        }
+    ]
+}

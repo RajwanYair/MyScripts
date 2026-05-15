@@ -1,0 +1,89 @@
+# =============================================================================
+# EDITORCONFIG
+# Universal Project Enhancement Framework v15.0.0
+# =============================================================================
+# https://editorconfig.org
+root = true
+
+# Default for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Python source files
+[*.{py,pyi,pyw}]
+indent_size = 4
+max_line_length = 100
+
+# C/C++ source files
+[*.{h,cpp,c,hpp,cxx,cc,inl}]
+indent_size = 4
+max_line_length = 120
+
+# CMake files
+[{CMakeLists.txt,*.cmake}]
+indent_size = 4
+
+# PowerShell scripts (CRLF required on some hosts)
+[*.{ps1,psm1,psd1}]
+indent_size = 4
+end_of_line = crlf
+
+# Batch / CMD (CRLF required)
+[*.{bat,cmd}]
+indent_size = 4
+end_of_line = crlf
+
+# JSON / JSONC configuration
+[*.{json,jsonc}]
+indent_size = 4
+
+# YAML (GitHub Actions, configs)
+[*.{yml,yaml}]
+indent_size = 2
+
+# TOML configuration
+[*.toml]
+indent_size = 4
+
+# Markdown (preserve trailing whitespace for line breaks)
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# reStructuredText
+[*.rst]
+indent_size = 3
+
+# XML / manifest / resource files
+[*.{xml,manifest,rc,props,targets,vcxproj,csproj}]
+indent_size = 2
+
+# WiX / Inno Setup
+[*.{wxs,wxi,iss}]
+indent_size = 2
+
+# Makefiles (must use tabs)
+[Makefile]
+indent_style = tab
+
+# INI / CFG files
+[*.{ini,cfg,conf}]
+indent_size = 4
+
+# Shell scripts
+[*.{sh,bash,zsh}]
+indent_size = 4
+end_of_line = lf
+
+# Web files
+[*.{html,htm,css,scss,less,js,ts,jsx,tsx}]
+indent_size = 2
+
+# Visual Studio solution / project files
+[*.{sln,vcxproj.filters}]
+end_of_line = crlf

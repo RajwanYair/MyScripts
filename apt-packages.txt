@@ -1,0 +1,183 @@
+# ============================================================================
+# CONSOLIDATED APT PACKAGES
+# Universal Project Enhancement Framework v15.0.0
+# ============================================================================
+#
+# INSTALLATION:
+# Ubuntu/Debian: sudo apt install $(grep -v '^#' apt-packages.txt | grep -v '^$' | xargs)
+# RHEL/CentOS:   sudo yum install <package>
+# Fedora:        sudo dnf install <package>
+# macOS:         brew install python3 (then use pip for other packages)
+#
+# PHILOSOPHY:
+# System packages provide better stability, security, and OS integration.
+# Use pip only for packages not available via apt (see requirements.txt).
+# ============================================================================
+
+# ============================================================================
+# CORE PYTHON (Python 3.8+)
+# ============================================================================
+python3
+python3-pip
+python3-dev
+python3-venv
+python3-setuptools
+python3-wheel
+
+# ============================================================================
+# CORE DEPENDENCIES
+# ============================================================================
+
+# YAML Configuration Support
+python3-yaml
+
+# System Monitoring and Process Management
+python3-psutil
+
+# HTTP Requests
+python3-requests
+python3-urllib3
+
+# Certificate bundle for HTTPS
+python3-certifi
+
+# ============================================================================
+# GUI REQUIREMENTS
+# ============================================================================
+
+# Tkinter for Desktop GUI (usually pre-installed with Python)
+python3-tk
+
+# Jinja2 for HTML templating (Web GUI)
+python3-jinja2
+
+# Flask for Web GUI (alternative to FastAPI)
+python3-flask
+
+# ============================================================================
+# IMAGE PROCESSING
+# ============================================================================
+
+# Image Processing (Pillow/PIL)
+python3-pil
+# OR on some systems:
+# python3-pillow
+
+# Numerical Computing (required by ImageHash)
+# python3-numpy
+
+# ============================================================================
+# SECURITY & CRYPTOGRAPHY
+# ============================================================================
+
+# Cryptographic functions
+python3-cryptography
+
+# ============================================================================
+# CLI ENHANCEMENTS
+# ============================================================================
+
+# Colored terminal output (cross-platform)
+# python3-colorama
+
+# Table formatting
+# python3-tabulate
+
+# NOTE: tqdm and rich are better installed via pip for latest versions
+
+# ============================================================================
+# DATA ANALYSIS (Optional)
+# ============================================================================
+
+# Data analysis and manipulation
+# python3-pandas
+
+# Numerical computing
+# python3-numpy
+
+# Data visualization
+# python3-matplotlib
+
+# ============================================================================
+# TESTING FRAMEWORK
+# ============================================================================
+
+# Testing framework
+python3-pytest
+
+# Code coverage
+python3-pytest-cov
+
+# ============================================================================
+# DEVELOPMENT TOOLS
+# ============================================================================
+
+# Build tools (for compiling Python packages from pip)
+build-essential
+git
+
+# SSH client
+openssh-client
+
+# Code formatting
+# python3-black
+
+# Code linting
+# python3-flake8
+
+# Type checking
+# python3-mypy
+
+# ============================================================================
+# VIRTUALIZATION TOOLS (Optional)
+# ============================================================================
+
+# QEMU utilities (for VHDX/disk operations)
+qemu-utils
+
+# ============================================================================
+# LINUX DISTRIBUTION TOOLS (Optional)
+# ============================================================================
+
+# Linux distribution detection
+# python3-distro
+
+# APT package manager interface (Linux only)
+# python3-apt
+
+# ============================================================================
+# OPTIONAL FEATURES
+# ============================================================================
+
+# PDF text extraction
+# python3-pypdf2
+
+# Fuzzy string matching
+# python3-fuzzywuzzy
+
+# Excel file support
+# python3-openpyxl
+
+# JSON schema validation
+# python3-jsonschema
+
+# TOML configuration support
+# python3-toml
+
+# ============================================================================
+# PACKAGES TO INSTALL VIA PIP (Not available in apt)
+# ============================================================================
+#
+# After installing apt packages, install pip packages:
+# pip install --break-system-packages -r requirements.txt
+#
+# Key packages only available via pip:
+# - tqdm (progress bars - newer versions)
+# - rich (console formatting - newer versions)
+# - Send2Trash (safe file deletion)
+# - ImageHash (perceptual image hashing)
+# - fastapi (modern web framework)
+# - uvicorn (ASGI server)
+# - blake3 (fast hashing)
+# - pydantic (data validation)
+#

@@ -1,0 +1,272 @@
+# ============================================================================
+# CONSOLIDATED PYTHON DEPENDENCIES
+# Universal Project Enhancement Framework v15.0.0
+# ============================================================================
+#
+# INSTALLATION PHILOSOPHY:
+# 1. PREFER system packages (apt) - see apt-packages.txt
+# 2. Use pip ONLY for packages not available via apt
+#
+# INSTALLATION:
+# Standard:     pip install -r requirements.txt
+# User-only:    pip install --user -r requirements.txt
+# System-wide:  pip install --break-system-packages -r requirements.txt
+# Virtual env:  python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+#
+# ============================================================================
+
+# ============================================================================
+# CORE REQUIREMENTS (All Projects)
+# ============================================================================
+
+# YAML Configuration Support
+PyYAML>=6.0.1
+
+# System Monitoring and Process Management
+psutil>=5.9.0
+
+# HTTP Requests
+requests>=2.31.0
+urllib3>=2.0.0,<3.0.0
+
+# Data Validation
+pydantic>=2.4.2
+pydantic-settings>=2.0.0
+
+# Async File Operations
+aiofiles>=23.2.1
+
+# ============================================================================
+# CLI ENHANCEMENTS
+# ============================================================================
+
+# Progress bars for CLI
+tqdm>=4.66.0
+
+# Rich console output and formatting
+rich>=13.7.0
+
+# Cross-platform colored terminal output
+colorama>=0.4.6
+
+# Pretty table formatting
+tabulate>=0.9.0
+
+# Command-line argument parsing (enhanced)
+click>=8.1.7
+
+# ============================================================================
+# GUI REQUIREMENTS
+# ============================================================================
+
+# Web GUI Framework (FastAPI - modern, async)
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+
+# Alternative Web Framework
+flask>=3.0.0
+
+# HTML Templating
+jinja2>=3.1.4
+
+# WebSocket support
+websockets>=12.0
+
+# Form handling for web
+python-multipart>=0.0.6
+
+# ============================================================================
+# IMAGE & FILE PROCESSING
+# ============================================================================
+
+# Image Processing (Pillow/PIL)
+Pillow>=10.1.0
+
+# Image hashing for duplicate detection
+ImageHash>=4.3.1
+
+# PDF reading and operations
+PyPDF2>=3.0.1
+
+# ImageMagick binding
+Wand>=0.6.13
+
+# EPUB e-book processing
+ebooklib>=0.18
+
+# EXIF data from images
+exifread>=3.0.0
+
+# Safe file deletion to trash
+Send2Trash>=1.8.2
+
+# ============================================================================
+# CRYPTOGRAPHY & HASHING
+# ============================================================================
+
+# Fast cryptographic hashing (BLAKE3)
+blake3>=0.3.4
+
+# Modern cryptographic library
+cryptography>=41.0.0
+
+# Password hashing
+bcrypt>=4.0.1
+
+# ============================================================================
+# TEXT & STRING PROCESSING
+# ============================================================================
+
+# Fuzzy string matching
+fuzzywuzzy>=0.18.0
+python-Levenshtein>=0.21.0
+
+# Edit distance calculations
+Levenshtein>=0.20.9
+
+# Translation services
+googletrans==4.0.0rc1
+deep-translator>=1.11.4
+
+# ============================================================================
+# DATA ANALYSIS & VISUALIZATION
+# ============================================================================
+
+# Data analysis
+pandas>=2.1.0
+
+# Numerical computing
+numpy>=1.25.0
+
+# Data visualization
+matplotlib>=3.8.0
+
+# ============================================================================
+# CACHING & PERFORMANCE
+# ============================================================================
+
+# Disk-based caching
+diskcache>=5.6.3
+
+# In-memory caching
+cachetools>=5.3.0
+
+# LRU dictionary
+lru-dict>=1.1.8
+
+# ============================================================================
+# TESTING & QUALITY
+# ============================================================================
+
+# Testing framework
+pytest>=7.4.0
+pytest-asyncio>=0.21.1
+pytest-cov>=4.1.0
+
+# Code coverage
+coverage>=7.3.0
+
+# Linting & formatting (ruff — primary, replaces black + flake8 + isort)
+ruff>=0.4.0
+
+# Code formatting (fallback — prefer ruff format)
+black>=23.9.1
+
+# Code linting (fallback — prefer ruff check)
+flake8>=6.1.0
+
+# Type checking
+mypy>=1.6.1
+
+# Security linting
+bandit>=1.7.0
+
+# Import sorting (fallback — prefer ruff lint I rules)
+isort>=5.12.0
+
+# ============================================================================
+# BUILD & PACKAGING
+# ============================================================================
+
+# Build tools
+build>=1.0.0
+setuptools>=68.2.0
+wheel>=0.41.0
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+
+# Documentation generator
+mkdocs>=1.5.3
+mkdocs-material>=9.4.6
+
+# ============================================================================
+# PROFILING (Optional)
+# ============================================================================
+
+# Memory profiling
+memory-profiler>=0.61.0
+
+# Line-by-line profiling
+line-profiler>=4.1.1
+
+# ============================================================================
+# MONITORING (Optional)
+# ============================================================================
+
+# Prometheus metrics
+prometheus-client>=0.18.0
+
+# Structured logging
+loguru>=0.6.0
+
+# ============================================================================
+# SPECIALIZED TOOLS
+# ============================================================================
+
+# Comic book processing
+pikepdf>=8.0.0
+img2pdf>=0.5.0
+
+# Async SQLite
+aiosqlite>=0.19.0
+
+# TOML support (Python < 3.11)
+tomli>=2.0.1; python_version<'3.11'
+
+# Linux distribution detection
+distro>=1.8.0
+
+# JSON schema validation
+jsonschema>=4.17.0
+
+# Data serialization
+marshmallow>=3.19.0
+
+# Keyring for credentials
+keyring>=24.0.0
+
+# Docker integration
+docker>=6.1.0
+
+# Dark mode detection (Windows/macOS)
+darkdetect>=0.8.0; sys_platform == "darwin" or sys_platform == "win32"
+
+# ============================================================================
+# GPU ACCELERATION (Optional - CUDA)
+# ============================================================================
+
+# cupy-cuda12x>=12.0.0    # GPU acceleration for CUDA 12.x
+# cupy-cuda11x>=11.0.0    # GPU acceleration for CUDA 11.x
+
+# ============================================================================
+# VIDEO PROCESSING (Optional)
+# ============================================================================
+
+# Multi-format image/video I/O
+imageio>=2.31.0
+# imageio[ffmpeg]>=2.31.0  # With FFmpeg backend
+
+# Fast JPEG processing (requires libturbojpeg)
+# PyTurboJPEG>=1.7.5

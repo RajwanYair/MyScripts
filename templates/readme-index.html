@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="project-name" content="" />
+    <meta name="github-repo" content="" />
+    <meta name="project-summary" content="" />
+    <meta name="project-category" content="" />
+    <meta name="docs-url" content="" />
+    <meta name="releases-url" content="" />
+    <meta name="pages-home" content="https://rajwanyair.github.io/" />
+    <title>Project README</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #f6f2ea;
+        --surface: rgba(255, 253, 249, 0.9);
+        --surface-strong: rgba(255, 255, 255, 0.96);
+        --line: rgba(55, 65, 81, 0.12);
+        --line-strong: rgba(55, 65, 81, 0.22);
+        --ink: #18212b;
+        --ink-soft: #5a6774;
+        --accent: #0f766e;
+        --accent-soft: rgba(15, 118, 110, 0.12);
+        --warm: #c2410c;
+        --warm-soft: rgba(194, 65, 12, 0.12);
+        --radius-xl: 28px;
+        --radius-lg: 18px;
+        --radius-md: 14px;
+        --shadow: 0 22px 48px rgba(50, 38, 23, 0.1);
+        --max-width: 1100px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Manrope", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 26%),
+          radial-gradient(circle at bottom left, rgba(194, 65, 12, 0.12), transparent 26%),
+          linear-gradient(180deg, #faf7f1 0%, var(--bg) 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(calc(100% - 2rem), var(--max-width));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(246, 242, 234, 0.82);
+        border-bottom: 1px solid rgba(55, 65, 81, 0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .topbar-inner {
+        width: min(calc(100% - 2rem), var(--max-width));
+        margin: 0 auto;
+        padding: 0.9rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .crumbs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--ink-soft);
+        font-weight: 700;
+      }
+
+      .crumbs a {
+        text-decoration: none;
+      }
+
+      .crumbs a:hover {
+        color: var(--accent);
+      }
+
+      .slash {
+        opacity: 0.45;
+      }
+
+      .top-actions,
+      .hero-links,
+      .meta-grid,
+      .doc-actions,
+      .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .top-actions,
+      .hero-links,
+      .doc-actions,
+      .footer-row {
+        gap: 0.65rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 0.76rem 0.98rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--line-strong);
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--accent), #14b8a6);
+        color: #fff;
+        border-color: transparent;
+      }
+
+      .btn.warm {
+        background: linear-gradient(135deg, var(--warm), #ea580c);
+        color: #fff;
+        border-color: transparent;
+      }
+
+      .hero {
+        padding: 3.1rem 0 1.5rem;
+      }
+
+      .hero-panel,
+      .readme-panel,
+      .footer-panel {
+        background: var(--surface);
+        border: 1px solid rgba(55, 65, 81, 0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-panel {
+        padding: 1.6rem;
+        border-radius: var(--radius-xl);
+      }
+
+      .hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.38rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid var(--line);
+        color: var(--ink-soft);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-title {
+        margin-top: 0.9rem;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2.2rem, 4.4vw, 4rem);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-summary {
+        margin-top: 0.9rem;
+        color: var(--ink-soft);
+        font-size: 1rem;
+        line-height: 1.75;
+        max-width: 62ch;
+      }
+
+      .hero-links {
+        margin-top: 1.25rem;
+      }
+
+      .meta-grid {
+        gap: 0.9rem;
+        margin-top: 1.25rem;
+      }
+
+      .meta-card {
+        flex: 1 1 10rem;
+        min-width: 10rem;
+        padding: 0.95rem 1rem;
+        border-radius: var(--radius-md);
+        background: var(--surface-strong);
+        border: 1px solid rgba(55, 65, 81, 0.1);
+      }
+
+      .meta-label {
+        display: block;
+        color: var(--ink-soft);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .meta-value {
+        display: block;
+        margin-top: 0.28rem;
+        font-size: 0.98rem;
+        font-weight: 800;
+      }
+
+      .readme-wrap {
+        padding-bottom: 3.5rem;
+      }
+
+      .readme-panel {
+        margin-top: 1.35rem;
+        padding: 1.4rem;
+        border-radius: var(--radius-xl);
+      }
+
+      .panel-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.8rem;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .panel-head h2 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .panel-head p {
+        margin: 0.3rem 0 0;
+        color: var(--ink-soft);
+      }
+
+      .loading,
+      .empty-state {
+        padding: 2.2rem 1rem;
+        text-align: center;
+        color: var(--ink-soft);
+      }
+
+      .empty-state {
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px dashed rgba(55, 65, 81, 0.2);
+      }
+
+      .empty-state h3 {
+        margin: 0 0 0.5rem;
+        color: var(--ink);
+      }
+
+      .markdown-body {
+        color: var(--ink);
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+
+      .markdown-body h1,
+      .markdown-body h2,
+      .markdown-body h3,
+      .markdown-body h4,
+      .markdown-body h5,
+      .markdown-body h6 {
+        font-family: "Fraunces", Georgia, serif;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+      }
+
+      .markdown-body h1 {
+        font-size: 2.25rem;
+        margin: 1.2rem 0 0.9rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .markdown-body h2 {
+        font-size: 1.6rem;
+        margin: 1.7rem 0 0.75rem;
+      }
+
+      .markdown-body h3 {
+        font-size: 1.26rem;
+        margin: 1.3rem 0 0.55rem;
+      }
+
+      .markdown-body p,
+      .markdown-body ul,
+      .markdown-body ol,
+      .markdown-body blockquote,
+      .markdown-body table,
+      .markdown-body pre {
+        margin: 0.9rem 0;
+      }
+
+      .markdown-body a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .markdown-body a:hover {
+        text-decoration: underline;
+      }
+
+      .markdown-body ul,
+      .markdown-body ol {
+        padding-left: 1.6rem;
+      }
+
+      .markdown-body li {
+        margin: 0.34rem 0;
+      }
+
+      .markdown-body blockquote {
+        padding: 0.85rem 1rem;
+        border-left: 4px solid var(--accent);
+        background: rgba(15, 118, 110, 0.07);
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      }
+
+      .markdown-body code {
+        padding: 0.14rem 0.36rem;
+        border-radius: 0.38rem;
+        background: rgba(24, 33, 43, 0.08);
+        font-family: "Cascadia Code", "Fira Code", monospace;
+        font-size: 0.9em;
+      }
+
+      .markdown-body pre {
+        overflow-x: auto;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(55, 65, 81, 0.12);
+        background: #fff;
+        padding: 1rem 1.05rem;
+      }
+
+      .markdown-body pre code {
+        padding: 0;
+        background: transparent;
+      }
+
+      .markdown-body table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+      }
+
+      .markdown-body th,
+      .markdown-body td {
+        padding: 0.7rem 0.8rem;
+        border: 1px solid rgba(55, 65, 81, 0.12);
+        text-align: left;
+      }
+
+      .markdown-body th {
+        background: rgba(15, 118, 110, 0.08);
+      }
+
+      .markdown-body img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius-md);
+      }
+
+      .markdown-body img[src*="shields.io"],
+      .markdown-body img[src*="badge"] {
+        display: inline-block;
+        margin: 0.18rem 0.18rem 0.18rem 0;
+        vertical-align: middle;
+        border-radius: 0.25rem;
+      }
+
+      .footer-panel {
+        margin: 1.5rem 0 3.5rem;
+        padding: 1rem 1.15rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .footer-row {
+        align-items: center;
+        justify-content: space-between;
+        color: var(--ink-soft);
+      }
+
+      .footer-row a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .footer-row a:hover {
+        text-decoration: underline;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .btn {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar-inner,
+        .panel-head,
+        .footer-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero-panel,
+        .readme-panel,
+        .footer-panel {
+          padding: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="crumbs">
+          <a id="homeCrumb" href="https://rajwanyair.github.io/">rajwanyair.github.io</a>
+          <span class="slash">/</span>
+          <span id="repoCrumb">project</span>
+        </div>
+        <div class="top-actions" id="topActions"></div>
+      </div>
+    </div>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-panel">
+          <span class="hero-kicker" id="heroKicker">README landing page</span>
+          <h1 class="hero-title" id="heroTitle">Project</h1>
+          <p class="hero-summary" id="heroSummary">Published project landing page.</p>
+          <div class="hero-links" id="heroLinks"></div>
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span class="meta-label">Repository</span>
+              <span class="meta-value" id="metaRepo">project</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Category</span>
+              <span class="meta-value" id="metaCategory">General</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">README source</span>
+              <span class="meta-value">README.md</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="readme-wrap">
+        <div class="readme-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Project README</h2>
+              <p>Rendered from the repository root for a simple GitHub Pages landing page.</p>
+            </div>
+            <div class="doc-actions" id="docActions"></div>
+          </div>
+
+          <div class="loading" id="loading">Loading README…</div>
+          <div class="empty-state" id="emptyState" hidden>
+            <h3>No README found</h3>
+            <p>Add a root README.md or update the landing page metadata if this project publishes docs differently.</p>
+          </div>
+          <article class="markdown-body" id="readme" hidden></article>
+        </div>
+      </section>
+
+      <footer class="footer-panel">
+        <div class="footer-row">
+          <span>For new repositories, keep this landing page generic and drive project-specific overrides through metadata.</span>
+          <a id="footerHomeLink" href="https://rajwanyair.github.io/">Back to all projects</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script>
+      (function () {
+        const meta = {
+          projectName: document.querySelector('meta[name="project-name"]')?.content.trim(),
+          githubRepo: document.querySelector('meta[name="github-repo"]')?.content.trim(),
+          projectSummary: document.querySelector('meta[name="project-summary"]')?.content.trim(),
+          projectCategory: document.querySelector('meta[name="project-category"]')?.content.trim(),
+          docsUrl: document.querySelector('meta[name="docs-url"]')?.content.trim(),
+          releasesUrl: document.querySelector('meta[name="releases-url"]')?.content.trim(),
+          pagesHome: document.querySelector('meta[name="pages-home"]')?.content.trim() || 'https://rajwanyair.github.io/'
+        };
+
+        const parts = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
+        const inferredRepo = parts[parts.length - 1] || 'project';
+        const inferredOwnerRepo = `RajwanYair/${inferredRepo}`;
+        const ownerRepo = meta.githubRepo || inferredOwnerRepo;
+        const repoName = meta.projectName || ownerRepo.split('/').pop() || inferredRepo;
+        const repoUrl = ownerRepo.startsWith('http') ? ownerRepo : `https://github.com/${ownerRepo}`;
+        const summary = meta.projectSummary || 'Published project landing page for this repository.';
+        const category = meta.projectCategory || 'General project';
+
+        document.title = `${repoName} README`;
+        document.getElementById('repoCrumb').textContent = repoName;
+        document.getElementById('heroTitle').textContent = repoName;
+        document.getElementById('heroSummary').textContent = summary;
+        document.getElementById('metaRepo').textContent = ownerRepo.replace(/^https:\/\/github\.com\//, '');
+        document.getElementById('metaCategory').textContent = category;
+        document.getElementById('heroKicker').textContent = `${category} landing page`;
+        document.getElementById('homeCrumb').href = meta.pagesHome;
+        document.getElementById('footerHomeLink').href = meta.pagesHome;
+
+        const topActions = document.getElementById('topActions');
+        const heroLinks = document.getElementById('heroLinks');
+        const docActions = document.getElementById('docActions');
+
+        function addLink(target, label, href, className) {
+          if (!href) return;
+          const link = document.createElement('a');
+          link.className = className ? `btn ${className}` : 'btn';
+          link.href = href;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = label;
+          target.appendChild(link);
+        }
+
+        addLink(topActions, 'GitHub Repo', repoUrl);
+        addLink(topActions, 'Releases', meta.releasesUrl, 'warm');
+        addLink(heroLinks, 'Back to catalog', meta.pagesHome);
+        addLink(heroLinks, 'View source', repoUrl, 'primary');
+        addLink(heroLinks, 'Releases', meta.releasesUrl, 'warm');
+        addLink(heroLinks, 'Docs', meta.docsUrl);
+        addLink(docActions, 'Raw README', './README.md');
+        addLink(docActions, 'GitHub', repoUrl);
+        addLink(docActions, 'Docs', meta.docsUrl);
+
+        marked.setOptions({
+          gfm: true,
+          breaks: false,
+          highlight(code, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+              return hljs.highlight(code, { language: lang }).value;
+            }
+            return hljs.highlightAuto(code).value;
+          }
+        });
+
+        fetch('./README.md')
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(String(response.status));
+            }
+            return response.text();
+          })
+          .then((markdown) => {
+            document.getElementById('loading').hidden = true;
+            const readme = document.getElementById('readme');
+            readme.innerHTML = marked.parse(markdown);
+            readme.hidden = false;
+            readme.querySelectorAll('pre code').forEach((block) => {
+              hljs.highlightElement(block);
+            });
+          })
+          .catch(() => {
+            document.getElementById('loading').hidden = true;
+            document.getElementById('emptyState').hidden = false;
+          });
+      })();
+    </script>
+  </body>
+  </html>

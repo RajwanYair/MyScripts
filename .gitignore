@@ -1,0 +1,376 @@
+# ============================================================================
+# CONSOLIDATED .GITIGNORE
+# Universal Project Enhancement Framework v15.0.0
+# ============================================================================
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ============================================================================
+# IDE AND EDITORS
+# ============================================================================
+
+# VS Code
+# Keep .vscode/settings.json for project settings
+# .vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ============================================================================
+# OPERATING SYSTEMS
+# ============================================================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# LOGS AND TEMPORARY FILES
+# ============================================================================
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*~
+
+# ============================================================================
+# BUILD AND COMPILED
+# ============================================================================
+
+# C/C++
+*.o
+*.obj
+*.exe
+*.dll
+*.dylib
+*.so
+*.a
+*.lib
+*.out
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Wheels and eggs
+*.whl
+
+# ============================================================================
+# PACKAGES AND DEPENDENCIES
+# ============================================================================
+
+# Node.js
+node_modules/
+jspm_packages/
+bower_components/
+.npm/
+.yarn/
+
+# Docker
+.dockerignore
+
+# ============================================================================
+# SECRETS AND CREDENTIALS
+# ============================================================================
+
+# Environment files with secrets
+.env.local
+.env.*.local
+.env.production
+.env.ps1
+*.pem
+*.key
+*.crt
+secrets.yaml
+secrets.yml
+credentials.json
+
+# ============================================================================
+# GENERATED & USER-SPECIFIC FILES
+# ============================================================================
+
+# Test output artifacts
+test_results.json
+bandit-report.json
+
+# User-specific settings backup (not the canonical .vscode/settings.json)
+my_settings.json
+
+# ============================================================================
+# SUB-WORKSPACES (independent repos — must not be tracked by root)
+# Each of these is its own git repository cloned alongside; the root
+# workspace only owns shared tooling, docs, and CI infrastructure.
+# ============================================================================
+
+BudgetManager/
+CrossTide/
+CrossTideWeb/
+DupDetector/
+ExplorerLens.io/
+FamilyDashBoard/
+FileNameManipulator/
+FileProcessor/
+OptimizeBrowsers/
+OptimizeWIN_n_WSL/
+PPA/
+rajwanyair.github.io/
+RegiLattice/
+SingleMethod/
+SortComics/
+UbuntuEnhancer/
+VHDXCompress/
+VSCode.RemoteSSH.Verifier/
+Wedding/
+WoodworkingShop/
+
+# Local-only dev artifacts (never tracked)
+test_env_clean/
+test_scan_area/
+my_settings.json
+
+# ============================================================================
+# PROJECT-SPECIFIC
+# ============================================================================
+
+# Archive directories (keep manifest)
+archive/legacy/
+!archive/ARCHIVE_MANIFEST.md
+
+# Deployment artifacts
+deployment_*/
+
+# Reports (generated)
+reports/
+
+# Data directories (may contain large files)
+data/
+*.csv
+*.xlsx
+*.xls
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+.fake

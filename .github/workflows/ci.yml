@@ -1,0 +1,119 @@
+name: CI — Workspace Validation
+
+# Validates shared tooling, configs, and Markdown at the workspace root.
+# Individual sub-projects carry their own CI via templates/ci-web.yml.
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # ── Shared tooling: lint + config validation ──────────────────────────────
+  tooling-lint:
+    name: Tooling Lint & Config Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate JSON configs
+        run: |
+          node -e "
+            const fs = require('fs');
+            const files = [
+              'tooling/htmlhint/base.json',
+              'tooling/markdownlint.base.json',
+            ];
+            files.forEach(f => {
+              try { JSON.parse(fs.readFileSync(f, 'utf8')); console.log('OK:', f); }
+              catch (e) { console.error('FAIL:', f, e.message); process.exit(1); }
+            });
+          "
+
+      - name: Validate shared scripts (syntax check)
+        run: |
+          for f in scripts/validate-mermaid.mjs scripts/check-bundle-size.mjs scripts/check-test-focus-skip.mjs; do
+            node --check "$f" && echo "OK: $f" || { echo "FAIL: $f"; exit 1; }
+          done
+
+  # ── Markdown lint ─────────────────────────────────────────────────────────
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint Markdown (root docs only — sub-projects own their own)
+        run: |
+          npx markdownlint-cli2 \
+            "*.md" \
+            "docs/**/*.md" \
+            ".github/*.md" \
+            ".github/instructions/*.md" \
+            ".github/prompts/*.md" \
+            --config .markdownlint.json
+
+  # ── Template validation ───────────────────────────────────────────────────
+  template-validate:
+    name: Validate Templates
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate HTML templates are well-formed
+        run: |
+          python3 -c "
+          import html.parser, sys, glob
+          class Validator(html.parser.HTMLParser):
+              pass
+          files = glob.glob('templates/*.html')
+          for f in files:
+              try:
+                  Validator().feed(open(f).read())
+                  print('OK:', f)
+              except Exception as e:
+                  print('FAIL:', f, str(e))
+                  sys.exit(1)
+          if not files:
+              print('No HTML templates found')
+          "
+
+      - name: Validate YAML workflow templates
+        run: |
+          python3 -c "
+          import yaml, sys, glob
+          files = glob.glob('templates/*.yml') + glob.glob('.github/workflows/*.yml')
+          for f in files:
+              try:
+                  yaml.safe_load(open(f).read())
+                  print('OK:', f)
+              except yaml.YAMLError as e:
+                  print('FAIL:', f, str(e))
+                  sys.exit(1)
+          " 
