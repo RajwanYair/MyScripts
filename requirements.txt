@@ -60,14 +60,14 @@ click>=8.1.7
 # ============================================================================
 
 # Web GUI Framework (FastAPI - modern, async)
-fastapi>=0.111.0
-uvicorn[standard]>=0.30.0
+fastapi>=0.128.8
+uvicorn[standard]>=0.39.0
 
 # Alternative Web Framework
-flask>=3.0.0
+flask>=3.1.3
 
 # HTML Templating
-jinja2>=3.1.4
+jinja2>=3.1.6
 
 # WebSocket support
 websockets>=12.0
