@@ -45,7 +45,7 @@
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-react-refresh": "^0.5.2",
         "fast-check": "^4.7.0",
-        "globals": "^17.5.0",
+        "globals": "^17.6.0",
         "happy-dom": "^20.9.0",
         "htmlhint": "^1.9.2",
         "https-proxy-agent": "^9.0.0",
