@@ -20,7 +20,7 @@
 # ============================================================================
 
 # YAML Configuration Support
-PyYAML>=6.0.1
+PyYAML>=6.0.3
 
 # System Monitoring and Process Management
 psutil>=5.9.0
