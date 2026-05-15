@@ -74,9 +74,11 @@ and relative references to shared bases.
 
 ## Documentation
 
+- [Architecture](docs/ARCHITECTURE.md) — workspace diagram, invariants, decision log
 - [Workspace Guide](docs/WORKSPACE_GUIDE.md) — operating procedures, new repo setup
 - [Web Best Practices](docs/WEB_APP_BEST_PRACTICES.md) — consolidated web standards
 - [Tooling README](tooling/README.md) — how to extend shared configs
 - [Roadmap](ROADMAP.md) — phased improvement plan
+- [Changelog](CHANGELOG.md) — versioned release notes (root workspace only)
 - [Contributing](.github/CONTRIBUTING.md) — development setup and PR process
 - [Security](.github/SECURITY.md) — vulnerability reporting
