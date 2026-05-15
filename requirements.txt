@@ -92,7 +92,7 @@ PyPDF2>=3.0.1
 Wand>=0.6.13
 
 # EPUB e-book processing
-ebooklib>=0.18
+ebooklib>=0.20
 
 # EXIF data from images
 exifread>=3.0.0
