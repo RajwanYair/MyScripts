@@ -128,6 +128,9 @@ if (-not (Test-Command 'gh') -and -not $UpdateOnly) {
     else { Assert-ScoopPackage 'gh' }
 } else { Assert-ScoopPackage 'gh' }
 
+# Secret scanning (WoodworkingShop CI uses gitleaks; local runs need the binary)
+Assert-ScoopPackage 'gitleaks'
+
 # ── C++ Build toolchain ──────────────────────────────────────────────────────
 Write-Step "C++ build tools"
 Assert-ScoopPackage 'cmake'
@@ -168,6 +171,35 @@ else {
     # Markdown linting (both CLI variants used by different projects)
     Assert-NpmGlobalPackage 'markdownlint-cli'
     Assert-NpmGlobalPackage 'markdownlint-cli2'
+
+    # WoodworkingShop tooling: Lighthouse CI, commitlint (run via npx in CI but
+    # handy as globals for local audit runs).
+    Assert-NpmGlobalPackage '@lhci/cli'
+    Assert-NpmGlobalPackage '@commitlint/cli'
+    Assert-NpmGlobalPackage '@commitlint/config-conventional'
+}
+
+# ── Playwright browsers (WoodworkingShop E2E) ────────────────────────────────
+Write-Step "Playwright browsers"
+if (Test-Command 'npx') {
+    if (-not $UpdateOnly) {
+        Write-Host "  Installing chromium + firefox for Playwright (one-time, ~200 MB)..."
+        Push-Location $PSScriptRoot
+        if (Test-Path 'WoodworkingShop\package.json') {
+            Set-Location 'WoodworkingShop'
+            npx --yes playwright install chromium firefox 2>&1 | Out-Null
+            if ($LASTEXITCODE -eq 0) { Write-Ok 'playwright/chromium+firefox' }
+            else { Write-Fail 'playwright browsers' }
+            Set-Location ..
+        } else {
+            Write-Skip 'playwright (run `npx playwright install chromium firefox` inside any Playwright project)'
+        }
+        Pop-Location
+    } else {
+        Write-Skip 'playwright (update via project npx)'
+    }
+} else {
+    Write-Skip 'playwright (npx not available)'
 }
 
 # ── PowerShell modules ───────────────────────────────────────────────────────
