@@ -1,7 +1,7 @@
 {
     // ============================================================================
-    // CONSOLIDATED VS CODE EXTENSIONS — All Sub-Workspaces
-    // Sources: root, ExplorerLens.io, Scripts.FileProcessor, RegiLattice
+    // CONSOLIDATED VS CODE EXTENSIONS — Workspace Template
+    // Generic recommendations for future Python, C++, and TypeScript projects
     // ============================================================================
     //
     // Run: code --install-extension <extension-id>
@@ -18,10 +18,12 @@
         // ── Code Quality ──
         "streetsidesoftware.code-spell-checker",
         "usernamehw.errorlens",
+        "SonarSource.sonarlint-vscode",
         // ── Configuration Files ──
         "editorconfig.editorconfig",
         "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
+        "42crunch.vscode-openapi",
         // ── Debugging & Analysis ──
         "ms-python.debugpy",
         "ms-vscode.test-adapter-converter",
@@ -33,8 +35,11 @@
         "eamodio.gitlens",
         "github.vscode-pull-request-github",
         "mhutchie.git-graph",
+        "vivaxy.vscode-conventional-commits",
         // ── GitHub Copilot ──
+        "github.copilot",
         "github.copilot-chat",
+        "github.vscode-github-actions",
         // ── Markdown & Documentation ──
         "bierner.markdown-preview-github-styles",
         "davidanson.vscode-markdownlint",
@@ -51,6 +56,9 @@
         "ms-python.mypy-type-checker",
         "ms-python.python",
         "ms-python.vscode-pylance",
+        // ── Testing ──
+        "ms-playwright.playwright",
+        "vitest.explorer",
         // ── Remote Development ──
         "ms-vscode-remote.remote-ssh",
         "ms-vscode-remote.remote-wsl",
@@ -62,6 +70,17 @@
         "timonwong.shellcheck",
         // ── Utility & Formatting ──
         "esbenp.prettier-vscode",
+        // ── Web / TypeScript / React ──
+        "bradlc.vscode-tailwindcss",
+        "christian-kohler.path-intellisense",
+        "dbaeumer.vscode-eslint",
+        "formulahendry.auto-rename-tag",
+        "lokalise.i18n-ally",
+        "naumovs.color-highlight",
+        "pflannery.vscode-versionlens",
+        "pkief.material-icon-theme",
+        "ryanluker.vscode-coverage-gutters",
+        "yoavbls.pretty-ts-errors",
         // ── Windows Development ──
         "ms-vscode.windows-registry"
     ],

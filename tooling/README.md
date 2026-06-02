@@ -196,6 +196,33 @@ module.exports = { ...base };
 2. Add a minimal `package.json` with `"name"`, `"version"`, and dev scripts.
 3. Reference the shared base configs above instead of duplicating rules.
 4. Run `npm install` from this parent directory to bootstrap all projects.
+5. Install git hooks: `node scripts/install-git-hooks.mjs` (installs `pre-commit` and `commit-msg`).
+
+## Git Hooks
+
+Projects using `scripts/git-hooks/` (FamilyDashBoard pattern) should ship two hooks:
+
+| Hook         | Purpose                                                                |
+| ------------ | ---------------------------------------------------------------------- |
+| `pre-commit` | Worker-client sync check, test focus/skip guard, OWASP pattern scan   |
+| `commit-msg` | Conventional Commits format validation — no external commitlint needed |
+
+The `commit-msg` hook uses a shell regex pattern (no `@commitlint/cli` dependency):
+```sh
+PATTERN='^(feat|fix|chore|docs|test|refactor|perf|style|ci|build)(\([a-z0-9/._-]+\))?(!)?: .{3,}'
+```
+
+## CI/CD Learnings
+
+**Lighthouse CI performance thresholds** — The `categories:performance` assertion is
+non-deterministic in CI runners (score range: 0.74–0.96 observed). Use `warn` with
+a lower threshold (0.85) instead of `error` with a higher one:
+
+```json
+{ "categories:performance": ["warn", { "minScore": 0.85 }] }
+```
+
+Web vitals (TBT, LCP, CLS) remain as `error` assertions since they are more stable.
 
 ## Updating Shared Rules
 
