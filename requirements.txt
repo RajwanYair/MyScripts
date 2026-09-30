@@ -80,7 +80,7 @@ python-multipart>=0.0.6
 # ============================================================================
 
 # Image Processing (Pillow/PIL)
-Pillow>=11.2.0
+Pillow>=12.3.0
 
 # Image hashing for duplicate detection
 ImageHash>=4.3.1
@@ -133,10 +133,10 @@ deep-translator>=1.11.4
 # ============================================================================
 
 # Data analysis
-pandas>=2.1.0
+pandas>=2.3.3
 
 # Numerical computing
-numpy>=1.25.0
+numpy>=2.2.6
 
 # Data visualization
 matplotlib>=3.8.0
