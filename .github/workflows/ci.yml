@@ -38,6 +38,10 @@ jobs:
             const files = [
               'tooling/htmlhint/base.json',
               'tooling/markdownlint.base.json',
+              'tooling/stylelint/base.json',
+              'templates/bundle-budget.template.json',
+              'templates/bench-budget.template.json',
+              'templates/renovate.template.json',
             ];
             files.forEach(f => {
               try { JSON.parse(fs.readFileSync(f, 'utf8')); console.log('OK:', f); }
@@ -47,7 +51,7 @@ jobs:
 
       - name: Validate shared scripts (syntax check)
         run: |
-          for f in scripts/validate-mermaid.mjs scripts/check-bundle-size.mjs scripts/check-test-focus-skip.mjs; do
+          for f in scripts/validate-mermaid.mjs scripts/check-bundle-size.mjs scripts/check-test-focus-skip.mjs scripts/check-hub-links.mjs scripts/parallel-quality.mjs scripts/check-owasp.mjs scripts/sbom.mjs scripts/arch-check.mjs scripts/lint-wrapper.mjs scripts/lint-css-wrapper.mjs scripts/check-actions-pinned.mjs scripts/check-dead-exports.mjs; do
             node --check "$f" && echo "OK: $f" || { echo "FAIL: $f"; exit 1; }
           done
 
@@ -116,4 +120,4 @@ jobs:
               except yaml.YAMLError as e:
                   print('FAIL:', f, str(e))
                   sys.exit(1)
-          " 
+          "

@@ -1,5 +1,5 @@
 # Recommended .gitignore — Python Projects
-# Copy to <repo>/.gitignore and adjust as needed
+# Copy to your project root as .gitignore and adjust as needed
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

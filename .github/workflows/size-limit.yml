@@ -1,0 +1,61 @@
+name: Bundle Size Report
+
+# Template workflow — copy to a sub-project's .github/workflows/ and adapt.
+# Posts a bundle size summary comment on every PR touching src/ or package files.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.*"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  size-report:
+    name: Bundle Size Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Measure bundle sizes
+        id: sizes
+        run: |
+          JS_SIZE=$(find dist/assets -name "*.js" | xargs wc -c 2>/dev/null | tail -1 | awk '{print $1}')
+          CSS_SIZE=$(find dist/assets -name "*.css" | xargs wc -c 2>/dev/null | tail -1 | awk '{print $1}')
+          JS_KB=$(echo "scale=1; $JS_SIZE / 1024" | bc)
+          CSS_KB=$(echo "scale=1; $CSS_SIZE / 1024" | bc)
+          echo "js_kb=$JS_KB" >> $GITHUB_OUTPUT
+          echo "css_kb=$CSS_KB" >> $GITHUB_OUTPUT
+
+      - name: Post PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: bundle-size
+          message: |
+            ## Bundle Size Report
+
+            | Asset | Size |
+            |-------|------|
+            | JS (total) | ${{ steps.sizes.outputs.js_kb }} KB |
+            | CSS (total) | ${{ steps.sizes.outputs.css_kb }} KB |
+
+            *Budget: ≤ 1500 KB JS — see `config/bundle-budget.json`*

@@ -12,7 +12,7 @@ A clear, concise description of the bug.
 
 ## Project / Component
 
-Which project and component is affected? (e.g., `Scripts.DupDetector / scanner`)
+Which project and component is affected? (e.g., `MyProject / scanner`)
 
 ## Steps to Reproduce
 
@@ -41,7 +41,7 @@ What actually happens. Include error messages and stack traces if available.
 <details>
 <summary>Relevant log excerpt</summary>
 
-```
+```text
 Paste relevant log lines here
 ```
 

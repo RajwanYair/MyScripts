@@ -68,7 +68,7 @@ class Status(str, Enum):
 
 ### File Organization
 
-```
+```text
 project-root/
 ├── project-name          # Single entry point (no .py)
 ├── README.md
@@ -156,13 +156,13 @@ with Progress() as progress:
 ```yaml
 # config/default.yaml
 app:
-    name: "${APP_NAME:My Application}"
-    debug: "${DEBUG:false}"
+  name: "${APP_NAME:My Application}"
+  debug: "${DEBUG:false}"
 network:
-    timeout: "${TIMEOUT:30}"
-    proxy:
-        enabled: "${PROXY_ENABLED:false}"
-        url: "${PROXY_URL:}"
+  timeout: "${TIMEOUT:30}"
+  proxy:
+    enabled: "${PROXY_ENABLED:false}"
+    url: "${PROXY_URL:}"
 ```
 
 ### CLI with Click
@@ -180,6 +180,41 @@ def main(verbose: bool, config: str | None):
     """Main entry point."""
     console.print("[green]Starting...[/green]")
 ```
+
+## React / TypeScript SPA Projects
+
+> Full patterns: `.github/instructions/web-react.instructions.md` (auto-loaded for `src/**/*.{ts,tsx}`)
+> Deep reference: `docs/REACT_SPA_PLAYBOOK.md`
+
+When working on a React/TypeScript SPA sub-project:
+
+### Mandatory constraints
+
+- **Zero suppression**: no `eslint-disable`, `@ts-ignore`, `@ts-nocheck`, `as any`
+- **TypeScript 6 strict**: `erasableSyntaxOnly: true` — no `enum`, no `namespace` — use `as const` + union types
+- **$TEMP enforcement**: all build artifacts, coverage, test results go to `%TEMP%\ProjectName\`
+- **Engine purity**: `src/engine/` — pure TypeScript, no React, no DOM, no side-effects
+- **react-refresh rule**: `.tsx` files export **only** React components — utilities go to sibling `.ts` files
+- **RTL-safe layout**: Tailwind logical properties (`ms-*`, `me-*`, `start-*`, `end-*`) — never `ml-*`/`mr-*`
+- **i18n parity**: every `t('key')` must have entries in both `en.json` and `he.json`
+
+### Quality gate (run before done)
+
+```powershell
+npm run typecheck     # tsc --noEmit — must exit 0
+npm run lint          # ESLint flat config, --max-warnings 0
+npm run i18n:coverage # en/he parity check
+npm test              # Vitest
+```
+
+### What NOT to do (React SPA specific)
+
+- Don't add `// eslint-disable-*` comments
+- Don't use `as any` or `as unknown as T` without a type guard
+- Don't add `enum` or `namespace` — use `as const`
+- Don't skip `he.json` when adding i18n keys
+- Don't hardcode colors — use design tokens or Tailwind semantic classes
+- Don't put intermediate build files in the project dir — use `$TEMP`
 
 ## What NOT to Do
 
@@ -199,23 +234,88 @@ def main(verbose: bool, config: str | None):
 
 ## MCP Servers
 
-MCP servers are configured in `.vscode/mcp.json`. Available servers: github, fetch, filesystem, playwright, gitkraken, cloudflare.
-- **Transport types**: `stdio` (local), `http` (Copilot-managed), `streamableHttp` (modern remote). Never use deprecated `sse`.
-- **Deferred tools**: Always call `tool_search` before using any MCP-provided tool. Do not retry if first search returns no results.
-- **Template**: `templates/mcp-template.json` has the starter MCP config for new projects.
+MCP servers are configured in `.vscode/mcp.json` for VS Code and `.mcp.json`
+for Copilot CLI and other compatible clients. Keep server names and pinned
+package versions aligned between both files. VS Code uses password-masked
+secret inputs; Copilot CLI reads `${BRAVE_API_KEY}` from the process environment.
+Never commit API keys or tokens.
+
+| Server               | Purpose                                                                                                  |
+| -------------------- | -------------------------------------------------------------------------------------------------------- |
+| `github`             | Official GitHub MCP — PRs, issues, workflows, code search                                                |
+| `fetch`              | Retrieve web content and API responses                                                                   |
+| `filesystem`         | Scoped workspace file access                                                                             |
+| `playwright`         | Browser automation for E2E debugging                                                                     |
+| `gitkraken`          | Git ops, blame, diff, PR workflow                                                                        |
+| `cloudflare`         | Cloudflare Pages/Workers management                                                                      |
+| `memory`             | Persistent agent notes across sessions                                                                   |
+| `sequentialthinking` | Multi-step problem decomposition                                                                         |
+| `context7`           | Up-to-date library documentation (React, Vite, pytest, etc.)                                             |
+| `brave-search`       | Web search for docs, blog posts, and solutions not in Context7                                           |
+| `chrome-devtools`    | Isolated Chrome debugging, console/network inspection, and performance traces; usage statistics disabled |
+
+The Filesystem server is limited to `${workspaceFolder}` in VS Code and `.`
+in Copilot CLI. Pass `excludePatterns` to recursive `search_files` and
+`directory_tree` tool calls to omit `.git`, dependency, build, and coverage paths;
+do not pass unsupported `--exclude` server arguments.
+Chrome DevTools can inspect browser content; do not use it with sensitive
+sessions or data.
 
 ## Copilot Customization Assets
 
-| Type | Location | Purpose |
-| --- | --- | --- |
-| Instructions | `.github/instructions/*.instructions.md` | File-scoped rules via `applyTo:` globs |
-| Prompts | `.github/prompts/*.prompt.md` | Reusable task workflows (lint, review, release, security) |
-| Skills | `.github/skills/*/SKILL.md` | Domain-specific knowledge (release, security-audit) |
-| AGENTS.md | `.github/AGENTS.md` | Agent guide with all available assets |
-| Memory | `/memories/`, `/memories/session/`, `/memories/repo/` | Three-tier persistent notes |
+| Type         | Location                                              | Purpose                                                                  |
+| ------------ | ----------------------------------------------------- | ------------------------------------------------------------------------ |
+| Instructions | `.github/instructions/*.instructions.md`              | File-scoped rules via `applyTo:` globs                                   |
+| Prompts      | `.github/prompts/*.prompt.md`                         | Reusable task workflows — see table below                                |
+| Agents       | `.github/agents/*.agent.md`                           | Custom agent definitions — see table below                               |
+| Skills       | `.github/skills/*/SKILL.md`                           | Portable task workflows (release, security-audit, workspace-maintenance) |
+| AGENTS.md    | `.github/AGENTS.md`                                   | Agent guide with all available assets                                    |
+| Memory       | `/memories/`, `/memories/session/`, `/memories/repo/` | Three-tier persistent notes                                              |
+
+### Available Agents
+
+| Agent             | Purpose                                                                |
+| ----------------- | ---------------------------------------------------------------------- |
+| `new-project`     | Scaffold a new sub-project from workspace template                     |
+| `upgrade-tooling` | Upgrade shared tooling configs and shared scripts                      |
+| `security-audit`  | OWASP Top 10 security audit (Python + TypeScript)                      |
+| `web-sprint`      | Execute a TypeScript/React sprint item end-to-end                      |
+| `web-feature`     | Scaffold a complete React feature (engine + store + UI + i18n)         |
+| `debug`           | Diagnose and fix test/build/runtime failures without suppression       |
+| `release`         | Full release workflow: version bump → CHANGELOG → tag → GitHub Release |
+| `cleanup`         | Production cleanup: dead code, lint, $TEMP enforcement, quality gate   |
+
+### Available Prompts
+
+| Prompt                  | Purpose                                              |
+| ----------------------- | ---------------------------------------------------- |
+| `a11y-audit`            | WCAG 2.2 AA accessibility audit and remediation      |
+| `bundle-optimize`       | Bundle size analysis and chunk optimization          |
+| `code-review`           | Structured code review against project conventions   |
+| `create-project`        | Create a project from the workspace template         |
+| `csp-hardening`         | Harden Content Security Policy                       |
+| `dependency-update`     | Safely audit and update dependencies                 |
+| `fix-lint`              | Fix lint and type errors                             |
+| `fix-quality`           | Diagnose and fix quality gate failures               |
+| `fix-tests`             | Diagnose and fix failing unit tests                  |
+| `i18n-add-keys`         | Add translation keys with locale parity              |
+| `lighthouse-ci`         | Configure and troubleshoot Lighthouse CI             |
+| `modernize-tooling`     | Audit and modernize VS Code and CI tooling           |
+| `new-web-feature`       | Add a web feature across engine, store, UI, and i18n |
+| `parametrize-tests`     | Convert repetitive tests to parametrized cases       |
+| `perf-debug`            | Diagnose and fix web performance issues              |
+| `roadmap-sprint`        | Execute a roadmap sprint item with quality gates     |
+| `security-audit`        | OWASP security audit for client-side applications    |
+| `split-component`       | Split oversized React components                     |
+| `version-bump`          | Update project version metadata                      |
+| `workspace-maintenance` | Check workspace and project health                   |
+| `write-tests`           | Generate tests for existing functionality            |
 
 - **Skills auto-discovery**: When a skill matches the request, load it with `read_file` before acting.
 - **Subagents**: Use `runSubagent` for multi-file exploration and complex tasks.
 - **Batch edits**: Use `multi_replace_string_in_file` for 2+ independent edits.
 - **Code intelligence**: Use `vscode_listCodeUsages` before renaming/removing exports.
 - **Extension shortcuts**: Prefer `get_errors` over terminal for lint/type/spell diagnostics.
+- **Copilot NES**: `github.copilot.nextEditSuggestions.enabled: true` is on in all workspaces — leverage it for sequential edits.
+- **PR description**: `pullRequestDescriptionGeneration.instructions` is configured — AI-generated descriptions follow Conventional Commits.
+- **Test generation**: `testGeneration.instructions` is configured — generated tests use `it.each` with deterministic fixtures.

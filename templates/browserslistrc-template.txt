@@ -1,0 +1,24 @@
+# PROJECT_NAME — browser targets
+# Used by: eslint-plugin-compat, Playwright, Vite build targets
+# Covers: all modern evergreen browsers (last 2 major versions)
+# Edit as needed for your project's specific constraints.
+
+# ── Desktop ────────────────────────────────────────────────────────────────
+last 2 Chrome versions
+last 2 Edge versions
+last 2 Firefox versions
+Firefox ESR
+last 2 Safari versions
+last 2 Opera versions
+
+# ── Mobile & Tablet ────────────────────────────────────────────────────────
+iOS >= 16.4
+last 2 Samsung versions
+last 2 ChromeAndroid versions
+last 2 FirefoxAndroid versions
+last 2 OperaMobile versions
+
+# ── Exclusions ─────────────────────────────────────────────────────────────
+not dead
+not ie 11
+not ie_mob 11

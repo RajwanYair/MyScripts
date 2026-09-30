@@ -1,4 +1,4 @@
-## Description
+# Description
 
 Brief description of what this PR does and why.
 
@@ -39,12 +39,14 @@ python -m pytest tests/ -v --tb=short
 ## Quality Checklist
 
 ### Web / TypeScript
+
 - [ ] `eslint --max-warnings 0` passes
 - [ ] `tsc --noEmit` passes (no type errors)
 - [ ] `vitest run --coverage` passes with 90%+ coverage
 - [ ] `vite build` succeeds with 0 warnings
 
 ### Python
+
 - [ ] `ruff check` passes
 - [ ] `ruff format --check` passes
 - [ ] `mypy` passes (no new regressions)
@@ -52,6 +54,7 @@ python -m pytest tests/ -v --tb=short
 - [ ] `bandit` security check clean
 
 ### Both
+
 - [ ] No hardcoded absolute paths, secrets, or credentials
 - [ ] No debug code left in production paths
 - [ ] No blanket lint/type suppressions without documented justification
@@ -61,4 +64,3 @@ python -m pytest tests/ -v --tb=short
 ## Screenshots (if applicable)
 
 GUI changes, CLI output, etc.
-

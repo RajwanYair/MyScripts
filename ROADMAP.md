@@ -142,4 +142,3 @@ centralized tools, consistent quality gates, and a validated release process.
 | Duplicated instructions content | Low | Medium | Merge `copilot-instructions.md` ↔ `workspace.instructions.md` |
 | `.vscode/settings.json` cleanup | Low | Low | Remove stale/redundant keys |
 | Architecture SVG diagram | Low | Medium | Visual overview for docs/ |
-

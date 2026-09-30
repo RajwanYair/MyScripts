@@ -15,7 +15,7 @@ Python minimum version: `${input:pythonVersion:3.9}`
 
 ## Required Output Structure
 
-```
+```text
 ${input:projectName}/
 ├── ${input:projectName}        # Entry point script (no .py extension)
 ├── README.md                   # Full documentation with badges
@@ -69,7 +69,7 @@ ${input:projectName}/
 
 Add these files using templates from `templates/`:
 
-```
+```text
 ${input:projectName}/
 ├── index.html                  # Entry page (copy from templates/readme-index.html)
 ├── package.json                # Extends workspace shared deps

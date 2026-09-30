@@ -59,6 +59,10 @@ updates:
     commit-message:
       prefix: "chore(ci)"
       include: "scope"
+    groups:
+      actions:
+        patterns:
+          - "*"
 
   # ============================================================================
   # NPM / NODE.JS DEPENDENCIES
@@ -101,4 +105,3 @@ updates:
           - "htmlhint"
           - "@commitlint/*"
           - "lint-staged"
-

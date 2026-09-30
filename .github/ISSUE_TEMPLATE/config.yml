@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/<OWNER>/<REPO>/discussions
+    about: Replace this link with your repository discussions or support page.
+  - name: 📋 Changelog
+    url: https://github.com/<OWNER>/<REPO>/blob/main/CHANGELOG.md
+    about: Replace this link with your repository changelog.

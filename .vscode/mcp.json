@@ -1,4 +1,12 @@
 {
+    "inputs": [
+        {
+            "id": "brave-api-key",
+            "type": "promptString",
+            "description": "Brave Search API key",
+            "password": true
+        }
+    ],
     "servers": {
         "github": {
             "type": "http",
@@ -7,14 +15,21 @@
         },
         "fetch": {
             "type": "stdio",
-            "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-fetch@latest"],
+            "command": "uvx",
+            "args": [
+                "mcp-server-fetch==2026.8.18"
+            ],
             "description": "HTTP client for testing API endpoints, data sources, and webhooks directly in chat."
         },
         "filesystem": {
             "type": "stdio",
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"]
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem@2026.8.31",
+                "${workspaceFolder}"
+            ],
+            "description": "Filesystem operations rooted at this workspace; recursive search and tree calls support exclusion patterns."
         },
         "gitkraken": {
             "type": "http",
@@ -24,7 +39,10 @@
         "playwright": {
             "type": "stdio",
             "command": "npx",
-            "args": ["-y", "@playwright/mcp@latest"]
+            "args": [
+                "-y",
+                "@playwright/mcp@0.0.79"
+            ]
         },
         "cloudflare": {
             "type": "http",
@@ -34,29 +52,52 @@
         "memory": {
             "type": "stdio",
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-memory"],
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory@2026.8.31"
+            ],
             "description": "Persistent key-value memory for agent context across sessions."
         },
         "sequentialthinking": {
             "type": "stdio",
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking@2026.8.31"
+            ],
             "description": "Structured multi-step reasoning for complex problem decomposition."
         },
         "context7": {
             "type": "stdio",
             "command": "npx",
-            "args": ["-y", "@upstash/context7-mcp"],
+            "args": [
+                "-y",
+                "@upstash/context7-mcp@4.1.1"
+            ],
             "description": "Retrieves current, version-accurate documentation for npm packages — prevents hallucinated APIs."
         },
         "brave-search": {
             "type": "stdio",
             "command": "npx",
-            "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-brave-search@0.6.2"
+            ],
             "env": {
-                "BRAVE_API_KEY": "${env:BRAVE_API_KEY}"
+                "BRAVE_API_KEY": "${input:brave-api-key}"
             },
             "description": "Brave Web Search — finds blog posts, StackOverflow answers, GitHub issues, and docs not covered by Context7."
+        },
+        "chrome-devtools": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "chrome-devtools-mcp@1.10.1",
+                "--isolated",
+                "--no-usage-statistics"
+            ],
+            "description": "Isolated Chrome debugging, console and network inspection, screenshots, and performance traces; usage statistics disabled."
         }
     }
 }

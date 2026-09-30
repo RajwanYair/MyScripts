@@ -9,7 +9,7 @@
 level below reference them via relative paths (`../`). This keeps tooling
 consistent, updatable in one place, and prevents version drift across projects.
 
-```
+```text
 MyScripts/                          ← CENTRALIZED TOOLS LIVE HERE
 ├── package.json + node_modules/    ← shared JS/TS deps (npm install here only)
 ├── pyproject.toml                  ← shared Python tool configs (ruff, mypy, pytest)
@@ -28,6 +28,7 @@ MyScripts/                          ← CENTRALIZED TOOLS LIVE HERE
 ```
 
 **Rules:**
+
 1. `npm install` — run ONLY at `MyScripts/` root, never inside a sub-project
 2. Config files in sub-projects — `extends` or `import` from `../tooling/`
 3. Never vendor/copy `tooling/` into a sub-project
@@ -36,8 +37,8 @@ MyScripts/                          ← CENTRALIZED TOOLS LIVE HERE
 
 ## Directory Layout
 
-```
-MyScripts/                          ← umbrella root (NOT a git repo)
+```text
+MyScripts/                          ← root workspace repository
 ├── .github/                        ← shared Copilot instructions, templates, CI
 ├── .vscode/                        ← shared VS Code settings (multi-root)
 ├── docs/                           ← this guide + workspace-level docs
@@ -85,7 +86,7 @@ MyScripts/                          ← umbrella root (NOT a git repo)
 
 Every repo **must** serve a site at:
 
-```
+```text
 https://rajwanyair.github.io/<RepoName>/
 ```
 
@@ -107,7 +108,7 @@ Use the standard `pages.yml` from `templates/`:
 ```yaml
 # .github/workflows/pages.yml
 # Deploys repo root (or build output) to GitHub Pages
-```
+```yaml
 
 ## Umbrella Root vs Repo Files
 
@@ -153,6 +154,7 @@ That guide captures the current workspace baseline for:
 Every project should have a `.vscode/mcp.json` defining the MCP servers it uses. The workspace root provides a consolidated baseline at `.vscode/mcp.json`. New projects should start from `templates/mcp-template.json`.
 
 Standard servers available to all projects:
+
 - **GitHub** — PR, issue, workflow context
 - **Fetch** — API testing and web content retrieval
 - **Playwright** — browser automation and visual debugging
@@ -184,6 +186,7 @@ Standard servers available to all projects:
 ## Documentation Graphics Rules
 
 All documentation graphics must use SVG format:
+
 - Use Mermaid fenced blocks for architecture, flow, and state diagrams
 - Export complex diagrams as `.svg` with `.mmd` source files alongside
 - Never use raster images (PNG/JPG) for diagrams or logos

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/bundle-budget",
+  "$comment": "Bundle size budgets. Enforce via scripts/check-bundle-size.mjs or a project-specific bundle-report.js. Values in KB. Tightening (lowering) is encouraged; loosening requires CHANGELOG justification.",
+  "totalJsKB": 1800,
+  "totalCssKB": 60,
+  "totalAllKB": 3000,
+  "perFileKB": {
+    "_default": 500,
+    "vendor": 300,
+    "i18n-vendor": 80
+  },
+  "perAssetKB": {
+    "_default": 50
+  }
+}

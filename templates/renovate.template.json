@@ -1,0 +1,59 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommitTypeAll(chore)",
+    "group:allNonMajor"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "rangeStrategy": "pin",
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "security"
+    ]
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "automerge": true
+    },
+    {
+      "matchPackagePatterns": [
+        "eslint",
+        "prettier",
+        "stylelint",
+        "typescript-eslint"
+      ],
+      "groupName": "linters"
+    },
+    {
+      "matchPackagePatterns": [
+        "vitest",
+        "@vitest/*",
+        "@testing-library/*"
+      ],
+      "groupName": "testing"
+    },
+    {
+      "matchPackagePatterns": [
+        "playwright",
+        "@playwright/*"
+      ],
+      "groupName": "playwright"
+    }
+  ]
+}

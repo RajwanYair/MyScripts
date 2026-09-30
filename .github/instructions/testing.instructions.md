@@ -14,7 +14,7 @@ applyTo: "**/tests/**,**/conftest.py,**/*_test.py,**/test_*.py"
 
 ## Test Structure
 
-```
+```text
 tests/
 ├── conftest.py           # Shared fixtures, markers
 ├── unit/                 # Pure Python, no I/O

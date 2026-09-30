@@ -1,0 +1,107 @@
+name: Release — Build & Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., v1.0.0)'
+        required: true
+        type: string
+
+# One release at a time — cancel any duplicate run for the same tag
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  attestations: write
+  contents: write
+  id-token: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  release:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup-node
+
+      # Vite pre-bundle cache — key tracks only config + lockfile (source changes don't affect it)
+      - uses: actions/cache@v5
+        with:
+          path: /tmp/WoodworkingShop/.vite_cache
+          key: vite-${{ runner.os }}-${{ hashFiles('vite.config.ts', 'package-lock.json') }}
+          restore-keys: vite-${{ runner.os }}-
+
+      - name: Full quality gate
+        run: npm run check
+        # Explicitly gate release on pre-flight checks: typecheck, lint, test, coverage.
+        # This ensures no soft-fail checks or suppressed diagnostics slip into releases.
+        # See .github/GOVERNANCE-POLICY.md for claim verification rules.
+
+      # sbom reads only package files (no dist needed) — start it in the background
+      # so it runs concurrently with the tsc+vite build for free.
+      - name: Build + SBOM (parallel) + bundle check
+        run: |
+          npm run sbom &
+          SBOM_PID=$!
+          npm run build
+          npm run bundle:check
+          wait $SBOM_PID
+
+      # Archive + sha256
+      - name: Archive + checksums
+        run: |
+          cd dist && tar -czf ../woodworkingshop-dist.tar.gz .
+          cd .. && sha256sum woodworkingshop-dist.tar.gz > woodworkingshop-dist.tar.gz.sha256
+
+      - name: Generate build provenance attestation
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: |
+            woodworkingshop-dist.tar.gz
+            woodworkingshop-dist.tar.gz.sha256
+            sbom.json
+
+      - id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          fi
+      - id: changelog
+        run: |
+          ver="${{ steps.version.outputs.version }}" && ver="${ver#v}"
+          notes=$(awk "/^## \\[${ver}\\]/{f=1;next} /^## \\[/{f=0} f" CHANGELOG.md)
+          { echo "notes<<EOF"; echo "${notes:-Release ${ver}}"; echo "EOF"; } >> "$GITHUB_OUTPUT"
+      - uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: WoodworkingShop ${{ steps.version.outputs.version }}
+          draft: false
+          prerelease: false
+          files: |
+            woodworkingshop-dist.tar.gz
+            woodworkingshop-dist.tar.gz.sha256
+            sbom.json
+          body: |
+            ${{ steps.changelog.outputs.notes }}
+
+            ---
+
+            ### Artifacts
+            - **woodworkingshop-dist.tar.gz** — Production build (deploy to any static host)
+            - **sbom.json** — CycloneDX Software Bill of Materials
+
+            ### Run locally
+            ```bash
+            npm ci && npm run dev
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

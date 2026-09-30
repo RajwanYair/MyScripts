@@ -55,6 +55,7 @@
         "littlefoxteam.vscode-python-test-adapter",
         "ms-python.mypy-type-checker",
         "ms-python.python",
+        "ms-python.vscode-python-envs",
         "ms-python.vscode-pylance",
         // ── Testing ──
         "ms-playwright.playwright",
@@ -70,9 +71,9 @@
         "timonwong.shellcheck",
         // ── Utility & Formatting ──
         "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
         // ── Web / TypeScript / React ──
         "bradlc.vscode-tailwindcss",
-        "christian-kohler.path-intellisense",
         "dbaeumer.vscode-eslint",
         "formulahendry.auto-rename-tag",
         "lokalise.i18n-ally",

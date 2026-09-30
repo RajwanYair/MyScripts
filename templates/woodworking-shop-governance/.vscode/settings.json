@@ -1,0 +1,318 @@
+{
+  // ─── Editor ─────────────────────────────────────────────────────────────────
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.rulers": [100],
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // ─── Files ──────────────────────────────────────────────────────────────────
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/dist/**": true,
+    "**/coverage/**": true,
+    "**/playwright-report/**": true,
+    "**/test-results/**": true,
+    "**/docs/api/**": true
+  },
+  "files.associations": {
+    "*.jsonc": "jsonc"
+  },
+
+  // ─── TypeScript ─────────────────────────────────────────────────────────────
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.inlayHints.parameterNames.enabled": "literals",
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": false,
+  "js/ts.inlayHints.variableTypes.enabled": false,
+  "typescript.inlayHints.returnTypes.enabled": false,
+  "js/ts.preferences.importModuleSpecifier": "shortest",
+  "js/ts.preferences.quoteStyle": "single",
+  "js/ts.suggest.autoImports": true,
+  "[tsx]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[ts]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // ─── ESLint ─────────────────────────────────────────────────────────────────
+  "eslint.useFlatConfig": true,
+  "eslint.run": "onType",
+  "eslint.problems.shortenToSingleLine": true,
+
+  // ─── CSS / Stylelint ────────────────────────────────────────────────────────
+  "css.validate": true,
+  "stylelint.validate": ["css"],
+
+  // ─── Terminal ───────────────────────────────────────────────────────────────
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "both",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "args": ["-NoLogo"]
+    },
+    "Command Prompt": {
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "icon": "terminal-cmd"
+    }
+  },
+  "terminal.integrated.automationProfile.windows": {
+    "path": "pwsh",
+    "args": ["-NoLogo", "-NonInteractive"]
+  },
+
+  // ─── Search ─────────────────────────────────────────────────────────────────
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/coverage": true,
+    "**/docs/api": true,
+    "**/.vite_cache": true
+  },
+
+  // ─── GitHub Copilot ─────────────────────────────────────────────────────────
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
+  "github.copilot.chat.agentDebugLog.fileLogging.flushIntervalMs": 2000,
+  "github.copilot.chat.reviewSelection.enabled": true,
+  "github.copilot.chat.generateTests.codeLensTitle": "Generate Tests",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.search.semanticTextResults": true,
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use conventional commits: feat|fix|chore|refactor|test|docs|ci|perf. Max 72 chars subject. No period at end."
+    }
+  ],
+
+  "github.copilot.chat.reviewSelection.instructions": [
+    {
+      "text": "Flag any eslint-disable, @ts-ignore, as any, enum, namespace, ml-* / mr-* Tailwind classes, or hardcoded pixel values. Also check i18n parity: every t('key') must exist in both en.json and he.json."
+    }
+  ],
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    {
+      "text": "Summarise what changed and why. List affected engine/store/component/i18n layers. Note any quality gate outcomes (typecheck, lint, tests). Keep under 400 words. Use conventional commit prefixes in the title."
+    }
+  ],
+
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": true,
+    "svg": true
+  },
+  "editor.suggest.preview": true,
+  "chat.agent.enabled": true,
+  "chat.agent.maxRequests": 999,
+  "chat.mcp.autoStart": true,
+  "chat.mcp.gallery.enabled": true,
+  "github.copilot.chat.followUps": "always",
+  "github.copilot.chat.useProjectTemplates": true,
+  "github.copilot.chat.agent.autoFix": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true
+  },
+  "chat.promptFilesLocations": {
+    ".github/prompts": true
+  },
+  "chat.agentsFilesLocations": {
+    ".github/agents": true
+  },
+  "github.copilot.chat.agent.runTasks": true,
+  "github.copilot.chat.agent.autoApprove": false,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": true,
+    "windsurf": true,
+    "cursor-global": true,
+    "cursor-workspace": true
+  },
+
+  // ─── Copilot Chat — latest agent features ───────────────────────────────────
+  // AGENTS.md support — root AGENTS.md + nested per-directory variants are read as context
+  "chat.useAgentsMdFile": true,
+  "chat.useNestedAgentsMdFiles": true,
+  // Checkpoints — restore the workspace to any prior point in an agent session
+  "chat.checkpoints.enabled": true,
+  "chat.checkpoints.showFileChanges": true,
+  // Todo list tool — surfaces the agent's manage_todo_list plan as a UI widget
+  "chat.tools.todos.showWidget": true,
+  // KaTeX math rendering in chat responses — useful for the calculator formulae
+  "chat.math.enabled": true,
+  // Send selected Simple Browser DOM elements straight into chat as context
+  "chat.sendElementsToChat.attachImages": true,
+  // Summarise long agent histories instead of truncating — preserves task context
+  "github.copilot.chat.summarizeAgentConversationHistory.enabled": true,
+  // Edit-request controls in the chat editing flow
+  "chat.editing.confirmEditRequestRemoval": true,
+  "chat.editing.confirmEditRequestRetry": true,
+  "chat.editing.autoAcceptDelay": 0,
+  // Virtual tool grouping kicks in once many MCP tools are active (this repo has 10 servers)
+  "github.copilot.chat.virtualTools.threshold": 128,
+  // TypeScript language-context provider — richer, faster type-aware chat answers & fixes
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  // Notebook cell-execution following (kept on for any future .ipynb exploration)
+  "github.copilot.chat.notebook.followCellExecution.enabled": true,
+  // New-workspace scaffolding from chat
+  "github.copilot.chat.newWorkspaceCreation.enabled": true,
+
+  // ─── Copilot Chat — terminal auto-approval policy ───────────────────────────
+  // Allow safe, read-only / idempotent project commands to run without a prompt;
+  // deny destructive or history-rewriting commands so they always require review.
+  "chat.tools.terminal.enableAutoApprove": true,
+  "chat.tools.terminal.autoApprove": {
+    "/^npm run (typecheck|lint|lint:css|lint:md|format:check|test|i18n:coverage|dead:check|bundle:check|quality)\\b/": true,
+    "/^npx (vitest run|tsc|eslint|stylelint|prettier|markdownlint-cli2|knip)\\b/": true,
+    "git status": true,
+    "git diff": true,
+    "git log": true,
+    "git branch": true,
+    "git show": true,
+    "git fetch": true,
+    "/^(ls|dir|pwd|cat|echo|where|Get-ChildItem|Get-Content|Get-Location|Select-String|Test-Path|Measure-Object)\\b/": true,
+    "/^git (push|reset|clean|checkout|rebase|cherry-pick|filter-branch|update-ref)\\b/": false,
+    "/\\brm\\b|Remove-Item|rmdir|del\\b/": false,
+    "/--force|--hard|-f\\b/": false,
+    "/\\b(npm publish|gh release|gh repo delete)\\b/": false,
+    "/\\b(curl|wget|iwr|Invoke-WebRequest|Invoke-Expression|iex)\\b/": false
+  },
+
+  // ─── Testing ────────────────────────────────────────────────────────────────
+  "vitest.enable": true,
+  "vitest.rootConfig": "${workspaceFolder}/vitest.config.ts",
+  "testing.automaticallyOpenTestResults": "openOnTestFailure",
+  "testing.showCoverageInEditor": true,
+  "testing.coverageToolbarEnabled": true,
+  // ─── Vitest Explorer ────────────────────────────────────────────────────────
+  "vitest.filesWatcherEnable": true,
+
+  // ─── Coverage Gutters ───────────────────────────────────────────────────────
+  "coverage-gutters.coverageFileNames": ["lcov.info", "cov.xml", "coverage.xml"],
+  // Dual-path covers both Windows dev ($TEMP) and Linux CI (/tmp)
+  "coverage-gutters.coverageFilePaths": [
+    "${env:TEMP}\\WoodworkingShop\\coverage\\lcov.info",
+    "/tmp/WoodworkingShop/coverage/lcov.info"
+  ],
+  "coverage-gutters.showLineCoverage": true,
+  "coverage-gutters.showRulerCoverage": true,
+  // ─── i18n Ally ──────────────────────────────────────────────────────────────
+  "i18n-ally.localesPaths": ["src/i18n"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "en",
+  "i18n-ally.enabledFrameworks": ["react", "i18next"],
+  "i18n-ally.parserOptions": {
+    "trailingComma": "all"
+  },
+
+  // ─── Spelling ───────────────────────────────────────────────────────────────
+  "cSpell.words": [
+    "bssf",
+    "buildlog",
+    "carcass",
+    "comlink",
+    "crdt",
+    "erasable",
+    "gcode",
+    "gltf",
+    "hinge",
+    "i18next",
+    "kerf",
+    "maxrects",
+    "melamine",
+    "noImplicitOverride",
+    "offcuts",
+    "rajwan",
+    "rajwanyair",
+    "tailwindcss",
+    "vitest",
+    "webgl",
+    "woodworking",
+    "zustand"
+  ],
+  // ─── Workbench ──────────────────────────────────────────────────────────────
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "workbench.tree.indent": 14,
+  "workbench.tree.renderIndentGuides": "always",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json",
+    "vite.config.ts": "vitest.config.ts, playwright.config.ts, typedoc.json",
+    "package.json": "package-lock.json, .nvmrc, .node-version, .npmrc",
+    "eslint.config.js": "stylelint.config.js, .prettierrc.json, .prettierignore, .editorconfig",
+    "copilot-instructions.md": "AGENTS.md, CONTRIBUTING.md, SECURITY.md, CODEOWNERS",
+    "*.tsx": "${capture}.ts",
+    "index.ts": "*.ts"
+  },
+
+  // ─── GitLens ────────────────────────────────────────────────────────────────
+  "gitlens.codeLens.enabled": true,
+  "gitlens.currentLine.enabled": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.blame.format": "${author|15} ${agoOrDate|14-}",
+  "gitlens.statusBar.enabled": true,
+  "github-actions.workflows.pinned.enabled": true,
+
+  // ─── Diff & Merge ────────────────────────────────────────────────────────────
+  "git.mergeEditor": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
+
+  // ─── Git Graph ──────────────────────────────────────────────────────────────
+  "git-graph.repository.fetchAndPrune": true,
+
+  // ─── Indent Rainbow ─────────────────────────────────────────────────────────
+  "indentRainbow.colors": [
+    "rgba(16, 185, 129, 0.15)",
+    "rgba(59, 130, 246, 0.15)",
+    "rgba(245, 158, 11, 0.15)",
+    "rgba(239, 68, 68, 0.15)"
+  ],
+
+  // ─── SVG Preview ────────────────────────────────────────────────────────────
+  "svg.preview.background": "editor",
+
+  // ─── Playwright ─────────────────────────────────────────────────────────────
+  "playwright.reuseBrowser": false,
+  "playwright.showTrace": false,
+
+  // ─── MCP ────────────────────────────────────────────────────────────────────
+  "chat.mcp.access": "all",
+
+  // ─── YAML (redhat extension) ────────────────────────────────────────────────
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml",
+    "https://json.schemastore.org/github-action.json": ".github/actions/*/action.yml",
+    "https://json.schemastore.org/dependabot-2.0.json": ".github/dependabot.yml"
+  },
+
+  // ─── Markdown ───────────────────────────────────────────────────────────────
+  "markdownlint.config": {},
+
+  // ─── Error Lens ─────────────────────────────────────────────────────────────
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.excludeBySource": ["css(compatibilityIE)"],
+
+  // ─── Output / Debug ─────────────────────────────────────────────────────────
+  "output.smartScroll.enabled": true
+}

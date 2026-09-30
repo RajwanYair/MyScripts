@@ -9,29 +9,14 @@ applyTo: "**"
 Cross-platform Python development workspace containing multiple utility and automation projects.
 All projects follow the **Universal Project Enhancement Framework v15.0.0**.
 
-## Projects in this Workspace
+## Project Types in this Workspace
 
-| Project | Description | Language |
-| --- | --- | --- |
-| `BudgetManager` | Budget tracking web app | TypeScript |
-| `CrossTide` | Stock crossover analysis app | TypeScript |
-| `CrossTideWeb` | CrossTide web companion | TypeScript |
-| `DupDetector` | Duplicate file finder | Python |
-| `ExplorerLens.io` | Windows Shell extension | C++ |
-| `FamilyDashBoard` | Family TV dashboard | TypeScript |
-| `FileNameManipulator` | Filename utility | Python |
-| `FileProcessor` | File processing pipeline | Python |
-| `OptimizeBrowsers` | Browser optimizer | Python |
-| `OptimizeWIN_n_WSL` | Windows/WSL optimizer | Python |
-| `PPA` | PPA automation | Python |
-| `RegiLattice` | Registry tweaks toolkit | C# |
-| `SingleMethod` | Single-method scripts | Python |
-| `SortComics` | Comic/media sorter | Python |
-| `UbuntuEnhancer` | Ubuntu setup utility | Python |
-| `VHDXCompress` | VHDX compressor | Python |
-| `VSCode.RemoteSSH.Verifier` | SSH verifier | Python |
-| `Wedding` | Wedding manager | TypeScript |
-| `WoodworkingShop` | Woodworking project manager | TypeScript |
+| Project Type               | Typical Scope                       | Language          |
+| -------------------------- | ----------------------------------- | ----------------- |
+| Utility CLI tools          | file/process/system automation      | Python            |
+| Browser or desktop helpers | local platform tooling              | Python / C# / C++ |
+| Web SPAs                   | dashboards, planning apps, data UIs | TypeScript        |
+| Shared tooling             | lint/type/test/build templates      | mixed             |
 
 ## Technical Stack
 
@@ -44,7 +29,7 @@ All projects follow the **Universal Project Enhancement Framework v15.0.0**.
 - **Formatting**: ruff format
 - **Type Checking**: mypy + pyright/pylance
 - **Web Stack**: Vite 8 + TypeScript 6 + Vitest 4 + Playwright 1.59 + ESLint 10 flat config
-- **MCP**: GitHub, Fetch, Playwright, GitKraken servers (see `.vscode/mcp.json`)
+- **MCP**: `.vscode/mcp.json` for VS Code and root `.mcp.json` for Copilot CLI; keep server names and local package pins aligned
 - **CI/CD**: GitHub Actions with pinned action versions
 - **Documentation Graphics**: SVG and Mermaid (never raster images for diagrams)
 
@@ -60,7 +45,7 @@ Sub-projects reference them via `../tooling/` and the root `node_modules/`.
 - **Base configs**: `tooling/` (ESLint, TypeScript, Vitest, Vite, Prettier, Playwright, etc.)
 - **Shared scripts**: `scripts/` (Mermaid validation, bundle checks, test guards)
 - **Templates**: `templates/` (CI workflows, gitignore, config scaffolds)
-- **MCP servers**: `.vscode/mcp.json` (workspace-wide)
+- **MCP servers**: `.vscode/mcp.json` (VS Code) and `.mcp.json` (Copilot CLI)
 - Sub-projects contain ONLY: source code, project-specific overrides, and `extends`/`import` refs
 
 ### Single Entry Point
@@ -89,7 +74,7 @@ config = "C:\\Users\\name\\project\\config.yaml"
 
 ### Standard Project Structure
 
-```
+```text
 project-name/
 ├── project-name          # Single entry point (no .py extension)
 ├── README.md
@@ -260,10 +245,15 @@ Unless explicitly requested, install system-wide.
 
 ## MCP (Model Context Protocol)
 
-- Workspace MCP config is at `.vscode/mcp.json`
+- Workspace MCP config is `.vscode/mcp.json` for VS Code and `.mcp.json` for Copilot CLI
+- Copilot CLI loads workspace MCP servers only after the working directory is trusted; review workspace MCP definitions and hooks before accepting trust
+- `copilot mcp list` may show only built-in servers before trust; do not persist `COPILOT_ALLOW_ALL=true` as a trust workaround
 - New projects use `templates/mcp-template.json` as starting point
-- Standard servers: GitHub, Fetch, Playwright, GitKraken, Cloudflare
+- Standard servers: GitHub, Fetch, Filesystem, Playwright, GitKraken, Cloudflare, and Chrome DevTools
 - Add project-specific servers only when needed (Supabase, etc.)
+- Use pinned local package versions. Fetch is the Python `mcp-server-fetch` package launched with `uvx`.
+- Filesystem exclusions are `excludePatterns` parameters on recursive search/tree calls, not server CLI flags.
+- Use VS Code secret `inputs` for prompted credentials and environment variables in `.mcp.json`; never commit secrets.
 - Always set `"description"` field for discoverability
 - Use `--read-only` for database servers unless writes are explicitly needed
 - MCP tools are available to Copilot agents via `tool_search` — prefer them for repo context

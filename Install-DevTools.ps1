@@ -159,27 +159,31 @@ else {
 
     # Code quality
     Assert-PipPackage 'ruff'
-}
 
-# ── Node.js and npm tools ────────────────────────────────────────────────────
-Write-Step "Node.js and npm global tools"
-if (-not (Test-Command 'node')) { Write-Fail "node not found — install Node.js LTS from https://nodejs.org" }
-else {
-    Write-Skip "node ($(node --version))"
-    Write-Skip "npm ($(npm --version))"
+    # Security scanning
+    Assert-PipPackage 'pip-audit'
+    Assert-PipPackage 'bandit'
 
-    # Markdown linting (both CLI variants used by different projects)
-    Assert-NpmGlobalPackage 'markdownlint-cli'
-    Assert-NpmGlobalPackage 'markdownlint-cli2'
+    # ── Node.js and npm tools ────────────────────────────────────────────────────
+    Write-Step "Node.js and npm global tools"
+    if (-not (Test-Command 'node')) { Write-Fail "node not found — install Node.js LTS from https://nodejs.org" }
+    else {
+        Write-Skip "node ($(node --version))"
+        Write-Skip "npm ($(npm --version))"
 
-    # WoodworkingShop tooling: Lighthouse CI, commitlint (run via npx in CI but
-    # handy as globals for local audit runs).
-    Assert-NpmGlobalPackage '@lhci/cli'
-    Assert-NpmGlobalPackage '@commitlint/cli'
-    Assert-NpmGlobalPackage '@commitlint/config-conventional'
-}
+        # Markdown linting (both CLI variants used by different projects)
+        Assert-NpmGlobalPackage 'markdownlint-cli'
+        Assert-NpmGlobalPackage 'markdownlint-cli2'
 
-# ── Playwright browsers (WoodworkingShop E2E) ────────────────────────────────
+        # Lighthouse CI, commitlint, knip (run via npx in CI but handy as globals)
+        Assert-NpmGlobalPackage '@lhci/cli'
+        Assert-NpmGlobalPackage '@commitlint/cli'
+        Assert-NpmGlobalPackage '@commitlint/config-conventional'
+        Assert-NpmGlobalPackage 'knip'
+
+        # pre-commit for Python
+        Assert-PipPackage 'pre-commit'
+    }# ── Playwright browsers (WoodworkingShop E2E) ────────────────────────────────
 Write-Step "Playwright browsers"
 if (Test-Command 'npx') {
     if (-not $UpdateOnly) {

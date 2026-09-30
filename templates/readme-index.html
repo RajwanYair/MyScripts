@@ -9,7 +9,7 @@
     <meta name="project-category" content="" />
     <meta name="docs-url" content="" />
     <meta name="releases-url" content="" />
-    <meta name="pages-home" content="https://rajwanyair.github.io/" />
+    <meta name="pages-home" content="" />
     <title>Project README</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -462,7 +462,7 @@
     <div class="topbar">
       <div class="topbar-inner">
         <div class="crumbs">
-          <a id="homeCrumb" href="https://rajwanyair.github.io/">rajwanyair.github.io</a>
+          <a id="homeCrumb" href="#">projects home</a>
           <span class="slash">/</span>
           <span id="repoCrumb">project</span>
         </div>
@@ -516,7 +516,7 @@
       <footer class="footer-panel">
         <div class="footer-row">
           <span>For new repositories, keep this landing page generic and drive project-specific overrides through metadata.</span>
-          <a id="footerHomeLink" href="https://rajwanyair.github.io/">Back to all projects</a>
+          <a id="footerHomeLink" href="#">Back to all projects</a>
         </div>
       </footer>
     </main>
@@ -532,12 +532,16 @@
           projectCategory: document.querySelector('meta[name="project-category"]')?.content.trim(),
           docsUrl: document.querySelector('meta[name="docs-url"]')?.content.trim(),
           releasesUrl: document.querySelector('meta[name="releases-url"]')?.content.trim(),
-          pagesHome: document.querySelector('meta[name="pages-home"]')?.content.trim() || 'https://rajwanyair.github.io/'
+          pagesHome: document.querySelector('meta[name="pages-home"]')?.content.trim()
         };
 
         const parts = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
         const inferredRepo = parts[parts.length - 1] || 'project';
-        const inferredOwnerRepo = `RajwanYair/${inferredRepo}`;
+        const hostParts = location.hostname.split('.');
+        const inferredOwner = hostParts.length >= 3 && hostParts[1] === 'github' && hostParts[2] === 'io'
+          ? hostParts[0]
+          : 'owner';
+        const inferredOwnerRepo = `${inferredOwner}/${inferredRepo}`;
         const ownerRepo = meta.githubRepo || inferredOwnerRepo;
         const repoName = meta.projectName || ownerRepo.split('/').pop() || inferredRepo;
         const repoUrl = ownerRepo.startsWith('http') ? ownerRepo : `https://github.com/${ownerRepo}`;
@@ -551,8 +555,10 @@
         document.getElementById('metaRepo').textContent = ownerRepo.replace(/^https:\/\/github\.com\//, '');
         document.getElementById('metaCategory').textContent = category;
         document.getElementById('heroKicker').textContent = `${category} landing page`;
-        document.getElementById('homeCrumb').href = meta.pagesHome;
-        document.getElementById('footerHomeLink').href = meta.pagesHome;
+        const pagesHome = meta.pagesHome || `https://${inferredOwner}.github.io/`;
+        document.getElementById('homeCrumb').href = pagesHome;
+        document.getElementById('homeCrumb').textContent = pagesHome.replace(/^https?:\/\//, '').replace(/\/$/, '') || 'projects home';
+        document.getElementById('footerHomeLink').href = pagesHome;
 
         const topActions = document.getElementById('topActions');
         const heroLinks = document.getElementById('heroLinks');

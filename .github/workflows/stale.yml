@@ -1,0 +1,51 @@
+# =============================================================================
+# Manage Stale Issues & PRs — MyScripts Workspace
+#
+# Automatically marks old issues and PRs as stale and closes them after
+# additional inactivity. Keeps the issue tracker healthy without manual triage.
+#
+# Timing (personal project — generous windows):
+#   Issues: stale after 90 days, closed after 21 more days
+#   PRs:    stale after 30 days, closed after 7 more days
+#
+# Exempt labels: pinned · security · P0 — these are never auto-closed.
+# =============================================================================
+name: Manage Stale Issues
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Close stale issues & PRs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/stale@5bef64f19d7facfb25b37b414482c7164d639639 # v9.1.0
+        with:
+          stale-issue-message: >
+            This issue has been automatically marked as stale because it has not had
+            activity in 90 days. It will be closed in 21 days if no further activity
+            occurs. If this is still relevant, please comment to keep it open.
+          stale-pr-message: >
+            This PR has been automatically marked as stale because it has not had
+            activity in 30 days. It will be closed in 7 days if no further activity
+            occurs. Please rebase or comment if you plan to continue this work.
+          close-issue-message: "Closed as stale. Reopen if still relevant."
+          close-pr-message: "Closed as stale. Reopen if still relevant."
+          days-before-issue-stale: 90
+          days-before-pr-stale: 30
+          days-before-issue-close: 21
+          days-before-pr-close: 7
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: "pinned,security,P0,bug"
+          exempt-pr-labels: "pinned,security"
+          operations-per-run: 30

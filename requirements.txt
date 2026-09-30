@@ -20,31 +20,31 @@
 # ============================================================================
 
 # YAML Configuration Support
-PyYAML>=6.0.1
+PyYAML>=6.0.2
 
 # System Monitoring and Process Management
-psutil>=5.9.0
+psutil>=6.1.0
 
 # HTTP Requests
-requests>=2.31.0
-urllib3>=2.0.0,<3.0.0
+requests>=2.32.0
+urllib3>=2.3.0,<3.0.0
 
 # Data Validation
-pydantic>=2.4.2
-pydantic-settings>=2.0.0
+pydantic>=2.10.0
+pydantic-settings>=2.7.0
 
 # Async File Operations
-aiofiles>=23.2.1
+aiofiles>=24.1.0
 
 # ============================================================================
 # CLI ENHANCEMENTS
 # ============================================================================
 
 # Progress bars for CLI
-tqdm>=4.66.0
+tqdm>=4.67.0
 
 # Rich console output and formatting
-rich>=13.7.0
+rich>=14.0.0
 
 # Cross-platform colored terminal output
 colorama>=0.4.6
@@ -53,24 +53,24 @@ colorama>=0.4.6
 tabulate>=0.9.0
 
 # Command-line argument parsing (enhanced)
-click>=8.1.7
+click>=8.2.0
 
 # ============================================================================
 # GUI REQUIREMENTS
 # ============================================================================
 
 # Web GUI Framework (FastAPI - modern, async)
-fastapi>=0.111.0
-uvicorn[standard]>=0.30.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
 
 # Alternative Web Framework
-flask>=3.0.0
+flask>=3.1.0
 
 # HTML Templating
-jinja2>=3.1.4
+jinja2>=3.1.6
 
 # WebSocket support
-websockets>=12.0
+websockets>=14.2
 
 # Form handling for web
 python-multipart>=0.0.6
@@ -80,7 +80,7 @@ python-multipart>=0.0.6
 # ============================================================================
 
 # Image Processing (Pillow/PIL)
-Pillow>=10.1.0
+Pillow>=11.2.0
 
 # Image hashing for duplicate detection
 ImageHash>=4.3.1
@@ -108,7 +108,7 @@ Send2Trash>=1.8.2
 blake3>=0.3.4
 
 # Modern cryptographic library
-cryptography>=41.0.0
+cryptography>=44.0.0
 
 # Password hashing
 bcrypt>=4.0.1
@@ -159,27 +159,27 @@ lru-dict>=1.1.8
 # ============================================================================
 
 # Testing framework
-pytest>=7.4.0
-pytest-asyncio>=0.21.1
-pytest-cov>=4.1.0
+pytest>=8.3.0
+pytest-asyncio>=0.25.0
+pytest-cov>=6.1.0
 
 # Code coverage
-coverage>=7.3.0
+coverage>=7.7.0
 
 # Linting & formatting (ruff — primary, replaces black + flake8 + isort)
-ruff>=0.4.0
+ruff>=0.12.0
 
 # Code formatting (fallback — prefer ruff format)
-black>=23.9.1
+black>=25.1.0
 
 # Code linting (fallback — prefer ruff check)
 flake8>=6.1.0
 
 # Type checking
-mypy>=1.6.1
+mypy>=1.16.0
 
 # Security linting
-bandit>=1.7.0
+bandit>=1.9.0
 
 # Import sorting (fallback — prefer ruff lint I rules)
 isort>=5.12.0
@@ -189,17 +189,17 @@ isort>=5.12.0
 # ============================================================================
 
 # Build tools
-build>=1.0.0
-setuptools>=68.2.0
-wheel>=0.41.0
+build>=1.2.0
+setuptools>=75.0.0
+wheel>=0.45.0
 
 # ============================================================================
 # DOCUMENTATION
 # ============================================================================
 
 # Documentation generator
-mkdocs>=1.5.3
-mkdocs-material>=9.4.6
+mkdocs>=1.6.0
+mkdocs-material>=9.6.0
 
 # ============================================================================
 # PROFILING (Optional)
@@ -219,7 +219,7 @@ line-profiler>=4.1.1
 prometheus-client>=0.18.0
 
 # Structured logging
-loguru>=0.6.0
+loguru>=0.7.0
 
 # ============================================================================
 # SPECIALIZED TOOLS

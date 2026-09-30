@@ -1,3 +1,29 @@
 # Files that use # for comments, not headings
 .github/CODEOWNERS
 CODEOWNERS
+
+# Sub-projects (each has its own lint config)
+BudgetManager/
+CrossTide/
+CrossTideWeb/
+DupDetector/
+FamilyDashBoard/
+FileNameManipulator/
+FileProcessor/
+OptimizeBrowsers/
+OptimizeWIN_n_WSL/
+PPA/
+rajwanyair.github.io/
+RegiLattice/
+SingleMethod/
+SortComics/
+UbuntuEnhancer/
+VHDXCompress/
+VSCode.RemoteSSH.Verifier/
+Wedding/
+WoodworkingShop/
+
+# Build artifacts
+node_modules/
+dist/
+coverage/

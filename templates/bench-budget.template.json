@@ -1,0 +1,7 @@
+{
+  "$comment": "Benchmark budgets. Enforce via scripts/bench-check.js. Thresholds are max mean milliseconds. Auto-calibration: if no bench-budget.json exists, use 5x the first run as baseline.",
+  "thresholds": {
+    "_default": 100,
+    "example-heavy-computation": 500
+  }
+}

@@ -12,7 +12,7 @@ Brief description of the performance issue.
 
 ## Project / Component
 
-Which project and operation is slow? (e.g., `Scripts.DupDetector / file scan`)
+Which project and operation is slow? (e.g., `MyProject / file scan`)
 
 ## Observed Performance
 
@@ -26,7 +26,7 @@ Which project and operation is slow? (e.g., `Scripts.DupDetector / file scan`)
 <details>
 <summary>Profile output (optional)</summary>
 
-```
+```text
 Paste cProfile / line_profiler / memory_profiler output here
 ```
 
@@ -35,7 +35,7 @@ Paste cProfile / line_profiler / memory_profiler output here
 ## Environment
 
 - **OS:** (e.g., Windows 11 / Ubuntu 24.04)
-- **CPU:** (e.g., Intel Core i7-12700K)
+- **CPU:** (e.g., Core i7 / Ryzen 7)
 - **RAM:** (e.g., 32 GB)
 - **Storage:** (e.g., NVMe SSD / HDD)
 - **Python:** (e.g., 3.12.3)

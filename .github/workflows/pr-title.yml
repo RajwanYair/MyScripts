@@ -1,0 +1,48 @@
+# =============================================================================
+# PR Title Lint — MyScripts Workspace
+#
+# Enforces conventional commit format on all PR titles, ensuring clean
+# auto-generated release notes and changelogs.
+# =============================================================================
+name: PR Title Lint
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  pr-title:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check conventional commit format
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            chore
+            refactor
+            test
+            docs
+            ci
+            perf
+            style
+            revert
+            build
+          requireScope: false
+          # Subject must start lowercase and not end with a period
+          subjectPattern: ^(?![A-Z]).+[^.]$
+          subjectPatternError: >
+            The subject must start with a lowercase letter and must not end with a period.
+            Example: "feat(project): add hash-based dedup cache"
+          ignoreLabels: |
+            dependencies
+            ci

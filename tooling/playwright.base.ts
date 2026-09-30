@@ -1,14 +1,21 @@
 import { defineConfig, devices } from "@playwright/test";
 import type { PlaywrightTestConfig } from "@playwright/test";
+import os from "node:os";
+import path from "node:path";
 
 /**
  * Shared Playwright base configuration for MyScripts workspace projects.
  * Import and spread in your project's playwright.config.ts:
  *
  *   import { baseConfig } from '../tooling/playwright.base.ts';
- *   export default defineConfig({ ...baseConfig, ... });
+ *   export default defineConfig({ ...baseConfig, outputDir: path.join(os.tmpdir(), 'ProjectName', 'test-results') });
+ *
+ * IMPORTANT: Every project MUST set its own outputDir pointing to $TEMP.
+ * Example: outputDir: path.join(os.tmpdir(), 'WoodworkingShop', 'test-results')
  */
 export const baseConfig: PlaywrightTestConfig = {
+  /** $TEMP enforcement — override with your project name: path.join(os.tmpdir(), 'MyProject', 'test-results') */
+  outputDir: path.join(os.tmpdir(), "project", "test-results"),
   testDir: "./tests/e2e",
   timeout: 30_000,
   expect: { timeout: 5_000 },

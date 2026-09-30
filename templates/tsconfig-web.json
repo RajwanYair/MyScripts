@@ -4,19 +4,26 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "baseUrl": ".",
+    "lib": [
+        "ES2022",
+        "DOM",
+        "DOM.Iterable"
+    ],
+    "jsx": "react-jsx",
     "paths": {
-      "@/*": [
+    "@/*": [
         "./src/*"
-      ]
+    ]
     }
   },
-  "include": [
+"include": [
     "src",
-    "tests"
-  ],
-  "exclude": [
+    "tests",
+    "*.config.ts"
+],
+"exclude": [
     "node_modules",
     "dist",
     "coverage"
-  ]
+]
 }

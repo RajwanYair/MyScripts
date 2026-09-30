@@ -1,22 +1,22 @@
 # Web App Best Practices
 
+> **Last reviewed**: 2026-05-26 · **Reference implementation**: `WoodworkingShop/` v4.2.0
 > Workspace-level reference for generic web applications built under `MyScripts/`.
-> This document consolidates stable methods and tool choices already proven across the web-facing subprojects without changing those projects directly.
+> Patterns here are battle-tested in production. Apply them to all new and refreshed web projects.
 
 ## Scope
 
-Use this guide for new or refreshed web applications in this workspace when you want a generic baseline that fits GitHub Pages, static SPAs, hybrid static + API deployments, and light React apps.
+Use this guide for new or refreshed web applications in this workspace.
+Covers GitHub Pages static SPAs, full React SPAs, PWAs, and hybrid apps.
 
 Representative source projects reviewed for this consolidation:
 
-- `BudgetManager/`
-- `CrossTideWeb/`
-- `FamilyDashBoard/`
-- `Wedding/`
-- `WoodworkingShop/`
-- `SortComics/frontend/`
-- `rajwanyair.github.io/`
-- shared root `package.json`, `.vscode/`, `.github/`, and `tooling/`
+- `BudgetManager/`, `CrossTideWeb/`, `FamilyDashBoard/`, `Wedding/`
+- `WoodworkingShop/` — primary reference (React 19, TypeScript 6, production-grade)
+- `SortComics/frontend/`, `rajwanyair.github.io/`
+- Shared root `package.json`, `.vscode/`, `.github/`, and `tooling/`
+
+See also: [REACT_SPA_PLAYBOOK.md](REACT_SPA_PLAYBOOK.md) for the full React SPA deep-dive.
 
 ## Default Stack
 
@@ -46,30 +46,30 @@ Choose React for component-heavy UI, complex local state graphs, or ecosystem-sp
 
 The root `package.json` is the source of truth for workspace-shared JS/TS tool versions.
 
-| Tool | Workspace baseline |
-| --- | --- |
-| Node.js | `>=22` preferred for active web projects |
-| TypeScript | `6.0.3` |
-| Vite | `8.0.8+` |
-| Vitest | `4.1.4+` |
-| `@vitest/coverage-v8` | `4.1.4+` |
-| ESLint | `10.2.1` |
-| `typescript-eslint` | `8.58.2` |
-| Playwright | `1.59.1` |
-| Tailwind CSS | `4.2.2` |
-| React | `19.2.5` |
-| React DOM | `19.2.5` |
-| Zustand | `5.0.12` |
-| DOMPurify | `3.2.6` |
-| Valibot | `1.0.0` |
-| Zod | `4.4.1` |
-| i18next | `26.0.6` |
-| Prettier | `3.8.3` |
-| markdownlint-cli2 | `0.22.0` |
-| HTMLHint | `1.9.2` |
-| Stylelint | via shared `tooling/stylelint/` |
-| commitlint | `20.5.3` |
-| lint-staged | `16.4.0` |
+| Tool                  | Workspace baseline                       |
+| --------------------- | ---------------------------------------- |
+| Node.js               | `>=22` preferred for active web projects |
+| TypeScript            | `6.0.3`                                  |
+| Vite                  | `8.0.8+`                                 |
+| Vitest                | `4.1.4+`                                 |
+| `@vitest/coverage-v8` | `4.1.4+`                                 |
+| ESLint                | `10.2.1`                                 |
+| `typescript-eslint`   | `8.58.2`                                 |
+| Playwright            | `1.59.1`                                 |
+| Tailwind CSS          | `4.2.2`                                  |
+| React                 | `19.2.5`                                 |
+| React DOM             | `19.2.5`                                 |
+| Zustand               | `5.0.12`                                 |
+| DOMPurify             | `3.2.6`                                  |
+| Valibot               | `1.0.0`                                  |
+| Zod                   | `4.4.1`                                  |
+| i18next               | `26.0.6`                                 |
+| Prettier              | `3.8.3`                                  |
+| markdownlint-cli2     | `0.22.0`                                 |
+| HTMLHint              | `1.9.2`                                  |
+| Stylelint             | via shared `tooling/stylelint/`          |
+| commitlint            | `20.5.3`                                 |
+| lint-staged           | `16.4.0`                                 |
 
 If a child project pins an older version, treat that as project-local compatibility debt, not the generic standard.
 
@@ -399,37 +399,41 @@ The root `.vscode/mcp.json` defines generic MCP servers that benefit all project
 
 **Standard MCP servers for all projects:**
 
-| Server | Purpose | When to use |
-| --- | --- | --- |
-| **GitHub** (`api.githubcopilot.com/mcp/`) | PR, issue, workflow, and repo context | Always |
-| **Fetch** (`@modelcontextprotocol/server-fetch`) | Test APIs, fetch docs in chat | API-consuming apps |
-| **Filesystem** (`@modelcontextprotocol/server-filesystem`) | Read/write workspace files | Complex multi-file operations |
-| **Playwright** (`@microsoft/mcp-server-playwright`) | Browser automation and visual debugging | UI-heavy apps |
-| **GitKraken** (`mcp.gitkraken.com/sse`) | Git history, blame, diff, PRs | Always |
-| **Cloudflare** (`mcp.cloudflare.com/sse`) | Workers, Pages, D1, KV, R2 | Cloudflare-deployed apps |
+| Server                                                               | Purpose                                              | When to use                   |
+| -------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------------- |
+| **GitHub** (`https://api.githubcopilot.com/mcp/`)                    | PR, issue, workflow, and repo context                | Always                        |
+| **Fetch** (`mcp-server-fetch==2026.8.18`, via `uvx`)                 | Test APIs and fetch docs in chat                     | API-consuming apps            |
+| **Filesystem** (`@modelcontextprotocol/server-filesystem@2026.8.31`) | Read/write workspace files                           | Complex multi-file operations |
+| **Playwright** (`@playwright/mcp@0.0.79`)                            | Browser automation and visual debugging              | UI-heavy apps                 |
+| **GitKraken** (`https://mcp.gitkraken.com/mcp`)                      | Git history, blame, diff, PRs                        | GitHub workflows              |
+| **Cloudflare** (`https://mcp.cloudflare.com/mcp`)                    | Workers, Pages, D1, KV, R2 (authentication required) | Cloudflare-deployed apps      |
+| **Chrome DevTools** (`chrome-devtools-mcp@1.10.1`)                   | Isolated browser debugging and performance traces    | Web debugging                 |
 
 **Project-specific servers (add only when needed):**
 
-| Server | Purpose | Example project |
-| --- | --- | --- |
-| **Supabase** (`@supabase/mcp-server-supabase --read-only`) | Database queries in chat | Wedding |
-| **Custom worker MCP** | Project-specific API surface | Per-project |
+| Server                                                     | Purpose                      | Example project |
+| ---------------------------------------------------------- | ---------------------------- | --------------- |
+| **Supabase** (`@supabase/mcp-server-supabase --read-only`) | Database queries in chat     | Wedding         |
+| **Custom worker MCP**                                      | Project-specific API surface | Per-project     |
 
 ### MCP Configuration Rules
 
 - Keep `type: "http"` for hosted services (GitHub, GitKraken, Cloudflare)
 - Keep `type: "stdio"` for local npx-based servers
-- Always use `--exclude` with filesystem server to skip heavy directories
+- Do not pass unsupported filesystem server CLI exclusions; use `excludePatterns` on recursive search/tree tool calls
 - Use `--read-only` for database servers unless write operations are explicitly needed
 - Set `"gallery": true` only for gallery-registered servers
 - Document each server's purpose in the `"description"` field
+- Pin local MCP package versions and mirror server names between `.vscode/mcp.json` and `.mcp.json`
+- Use password-masked VS Code `inputs` for secrets; use process environment variables in `.mcp.json`
 - Enable `chat.mcp.gallery.enabled: true` and `chat.mcp.autoStart: true` in VS Code settings
 
 ### MCP in CI/CD
 
 For projects using Copilot coding agent (`copilot-setup-steps.yml`):
+
 - Define setup steps that install MCP server dependencies
-- Keep MCP server configuration in `.vscode/mcp.json` (auto-detected by Copilot)
+- Keep VS Code MCP configuration in `.vscode/mcp.json`; Copilot CLI uses root `.mcp.json`
 - Do not hardcode secrets — use environment variables or GitHub secrets
 
 ## Reusable Quality Scripts
@@ -438,87 +442,87 @@ The following scripts are proven across multiple workspace projects. Generic ver
 
 ### Build & Bundle Analysis
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
+| Script                  | Purpose                            | Projects using                      |
+| ----------------------- | ---------------------------------- | ----------------------------------- |
 | `check-bundle-size.mjs` | Enforce max bundle size thresholds | CrossTide, FamilyDashBoard, Wedding |
-| `size-report.mjs` | Report per-chunk build sizes | Wedding |
+| `size-report.mjs`       | Report per-chunk build sizes       | Wedding                             |
 
 ### Code Quality Gates
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
-| `check-test-focus-skip.mjs` | Prevent `.only`/`.skip` in committed tests | CrossTide, FamilyDashBoard |
-| `dead-export-check.mjs` | Detect unused exports | Wedding, FamilyDashBoard |
-| `check-module-boundaries.mjs` | Enforce import rules between layers | FamilyDashBoard |
-| `arch-check.mjs` | Verify architecture constraints | Wedding, CrossTide |
-| `check-actions-pinned.mjs` | Ensure GH Actions use pinned SHAs | FamilyDashBoard |
+| Script                        | Purpose                                    | Projects using             |
+| ----------------------------- | ------------------------------------------ | -------------------------- |
+| `check-test-focus-skip.mjs`   | Prevent `.only`/`.skip` in committed tests | CrossTide, FamilyDashBoard |
+| `dead-export-check.mjs`       | Detect unused exports                      | Wedding, FamilyDashBoard   |
+| `check-module-boundaries.mjs` | Enforce import rules between layers        | FamilyDashBoard            |
+| `arch-check.mjs`              | Verify architecture constraints            | Wedding, CrossTide         |
+| `check-actions-pinned.mjs`    | Ensure GH Actions use pinned SHAs          | FamilyDashBoard            |
 
 ### Documentation Quality
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
-| `validate-mermaid.mjs` | Lint mermaid blocks in Markdown | Wedding, FamilyDashBoard |
-| `check-reading-level.mjs` | Readability gate for docs | FamilyDashBoard |
+| Script                    | Purpose                         | Projects using           |
+| ------------------------- | ------------------------------- | ------------------------ |
+| `validate-mermaid.mjs`    | Lint mermaid blocks in Markdown | Wedding, FamilyDashBoard |
+| `check-reading-level.mjs` | Readability gate for docs       | FamilyDashBoard          |
 
 ### Accessibility & UI
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
-| `check-smart-contrast.mjs` | WCAG contrast checks | FamilyDashBoard |
-| `sri-check.mjs` | SRI hash verification for external resources | Wedding |
+| Script                     | Purpose                                      | Projects using  |
+| -------------------------- | -------------------------------------------- | --------------- |
+| `check-smart-contrast.mjs` | WCAG contrast checks                         | FamilyDashBoard |
+| `sri-check.mjs`            | SRI hash verification for external resources | Wedding         |
 
 ### i18n & Localization
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
+| Script                  | Purpose                         | Projects using           |
+| ----------------------- | ------------------------------- | ------------------------ |
 | `check-i18n-parity.mjs` | Verify translation completeness | Wedding, WoodworkingShop |
 
 ### PWA & Service Workers
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
+| Script                  | Purpose                                   | Projects using           |
+| ----------------------- | ----------------------------------------- | ------------------------ |
 | `generate-precache.mjs` | Generate service worker precache manifest | FamilyDashBoard, Wedding |
 
 ### Deployment & CI
 
-| Script | Purpose | Projects using |
-| --- | --- | --- |
-| `ensure-shared-tooling.mjs` | CI shim to symlink/copy shared tooling | Wedding |
-| `inject-config.mjs` | Inject runtime config at deploy time | Wedding |
+| Script                      | Purpose                                | Projects using |
+| --------------------------- | -------------------------------------- | -------------- |
+| `ensure-shared-tooling.mjs` | CI shim to symlink/copy shared tooling | Wedding        |
+| `inject-config.mjs`         | Inject runtime config at deploy time   | Wedding        |
 
 ## CI/CD Workflow Catalog
 
 ### Required for All Web Projects
 
-| Workflow | Purpose |
-| --- | --- |
-| `ci.yml` | Lint, typecheck, test, build on every PR/push |
-| `pages.yml` / `deploy.yml` | Deploy to GitHub Pages on push to main |
-| `release.yml` | Create GitHub release on tag push |
+| Workflow                   | Purpose                                       |
+| -------------------------- | --------------------------------------------- |
+| `ci.yml`                   | Lint, typecheck, test, build on every PR/push |
+| `pages.yml` / `deploy.yml` | Deploy to GitHub Pages on push to main        |
+| `release.yml`              | Create GitHub release on tag push             |
 
 ### Recommended Security Workflows
 
-| Workflow | Purpose |
-| --- | --- |
-| `codeql.yml` | CodeQL static analysis |
-| `scorecard.yml` | OpenSSF Scorecard supply-chain security |
-| `trufflehog.yml` | Secret scanning |
-| `trivy.yml` | Dependency vulnerability scanning |
-| `zap-baseline.yml` | OWASP ZAP baseline security scan |
+| Workflow           | Purpose                                   |
+| ------------------ | ----------------------------------------- |
+| `codeql.yml`       | CodeQL static analysis                    |
+| `scorecard.yml`    | OpenSSF Scorecard supply-chain security   |
+| `trufflehog.yml`   | Secret scanning                           |
+| `trivy.yml`        | Dependency vulnerability scanning         |
+| `zap-baseline.yml` | OWASP ZAP baseline security scan          |
 | `supply-chain.yml` | Dependency license and supply-chain audit |
-| `sbom.yml` | Generate Software Bill of Materials |
+| `sbom.yml`         | Generate Software Bill of Materials       |
 
 ### Recommended Quality Workflows
 
-| Workflow | Purpose |
-| --- | --- |
-| `link-check.yml` | Verify markdown/HTML links are not broken |
-| `lighthouse.yml` | Performance, accessibility, SEO auditing |
-| `visual-baselines.yml` | Visual regression testing |
-| `pr-coverage.yml` | Post coverage report on PRs |
-| `dependabot-auto-merge.yml` | Auto-merge safe Dependabot updates |
-| `stale.yml` | Close stale issues/PRs |
-| `copilot-setup-steps.yml` | Setup for Copilot coding agent |
+| Workflow                    | Purpose                                   |
+| --------------------------- | ----------------------------------------- |
+| `link-check.yml`            | Verify markdown/HTML links are not broken |
+| `lighthouse.yml`            | Performance, accessibility, SEO auditing  |
+| `visual-baselines.yml`      | Visual regression testing                 |
+| `pr-coverage.yml`           | Post coverage report on PRs               |
+| `dependabot-auto-merge.yml` | Auto-merge safe Dependabot updates        |
+| `stale.yml`                 | Close stale issues/PRs                    |
+| `copilot-setup-steps.yml`   | Setup for Copilot coding agent            |
 
 ## SVG and Diagram Best Practices
 
@@ -530,17 +534,17 @@ All Markdown files that need diagrams, banners, flow charts, architecture diagra
 
 Mermaid is the preferred source format for architectural and flow diagrams:
 
-```markdown
+````markdown
 ```mermaid
 graph TD
     A[User] --> B[UI Layer]
     B --> C[Service Layer]
     C --> D[Data Layer]
 ```
-
-```
+````
 
 **Rules:**
+
 - Use ` ```mermaid ` fenced code blocks in Markdown (GitHub renders natively)
 - Validate mermaid syntax in CI with `validate-mermaid.mjs` or `check-mermaid.mjs`
 - For complex diagrams that need styling control, export to `.svg` and reference with `![diagram](./docs/diagram.svg)`
@@ -556,11 +560,241 @@ graph TD
 ### Architecture Diagrams
 
 Preferred formats in order:
+
 1. Mermaid fenced blocks (simplest, GitHub-native rendering)
 2. `.mmd` source → exported `.svg` (when styling control is needed)
 3. Hand-crafted `.svg` (only for complex custom graphics)
 
 Never use:
+
 - Raster images (PNG, JPG) for diagrams
 - External hosted images for critical documentation
 - Diagrams without source files (unmaintainable)
+
+---
+
+## Production-Grade Patterns (from WoodworkingShop v4.2.0)
+
+These patterns are proven in the most complex SPA in this workspace and should be applied to any project targeting production quality.
+
+### $TEMP Enforcement
+
+All intermediate build artifacts, caches, coverage reports, and test results **must** be written to the OS temp directory. The workspace must be commit-clean after any build or test run.
+
+````text
+
+$TEMP/ProjectName/
+├── .vite_cache/ ← Vite build cache (vite.config.ts → cacheDir)
+├── .eslintcache ← ESLint cache (scripts/lint.js → --cache-location)
+├── .stylelintcache ← Stylelint cache (scripts/lint-css.js → --cache-location)
+├── coverage/ ← Vitest coverage (vitest.config.ts → reportsDirectory)
+├── bench-results.json ← Vitest bench output
+├── test-results/ ← Playwright output
+├── playwright-report/ ← Playwright HTML report (local only)
+└── .lighthouseci/ ← Lighthouse output
+
+````
+
+Rule: if a build-time artifact path is not under `os.tmpdir()`, it is wrong.
+
+### Parallel Quality Gate
+
+```js
+// scripts/parallel-quality.js — run all static checks concurrently
+import { spawnSync } from 'node:child_process';
+const checks = ['typecheck', 'lint', 'lint:css', 'lint:md', 'format:check'];
+const results = await Promise.all(checks.map(run));
+````
+
+`quality:fast` runs all static checks in parallel (mirrors CI). `check` adds tests on top. `ci` adds build + bundle check.
+
+### Zero-Suppression Contract
+
+| Forbidden                     | Fix Instead                         |
+| ----------------------------- | ----------------------------------- |
+| `// eslint-disable-next-line` | Fix the lint rule violation         |
+| `@ts-ignore`                  | Fix the type or add a type guard    |
+| `@ts-nocheck`                 | Fix the file                        |
+| `as any`                      | Add a type guard or narrow the type |
+| Commented-out code            | Delete it                           |
+| Disabled config options       | Remove them or fix the root cause   |
+
+### Dead Code Enforcement
+
+Run `npm run dead:check` (powered by Knip) before every release. Zero dead exports, zero dead files, zero dead config entries.
+
+```jsonc
+// package.json "knip" configuration
+{
+    "knip": {
+        "entry": ["src/main.tsx!", "src/engine/index.ts!"],
+        "project": ["src/**/*.{ts,tsx}", "tests/**/*.{ts,tsx}", "scripts/**/*.js"],
+        "ignore": ["src/env.d.ts"],
+    },
+}
+```
+
+### Bundle Budget Enforcement
+
+Create `config/bundle-budget.json` versioned in the repo. Enforce after every build in CI.
+
+```jsonc
+{
+    "totalJsKB": 1800,
+    "totalCssKB": 60,
+    "totalDistKB": 3000,
+    "perFileKB": {
+        "vendor": 300,
+        "i18n-vendor": 80,
+        "_default": 500,
+    },
+}
+```
+
+Script `scripts/bundle-report.js` reads this budget and exits non-zero on any violation.
+
+### Composite GitHub Action
+
+Eliminate checkout+node+install duplication across workflows:
+
+```yaml
+# .github/actions/setup-node/action.yml
+name: "Setup Node"
+runs:
+    using: composite
+    steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with: { node-version-file: .nvmrc, cache: npm }
+        - run: npm ci
+          shell: bash
+```
+
+Reference from `ci.yml`, `release.yml`, `pages.yml`:
+
+```yaml
+- uses: ./.github/actions/setup-node
+```
+
+### PR Title Convention Enforcement
+
+Add `.github/workflows/pr-title.yml` to every repo:
+
+```yaml
+- uses: amannn/action-semantic-pull-request@v5
+  with:
+      types: feat,fix,chore,refactor,test,docs,ci,perf,style,revert
+      subjectPattern: "^[a-z].*[^.]$"
+```
+
+### Bench Performance Regression Gate
+
+For apps with performance-critical algorithms, add benchmark tests and enforce budgets:
+
+```jsonc
+// config/bench-budget.json — 5× baseline regression threshold
+{ "multiplier": 5, "baselineFile": "bench-results.json" }
+```
+
+```ts
+// tests/bench/algorithm.bench.ts
+import { bench, describe } from "vitest";
+describe("cut optimizer", () => {
+    bench("12-part layout", () => {
+        optimize(testParts, testSheet);
+    });
+});
+```
+
+### Security Baseline Checklist
+
+Every production-targeted project must have all of these before a v1.0 release:
+
+- [ ] `.gitleaks.toml` — prevent secret commits locally
+- [ ] `.github/workflows/secret-scan.yml` — CI secret scanning
+- [ ] `.github/workflows/codeql.yml` — static analysis
+- [ ] `SECURITY.md` — vulnerability disclosure policy
+- [ ] `scripts/sbom.js` — Software Bill of Materials for releases
+- [ ] No hardcoded credentials anywhere in source history
+- [ ] `Content-Security-Policy` header in `public/_headers` or server config
+- [ ] `X-Content-Type-Options: nosniff` and `X-Frame-Options: DENY` headers
+
+### Copilot Code Generation Instructions
+
+Wire the project's `copilot-instructions.md` into VS Code settings so Copilot always has context:
+
+```jsonc
+// .vscode/settings.json
+"github.copilot.chat.codeGeneration.instructions": [
+  { "file": ".github/copilot-instructions.md" }
+],
+"github.copilot.chat.reviewSelection.instructions": [
+  { "text": "Flag: eslint-disable, @ts-ignore, as any, enum, namespace, dead imports." }
+],
+"github.copilot.chat.commitMessageGeneration.instructions": [
+  { "text": "Use conventional commits. Format: <type>(<scope>): <subject>. Types: feat, fix, chore, refactor, test, docs, ci, perf." }
+]
+```
+
+### TypeScript 6 — `erasableSyntaxOnly` Baseline
+
+The shared `tooling/tsconfig/base-typescript.json` should include:
+
+```jsonc
+{
+    "erasableSyntaxOnly": true, // aligns with TC39 type-stripping; forbids enum/namespace
+    "noImplicitOverride": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+}
+```
+
+Projects on TypeScript < 6 can omit `erasableSyntaxOnly` but should add it when upgrading.
+
+### Tailwind v4 Logical Properties
+
+Any project using Tailwind CSS must use logical properties for layout. Physical direction classes break RTL languages.
+
+| Physical (forbidden) | Logical (required) |
+| -------------------- | ------------------ |
+| `ml-*`, `pl-*`       | `ms-*`, `ps-*`     |
+| `mr-*`, `pr-*`       | `me-*`, `pe-*`     |
+| `text-left`          | `text-start`       |
+| `text-right`         | `text-end`         |
+| `left-*`             | `start-*`          |
+| `right-*`            | `end-*`            |
+
+### VS Code Extension Recommendations for Web Projects
+
+Add these to `.vscode/extensions.json` for React/TypeScript projects:
+
+```jsonc
+// Web / React specific additions
+"lokalise.i18n-ally",             // i18n key management
+"ryanluker.vscode-coverage-gutters", // inline coverage display
+"gruntfuggly.todo-tree",          // TODO/FIXME/HACK annotation tree
+"naumovs.color-highlight",        // inline color preview
+"formulahendry.auto-rename-tag",  // HTML/JSX tag rename sync
+"pkief.material-icon-theme",      // file type icons
+"christian-kohler.path-intellisense", // path autocompletion
+"esbenp.prettier-vscode",         // Prettier formatter
+"dbaeumer.vscode-eslint",         // ESLint inline errors
+"bradlc.vscode-tailwindcss",      // Tailwind IntelliSense
+```
+
+### Knip + TypeDoc Workflow
+
+1. `npm run dead:check` — find unused exports (run pre-release)
+2. `npm run docs:api` — generate TypeDoc API docs (run on release only, output to `docs/api/`)
+3. Commit `docs/api/` only on releases, not on every PR
+
+### Release Workflow (Automated)
+
+Standard release flow:
+
+1. `npm run check` — full pre-commit gate
+2. `npm version <patch|minor|major>`
+3. Update `CHANGELOG.md`
+4. `npm run release:build` — build + bundle:check + sbom
+5. `git push && git push --tags`
+6. `gh release create vX.Y.Z --generate-notes --attach sbom.json`

@@ -1,0 +1,116 @@
+# GitHub Labels definition — MyScripts workspace
+# Apply with: gh label sync --labels .github/labels.yml
+# Or use the sync-labels.yml workflow
+
+labels:
+  # ── Type ─────────────────────────────────────────────────────────────────
+  - name: "bug"
+    color: "d73a4a"
+    description: "Something isn't working"
+
+  - name: "enhancement"
+    color: "a2eeef"
+    description: "New feature or improvement"
+
+  - name: "documentation"
+    color: "0075ca"
+    description: "Improvements or additions to docs"
+
+  - name: "question"
+    color: "d876e3"
+    description: "Further information requested"
+
+  - name: "discussion"
+    color: "e4e669"
+    description: "Needs community input"
+
+  - name: "link-rot"
+    color: "fef9c3"
+    description: "Dead or stale markdown links"
+
+  # ── Status ────────────────────────────────────────────────────────────────
+  - name: "stale"
+    color: "cfd3d7"
+    description: "No activity for 90+ days — will be auto-closed"
+
+  - name: "in-progress"
+    color: "fbca04"
+    description: "Actively being worked on"
+
+  - name: "pinned"
+    color: "e11d48"
+    description: "Kept open indefinitely — exempt from stale bot"
+
+  - name: "do-not-merge"
+    color: "b60205"
+    description: "PR must not be merged as-is"
+
+  - name: "ready-for-review"
+    color: "0e8a16"
+    description: "PR is ready for human review"
+
+  - name: "needs-triage"
+    color: "fef2c0"
+    description: "Newly filed — needs initial assessment"
+
+  # ── Priority ──────────────────────────────────────────────────────────────
+  - name: "P0"
+    color: "b60205"
+    description: "Critical — blocks work"
+
+  - name: "P1"
+    color: "e4000f"
+    description: "High priority"
+
+  - name: "P2"
+    color: "f9a825"
+    description: "Medium priority"
+
+  - name: "P3"
+    color: "6a737d"
+    description: "Low priority / someday"
+
+  # ── Area ─────────────────────────────────────────────────────────────────
+  - name: "python"
+    color: "3572A5"
+    description: "Python sub-projects"
+
+  - name: "typescript"
+    color: "3178c6"
+    description: "TypeScript/React sub-projects"
+
+  - name: "ci"
+    color: "1f6feb"
+    description: "GitHub Actions workflows or CI configuration"
+
+  - name: "dependencies"
+    color: "0366d6"
+    description: "Dependency updates (npm / pip / GitHub Actions)"
+
+  - name: "security"
+    color: "ee0701"
+    description: "Security vulnerability or hardening — exempt from stale bot"
+
+  - name: "roadmap"
+    color: "6f42c1"
+    description: "Tracked on ROADMAP — exempt from stale bot"
+
+  - name: "tooling"
+    color: "8b949e"
+    description: "Shared tooling/ configs, scripts, templates"
+
+  - name: "tests"
+    color: "0e8a16"
+    description: "Unit tests or E2E tests"
+
+  - name: "docs"
+    color: "0075ca"
+    description: "Documentation changes"
+
+  - name: "good first issue"
+    color: "7057ff"
+    description: "Good for newcomers to the project"
+
+  - name: "help wanted"
+    color: "008672"
+    description: "Extra attention needed from contributors"

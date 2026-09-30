@@ -80,7 +80,7 @@ jobs:
 
 ## Commit Message Convention (Conventional Commits)
 
-```
+```text
 <type>(<scope>): <subject>
 
 [optional body]

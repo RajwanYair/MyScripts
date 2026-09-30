@@ -48,9 +48,11 @@
     // SECTION: chat — GitHub Copilot Chat
     // ============================================================================
     "chat.agent.maxRequests": 999,
+    "chat.agentsFilesLocations": {
+        ".github/agents": true
+    },
     "chat.checkpoints.showFileChanges": true,
     "chat.instructionsFilesLocations": {
-        "~/.aitk/instructions": true,
         ".github/instructions": true
     },
     "chat.mcp.gallery.enabled": true,
@@ -59,34 +61,47 @@
         ".github/prompts": true
     },
     "chat.tools.terminal.autoApprove": {
-        "*.md": true,
-        "cmake": true,
-        "code": true,
-        "copy": true,
         "dir": true,
-        "do": true,
-        "else": true,
-        "exist": true,
-        "f": true,
-        "memory": true,
-        "mkdir": true,
+        "Get-ChildItem": true,
+        "Get-Command": true,
+        "Get-Content": true,
+        "Get-Location": true,
         "more": true,
-        "move": true,
-        "msbuild": true,
-        "New-Item": true,
-        "py": true,
-        "ssh": true,
-        "test": true,
-        "time": true,
-        "timeout": true,
+        "Select-String": true,
+        "Test-Path": true,
         "type": true,
-        "unzip": true,
-        "wait": true,
-        "where": true,
-        "wsl": true
+        "where.exe": true
     },
     "chat.tools.terminal.ignoreDefaultAutoApproveRules": true,
     "chat.viewSessions.orientation": "stacked",
+    // ============================================================================
+    // SECTION: coverage-gutters — Coverage Gutters
+    // ============================================================================
+    "coverage-gutters.coverageFilePaths": [
+        "${env:TEMP}\\coverage\\lcov.info",
+        "/tmp/coverage/lcov.info"
+    ],
+    "coverage-gutters.showGutterCoverage": true,
+    "coverage-gutters.showLineCoverage": true,
+    // Copilot code generation — loads shared web/React instruction file
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "file": ".github/instructions/workspace.instructions.md"
+        },
+        {
+            "file": ".github/instructions/web-react.instructions.md"
+        }
+    ],
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "text": "Flag: eslint-disable, @ts-ignore, as any, enum, namespace, ml-*/mr-* Tailwind, hardcoded colors, commented-out code, dead imports."
+        }
+    ],
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Use Conventional Commits. Format: <type>(<scope>): <subject>. Types: feat|fix|chore|refactor|test|docs|ci|perf|style|revert. Subject: lowercase, no trailing period, imperative mood."
+        }
+    ],
     // ============================================================================
     // SECTION: cmake — CMake Configuration
     // ============================================================================
@@ -166,6 +181,7 @@
         }
     ],
     "editor.stickyScroll.enabled": true,
+    "editor.suggest.preview": true,
     "editor.suggestOnTriggerCharacters": true,
     "editor.suggestSelection": "first",
     "editor.tabSize": 4,
@@ -219,6 +235,9 @@
         ".zshrc": "shellscript",
         ".{c,tc}shrc": "tcsh",
         "algorithm": "cpp",
+        ".markdownlintignore": "plaintext",
+        ".prettierignore": "plaintext",
+        ".stylelintignore": "plaintext",
         "apt-packages*.txt": "plaintext",
         "CMakeLists.txt": "cmake",
         "CODEOWNERS": "plaintext",
@@ -253,15 +272,12 @@
     // ============================================================================
     // SECTION: Proxy — Network Proxy (ftp/http/https)
     // ============================================================================
-    "http.proxyStrictSSL": false,
+    "http.proxyStrictSSL": true,
     "http.proxySupport": "off",
     "http.noProxy": [
         "localhost",
-        "127.0.0.1",
-        "intel.com"
+        "127.0.0.1"
     ],
-    "http.proxy": "http://proxy-dmz.intel.com:912",
-    "https.proxy": "http://proxy-dmz.intel.com:912",
     // ============================================================================
     // SECTION: git — Git Configuration
     // ============================================================================
@@ -274,6 +290,14 @@
     // ============================================================================
     "github.copilot.chat.allowFileOperations": true,
     "github.copilot.chat.anthropic.tools.websearch.enabled": true,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "github.copilot.chat.agentDebugLog.enabled": true,
+    "github.copilot.chat.agentDebugLog.fileLogging.enabled": true,
+    "github.copilot.chat.reviewSelection.enabled": true,
+    "github.copilot.chat.codesearch.enabled": true,
+    "github.copilot.chat.search.semanticTextResults": true,
+    "github.copilot.chat.editor.temporalContext.enabled": true,
+    "github.copilot.chat.scopeSelection": true,
     "github.copilot.chat.commitMessageGeneration.instructions": [
         {
             "text": "Use Conventional Commits format: type(scope): description. Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build. Keep subject under 72 chars. Reference issues with 'Closes #N' in body."
@@ -282,6 +306,16 @@
     "github.copilot.chat.editing.enabled": true,
     "github.copilot.chat.edits.enabled": true,
     "github.copilot.chat.executeCommands": "on",
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "text": "Summarise what changed and why. List affected modules/layers. Note any quality gate outcomes (typecheck, lint, tests). Keep under 400 words. Use conventional commit prefix in the title."
+        }
+    ],
+    "github.copilot.chat.testGeneration.instructions": [
+        {
+            "text": "For Python: use pytest with parametrize for multiple cases. For TypeScript/React: use Vitest with it.each for parametrised pairs. Group related assertions in one test. Aim for 10+ cases per function. Never use random values — use fixed deterministic inputs."
+        }
+    ],
     "github.copilot.chat.reviewSelection.instructions": [
         {
             "file": ".github/instructions/python.instructions.md"
@@ -290,6 +324,9 @@
             "file": ".github/instructions/workspace.instructions.md"
         }
     ],
+    "github.copilot.chat.agent.runTasks": true,
+    "github.copilot.chat.agent.thinkingTool": true,
+    "github.copilot.chat.followUps": "always",
     "github.copilot.chat.runCommand.enabled": true,
     "github.copilot.chat.search.enabled": true,
     "github.copilot.chat.terminalChatLocation": "terminal",
@@ -318,26 +355,12 @@
     // ============================================================================
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.detectJdksAtStart": false,
-    "java.configuration.runtimes": [
-        {
-            "default": true,
-            "name": "JavaSE-25",
-            "path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest"
-        },
-        {
-            "name": "JavaSE-21",
-            "path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\21"
-        },
-        {
-            "name": "JavaSE-17",
-            "path": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\17"
-        }
-    ],
+    "java.configuration.runtimes": [],
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.debug.settings.hotCodeReplace": "auto",
     "java.dependency.packagePresentation": "hierarchical",
-    "java.import.gradle.home": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\gradle\\latest",
-    "java.import.gradle.java.home": "${env:APPDATA}\\Code\\User\\globalStorage\\pleiades.java-extension-pack-jdk\\java\\latest",
+    "java.import.gradle.home": "",
+    "java.import.gradle.java.home": "",
     "java.maxConcurrentBuilds": 8,
     "java.sources.organizeImports.staticStarThreshold": 1,
     "java.test.config": {
@@ -704,9 +727,99 @@
     "trailing-spaces.backgroundColor": "rgba(255,0,0,0.1)",
     "trailing-spaces.includeEmptyLines": false,
     // ============================================================================
+    // SECTION: baseline-lens — Baseline Compatibility Hints
+    // ============================================================================
+    "baseline-lens.support": "newly",
+    "baseline-lens.browserslist": true,
+    "baseline-lens.showInlineHints": false,
+    "baseline-lens.exclude": [
+        "node_modules/**",
+        "dist/**",
+        "docs/**",
+        "templates/**",
+        "scripts/**",
+        "**/worker/**",
+        "**/docs/**"
+    ],
+    "baseline-lens.ignoredFeatures": [
+        "view-transition-name",
+        "@view-transition",
+        "scrollbar-width",
+        "backdrop-filter",
+        "user-select",
+        "focus-visible",
+        "accent-color",
+        "forced-color-adjust",
+        "color-scheme",
+        "print-color-adjust",
+        "orphans",
+        "widows",
+        "outline-offset",
+        "padding-block",
+        "padding-inline",
+        "margin-block",
+        "margin-inline",
+        "scroll-behavior",
+        "scroll-margin-block",
+        "gap",
+        "grid-area",
+        "grid-column",
+        "grid-row",
+        "grid-template-areas",
+        "place-content",
+        "will-change",
+        "fill",
+        "stroke",
+        "stroke-width",
+        "layer",
+        "@layer",
+        "@container",
+        "@property",
+        "@scope",
+        "has",
+        "is",
+        "min",
+        "max",
+        "clamp",
+        "inset",
+        "filter",
+        "light-dark"
+    ],
+    // ============================================================================
     // SECTION: vscode-edge-devtools — Edge DevTools
     // ============================================================================
     "vscode-edge-devtools.webhint": false,
+    // ============================================================================
+    // SECTION: browser-compatibility-checker — Browser Compat
+    // ============================================================================
+    "browser-compatibility-checker.browserList": [
+        "chrome",
+        "edge",
+        "firefox",
+        "opera",
+        "safari",
+        "chrome_android",
+        "firefox_android",
+        "opera_android",
+        "safari_ios",
+        "samsunginternet_android",
+        "webview_android"
+    ],
+    "browser-compatibility-checker.warnForOtherBrowsers": false,
+    "browser-compatibility-checker.foldersToIgnore": [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/coverage/**",
+        "**/build/**",
+        "**/config/**",
+        "**/.**/**",
+        "**/docs/**",
+        "**/templates/**",
+        "**/**.test.**",
+        "**/**.spec.**",
+        "**/worker/**",
+        "**/scripts/**"
+    ],
     // ============================================================================
     // SECTION: vsicons — VSCode Icons
     // ============================================================================
@@ -839,5 +952,11 @@
         "editor.defaultFormatter": "redhat.vscode-yaml",
         "editor.formatOnSave": true,
         "editor.tabSize": 2
-    }
+    },
+    "i18n-ally.localesPaths": [
+        "CrossTide/src/locales",
+        "BudgetManager/src/i18n",
+        "Wedding/src/i18n",
+        "WoodworkingShop/src/i18n"
+    ]
 }

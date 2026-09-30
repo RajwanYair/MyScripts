@@ -1,0 +1,96 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "description": "Official GitHub MCP server for pull requests, issues, workflows, repository context, and code search."
+    },
+    "fetch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch==2026.8.18"
+      ],
+      "description": "Fetch web content using the official Python MCP server."
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem@2026.8.31",
+        "."
+      ],
+      "description": "Filesystem operations rooted at the Copilot CLI working directory."
+    },
+    "gitkraken": {
+      "type": "http",
+      "url": "https://mcp.gitkraken.com/mcp",
+      "description": "Git history, blame, diffs, branch operations, and pull request workflow."
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.79"
+      ],
+      "description": "Browser automation and web testing."
+    },
+    "cloudflare": {
+      "type": "http",
+      "url": "https://mcp.cloudflare.com/mcp",
+      "description": "Cloudflare Workers, Pages, D1, KV, and R2 management."
+    },
+    "memory": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory@2026.8.31"
+      ],
+      "description": "Persistent key-value memory for agent context across sessions."
+    },
+    "sequentialthinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@2026.8.31"
+      ],
+      "description": "Structured multi-step reasoning for complex problem decomposition."
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@4.1.1"
+      ],
+      "description": "Current, version-specific library documentation."
+    },
+    "brave-search": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search@0.6.2"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "description": "Web search for sources not covered by Context7. Requires BRAVE_API_KEY in the environment."
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@1.10.1",
+        "--isolated",
+        "--no-usage-statistics"
+      ],
+      "description": "Isolated Chrome debugging, console and network inspection, screenshots, and performance traces; usage statistics disabled."
+    }
+  }
+}

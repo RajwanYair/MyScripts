@@ -1,0 +1,40 @@
+# Gitleaks configuration — secret scanning.
+# Extends the default ruleset. Customize allowlists per project.
+# Place in project root as .gitleaks.toml
+# Docs: https://github.com/gitleaks/gitleaks
+#
+# Usage: gitleaks detect --config .gitleaks.toml
+# CI:    see templates/security-workflows.yml
+
+title = "PROJECT_NAME gitleaks ruleset"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Global allowlist for known-safe matches"
+paths = [
+    '''(.*?)node_modules(.*?)''',
+    '''(.*?)dist(.*?)''',
+    '''(.*?)coverage(.*?)''',
+    '''(.*?)test-results(.*?)''',
+    '''(.*?)playwright-report(.*?)''',
+    '''(.*?)__pycache__(.*?)''',
+    '''(.*?)\.pytest_cache(.*?)''',
+    '''package-lock\.json''',
+]
+regexes = [
+    '''ghp_[xX]{20,}''',
+    '''sk-[xX]{20,}''',
+    '''AKIA[xX]{16}''',
+    '''EXAMPLE[_-]?KEY''',
+    '''YOUR[_-]?TOKEN[_-]?HERE''',
+    '''YOUR[_-]?SECRET[_-]?HERE''',
+    '''PLACEHOLDER''',
+    '''<YOUR_.*?>''',
+]
+
+# Example: project-specific path allowlists
+# [[allowlist.paths]]
+# regex = '''config/example\.json'''
+# description = "Example config with fake tokens"

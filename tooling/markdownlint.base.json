@@ -1,9 +1,30 @@
 {
     "default": true,
+    "MD012": {
+        "maximum": 1
+    },
     "MD013": false,
     "MD024": { "siblings_only": true },
-    "MD033": { "allowed_elements": ["details", "summary", "br", "kbd", "img", "picture", "source", "svg", "a"] },
-    "MD041": true,
+    "MD033": {
+        "allowed_elements": [
+            "details",
+            "summary",
+            "br",
+            "kbd",
+            "img",
+            "picture",
+            "source",
+            "svg",
+            "a",
+            "sub",
+            "sup",
+            "div",
+            "p"
+        ]
+    },
+    "MD041": {
+        "level": 1
+    },
     "MD046": { "style": "fenced" },
     "MD048": { "style": "backtick" },
     "MD050": { "style": "asterisk" }

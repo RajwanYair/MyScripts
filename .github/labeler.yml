@@ -1,0 +1,54 @@
+# Path-based automatic labeling for pull requests
+# Docs: https://github.com/actions/labeler
+
+python:
+  - changed-files:
+      - any-glob-to-any-file: "**/*.py"
+      - any-glob-to-any-file: "**/pyproject.toml"
+      - any-glob-to-any-file: "**/requirements*.txt"
+
+typescript:
+  - changed-files:
+      - any-glob-to-any-file: "**/*.ts"
+      - any-glob-to-any-file: "**/*.tsx"
+      - any-glob-to-any-file: "**/tsconfig*.json"
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file: "**/tests/**"
+      - any-glob-to-any-file: "**/*_test.py"
+      - any-glob-to-any-file: "**/test_*.py"
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: ".github/workflows/**"
+      - any-glob-to-any-file: ".github/actions/**"
+
+tooling:
+  - changed-files:
+      - any-glob-to-any-file: "tooling/**"
+      - any-glob-to-any-file: "scripts/**"
+      - any-glob-to-any-file: "templates/**"
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file: "docs/**"
+      - any-glob-to-any-file: "*.md"
+      - any-glob-to-any-file: ".github/*.md"
+      - any-glob-to-any-file: ".github/instructions/**"
+      - any-glob-to-any-file: ".github/prompts/**"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file: "package.json"
+      - any-glob-to-any-file: "package-lock.json"
+      - any-glob-to-any-file: "requirements.txt"
+      - any-glob-to-any-file: "requirements-*.txt"
+      - any-glob-to-any-file: "apt-packages.txt"
+
+security:
+  - changed-files:
+      - any-glob-to-any-file: ".gitleaks.toml"
+      - any-glob-to-any-file: ".github/workflows/security.yml"
+      - any-glob-to-any-file: ".github/workflows/secret-scan.yml"
+      - any-glob-to-any-file: "**/SECURITY.md"

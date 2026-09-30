@@ -1,7 +1,7 @@
 # =============================================================================
 # CI - Web Project Quality Gate
 # Generic workflow for TypeScript/Vite web projects in this workspace.
-# Runs: lint, typecheck, test, build
+# Runs: lint, typecheck, test, build, bundle-check
 # =============================================================================
 name: CI
 
@@ -14,6 +14,13 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   quality:
@@ -31,19 +38,28 @@ jobs:
           cache-dependency-path: "**/package-lock.json"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
+
+      - name: Type check
+        run: npx tsc -b --noEmit
 
       - name: Lint
         run: npx eslint . --max-warnings 0
 
-      - name: Type check
-        run: npx tsc -b --noEmit
+      - name: Lint CSS
+        run: npx stylelint "src/**/*.css" --max-warnings 0
+
+      - name: Format check
+        run: npx prettier --check .
 
       - name: Unit tests
         run: npx vitest run --coverage
 
       - name: Build
         run: npx vite build
+
+      - name: Bundle size check
+        run: node scripts/bundle-report.js || node ../scripts/check-bundle-size.mjs dist
 
       - name: Upload coverage
         if: always()
@@ -68,7 +84,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox

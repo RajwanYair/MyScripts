@@ -1,6 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json",
   "default": true,
+  // MD012 - Multiple blank lines: allow at most one
+  "MD012": {
+    "maximum": 1
+  },
   // MD013 - Line length: disabled (handled by editor/formatter)
   "MD013": false,
   // MD024 - Multiple headings with same content: allow siblings
@@ -9,10 +13,26 @@
   },
   // MD033 - Inline HTML: allow (SVG embeds, badges, and GitHub-flavoured Markdown)
   "MD033": {
-    "allowed_elements": ["br", "details", "summary", "img", "picture", "source", "svg", "a"]
+    "allowed_elements": [
+      "br",
+      "details",
+      "summary",
+      "img",
+      "picture",
+      "source",
+      "svg",
+      "a",
+      "sub",
+      "sup",
+      "kbd",
+      "div",
+      "p"
+    ]
   },
-  // MD041 - First line should be top-level heading: disabled (READMEs may start with badges)
-  "MD041": false,
+  // MD041 - First line should be top-level heading: require h1
+  "MD041": {
+    "level": 1
+  },
   // MD046 - Code block style: use fenced blocks
   "MD046": {
     "style": "fenced"
@@ -24,5 +44,6 @@
   // MD050 - Strong style: asterisks
   "MD050": {
     "style": "asterisk"
-  }
+  },
+  "MD060": false
 }

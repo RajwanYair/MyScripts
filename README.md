@@ -5,7 +5,7 @@ shared tooling, quality gates, and CI/CD infrastructure.
 
 ## Architecture
 
-```
+```text
 MyScripts/                          ← Centralized tools (single source of truth)
 ├── tooling/                        ← Shared base configs
 ├── scripts/                        ← Quality scripts (Mermaid, bundle, test guards)
@@ -53,6 +53,7 @@ python -m pytest tests/ -v
 ## Centralization Policy
 
 All development tools live at this root level. Sub-projects **must not**:
+
 - Run `npm install` locally (they resolve from `../node_modules/`)
 - Duplicate configs from `tooling/` (they `extends`/`import` via `../tooling/`)
 - Install separate linting/formatting tools
@@ -64,13 +65,31 @@ and relative references to shared bases.
 
 | Resource | Path | Purpose |
 |----------|------|---------|
-| Base configs | `tooling/` | ESLint, TypeScript, Vitest, Vite, Prettier, Playwright |
-| Python configs | `pyproject.toml` | ruff, mypy, pytest, coverage, bandit |
-| Quality scripts | `scripts/` | Mermaid validation, bundle-size checks, test guards |
-| CI templates | `templates/` | Workflows, gitignore, config scaffolds |
+| Base configs | `tooling/` | ESLint, TypeScript, Vitest, Vite, Prettier, Playwright, Stylelint, commitlint |
+| Python configs | `pyproject.toml` | ruff, mypy, pytest, coverage, bandit, hypothesis |
+| Quality scripts | `scripts/` | Mermaid, bundle-size, test guards, OWASP, architecture, SBOM, dead-exports |
+| CI templates | `templates/` | Workflows, supply-chain, scorecard, dependabot-auto-merge, gitignore, configs |
 | MCP servers | `.vscode/mcp.json` | GitHub, Fetch, Playwright, GitKraken, Cloudflare |
-| Copilot rules | `.github/instructions/` | Python, testing, CI/CD, workspace conventions |
-| Copilot prompts | `.github/prompts/` | Code review, project creation, quality fixes, tests |
+| Copilot rules | `.github/instructions/` | Python, testing, CI/CD, workspace, vanilla-web, web-react |
+| Copilot prompts | `.github/prompts/` | Code review, project creation, quality fixes, tests, security audit, sprint, parametrize-tests |
+| Copilot agents  | `.github/agents/`  | New-project scaffolding, upgrade-tooling, security-audit                                       |
+| Copilot skills  | `.github/skills/`  | Release, security-audit                                                                        |
+
+## Security Tooling
+
+- **Secret scanning**: `.gitleaks.toml` + `secret-scan.yml` workflow (every push + weekly sweep)
+- **Dependency CVEs**: `pip-audit` (Python), `npm audit` (Node)
+- **Static analysis**: Bandit (Python), CodeQL (TypeScript — per sub-project)
+- **OWASP audit**: `security-audit.prompt.md` + `skills/security-audit/SKILL.md`
+
+Run locally:
+
+```powershell
+gitleaks detect --config .gitleaks.toml --source . --verbose
+pip-audit
+npm audit
+python -m bandit -r . -ll --exclude node_modules,dist,coverage
+```
 
 ## Documentation
 

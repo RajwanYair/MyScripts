@@ -7,16 +7,16 @@
 
 ## What Lives Here (Centralized)
 
-| Resource | Location | Purpose |
-|----------|----------|---------|
-| JS/TS dependencies | `MyScripts/package.json` + `node_modules/` | Shared `npm install` — never run inside sub-projects |
-| Python tool configs | `MyScripts/pyproject.toml` | ruff, mypy, pytest, coverage, bandit defaults |
-| Base configs | `MyScripts/tooling/` | ESLint, TypeScript, Vitest, Vite, Prettier, etc. |
-| Shared scripts | `MyScripts/scripts/` | Mermaid validation, bundle-size checks, test guards |
-| Starter templates | `MyScripts/templates/` | CI workflows, gitignore, config scaffolds |
-| MCP servers | `MyScripts/.vscode/mcp.json` | GitHub, Fetch, Playwright, GitKraken, Filesystem |
-| VS Code settings | `MyScripts/.vscode/settings.json` | Universal editor/formatter/linter defaults |
-| Copilot instructions | `MyScripts/.github/` | Workspace-wide AI coding rules |
+| Resource             | Location                                   | Purpose                                              |
+| -------------------- | ------------------------------------------ | ---------------------------------------------------- |
+| JS/TS dependencies   | `MyScripts/package.json` + `node_modules/` | Shared `npm install` — never run inside sub-projects |
+| Python tool configs  | `MyScripts/pyproject.toml`                 | ruff, mypy, pytest, coverage, bandit defaults        |
+| Base configs         | `MyScripts/tooling/`                       | ESLint, TypeScript, Vitest, Vite, Prettier, etc.     |
+| Shared scripts       | `MyScripts/scripts/`                       | Mermaid validation, bundle-size checks, test guards  |
+| Starter templates    | `MyScripts/templates/`                     | CI workflows, gitignore, config scaffolds            |
+| MCP servers          | `MyScripts/.vscode/mcp.json`               | GitHub, Fetch, Playwright, GitKraken, Filesystem     |
+| VS Code settings     | `MyScripts/.vscode/settings.json`          | Universal editor/formatter/linter defaults           |
+| Copilot instructions | `MyScripts/.github/`                       | Workspace-wide AI coding rules                       |
 
 ## What Belongs in a Sub-Project (Project-Specific Only)
 
@@ -30,7 +30,7 @@
 
 ## Directory Layout
 
-```
+```text
 tooling/
   eslint/
     base.mjs               ESLint flat-config base (rules + plugins)
@@ -54,7 +54,7 @@ tooling/
 
 ## Reusable Scripts (workspace root)
 
-```
+```text
 scripts/
   validate-mermaid.mjs       Validate Mermaid syntax in Markdown files
   check-bundle-size.mjs      Enforce max bundle size thresholds after build
@@ -71,12 +71,12 @@ Browser/Vite project (extends strict base, keeps bundler resolution):
 
 ```json
 {
-    "extends": "../tooling/tsconfig/base-typescript.json",
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": "./src"
-    },
-    "include": ["src", "tests"]
+  "extends": "../tooling/tsconfig/base-typescript.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src", "tests"]
 }
 ```
 
@@ -84,11 +84,11 @@ Node.js project (extends node variant with NodeNext modules and emit):
 
 ```json
 {
-    "extends": "../tooling/tsconfig/base-node.json",
-    "compilerOptions": {
-        "outDir": "./dist"
-    },
-    "include": ["src"]
+  "extends": "../tooling/tsconfig/base-node.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["src"]
 }
 ```
 
@@ -96,15 +96,15 @@ Cloudflare Worker (extends node base but overrides module resolution for bundler
 
 ```json
 {
-    "extends": "../../tooling/tsconfig/base-node.json",
-    "compilerOptions": {
-        "module": "ES2022",
-        "moduleResolution": "bundler",
-        "lib": ["ES2022"],
-        "types": ["@cloudflare/workers-types"],
-        "noEmit": true
-    },
-    "include": ["src/**/*.ts"]
+  "extends": "../../tooling/tsconfig/base-node.json",
+  "compilerOptions": {
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "types": ["@cloudflare/workers-types"],
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts"]
 }
 ```
 
@@ -141,10 +141,10 @@ Node.js / Cloudflare Worker TypeScript project (`node-ts-app.mjs`):
 ```js
 import { nodeAppConfig } from "../tooling/eslint/node-ts-app.mjs";
 export default [
-    ...nodeAppConfig({
-        tsconfigRootDir: import.meta.dirname,
-        files: ["src/**/*.ts"],
-    }),
+  ...nodeAppConfig({
+    tsconfigRootDir: import.meta.dirname,
+    files: ["src/**/*.ts"],
+  }),
 ];
 ```
 
@@ -204,10 +204,11 @@ Projects using `scripts/git-hooks/` (FamilyDashBoard pattern) should ship two ho
 
 | Hook         | Purpose                                                                |
 | ------------ | ---------------------------------------------------------------------- |
-| `pre-commit` | Worker-client sync check, test focus/skip guard, OWASP pattern scan   |
+| `pre-commit` | Worker-client sync check, test focus/skip guard, OWASP pattern scan    |
 | `commit-msg` | Conventional Commits format validation — no external commitlint needed |
 
 The `commit-msg` hook uses a shell regex pattern (no `@commitlint/cli` dependency):
+
 ```sh
 PATTERN='^(feat|fix|chore|docs|test|refactor|perf|style|ci|build)(\([a-z0-9/._-]+\))?(!)?: .{3,}'
 ```

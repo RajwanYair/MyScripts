@@ -135,7 +135,7 @@ npm run check
 
 ### Commit Message Format
 
-```
+```text
 type(scope): short description
 
 Longer explanation if needed.
@@ -156,4 +156,3 @@ Closes #123
 ## Questions?
 
 Open a GitHub Issue for questions or to discuss potential contributions.
-

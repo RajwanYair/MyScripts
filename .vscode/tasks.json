@@ -10,11 +10,10 @@
         // ============================================================================
         {
             "label": "Python: Run Current File",
+            "detail": "Run the currently open Python file with python ${file}",
             "type": "shell",
             "command": "python",
-            "args": [
-                "${file}"
-            ],
+            "args": ["${file}"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -24,12 +23,10 @@
         },
         {
             "label": "Python: Run with Arguments",
+            "detail": "Run the current Python file with custom arguments (prompted)",
             "type": "shell",
             "command": "python",
-            "args": [
-                "${file}",
-                "${input:args}"
-            ],
+            "args": ["${file}", "${input:args}"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -42,15 +39,10 @@
         // ============================================================================
         {
             "label": "Test: Run All Tests",
+            "detail": "Run all pytest tests with verbose output and short tracebacks",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "pytest",
-                "tests/",
-                "-v",
-                "--tb=short"
-            ],
+            "args": ["-m", "pytest", "tests/", "-v", "--tb=short"],
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -63,6 +55,7 @@
         },
         {
             "label": "Test: Run with Coverage",
+            "detail": "Run tests with HTML coverage report (output in $TEMP)",
             "type": "shell",
             "command": "python",
             "args": [
@@ -85,13 +78,7 @@
             "label": "Test: Run Current File",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "pytest",
-                "${file}",
-                "-v",
-                "--tb=short"
-            ],
+            "args": ["-m", "pytest", "${file}", "-v", "--tb=short"],
             "group": "test",
             "presentation": {
                 "reveal": "always",
@@ -104,15 +91,10 @@
         // ============================================================================
         {
             "label": "Lint: Run Ruff",
+            "detail": "Lint src/ and tests/ with ruff — replaces flake8/isort",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "ruff",
-                "check",
-                "src/",
-                "tests/"
-            ],
+            "args": ["-m", "ruff", "check", "src/", "tests/"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -124,12 +106,7 @@
             "label": "Lint: Run Flake8",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "flake8",
-                "src/",
-                "--max-line-length=100"
-            ],
+            "args": ["-m", "flake8", "src/", "--max-line-length=100"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -137,10 +114,7 @@
             },
             "problemMatcher": {
                 "owner": "python",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}"
-                ],
+                "fileLocation": ["relative", "${workspaceFolder}"],
                 "pattern": {
                     "regexp": "^(.+):(\\d+):(\\d+): (\\w+) (.+)$",
                     "file": 1,
@@ -153,15 +127,10 @@
         },
         {
             "label": "Format: Run Ruff",
+            "detail": "Auto-format src/ and tests/ with ruff format — replaces Black",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "ruff",
-                "format",
-                "src/",
-                "tests/"
-            ],
+            "args": ["-m", "ruff", "format", "src/", "tests/"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -173,13 +142,7 @@
             "label": "Format: Run Black",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "black",
-                "src/",
-                "tests/",
-                "--line-length=100"
-            ],
+            "args": ["-m", "black", "src/", "tests/", "--line-length=100"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -189,14 +152,10 @@
         },
         {
             "label": "Type Check: Run MyPy",
+            "detail": "Run mypy static type analysis on src/",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "mypy",
-                "src/",
-                "--ignore-missing-imports"
-            ],
+            "args": ["-m", "mypy", "src/", "--ignore-missing-imports"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -208,13 +167,7 @@
             "label": "Security: Run Bandit",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "bandit",
-                "-r",
-                "src/",
-                "-ll"
-            ],
+            "args": ["-m", "bandit", "-r", "src/", "-ll"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -229,11 +182,7 @@
             "label": "Install: Requirements",
             "type": "shell",
             "command": "pip",
-            "args": [
-                "install",
-                "-r",
-                "requirements.txt"
-            ],
+            "args": ["install", "-r", "requirements.txt"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -268,11 +217,7 @@
             "label": "Install: Editable (dev)",
             "type": "shell",
             "command": "pip",
-            "args": [
-                "install",
-                "-e",
-                ".[dev]"
-            ],
+            "args": ["install", "-e", ".[dev]"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -287,11 +232,7 @@
             "label": "Docs: Serve MkDocs",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "mkdocs",
-                "serve"
-            ],
+            "args": ["-m", "mkdocs", "serve"],
             "group": "build",
             "isBackground": true,
             "presentation": {
@@ -304,11 +245,7 @@
             "label": "Docs: Build MkDocs",
             "type": "shell",
             "command": "python",
-            "args": [
-                "-m",
-                "mkdocs",
-                "build"
-            ],
+            "args": ["-m", "mkdocs", "build"],
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -321,6 +258,7 @@
         // ============================================================================
         {
             "label": "QA: Full Check",
+            "detail": "Sequential full quality gate: format → lint → typecheck → security → tests",
             "dependsOn": [
                 "Format: Run Black",
                 "Lint: Run Flake8",
@@ -330,6 +268,25 @@
             ],
             "dependsOrder": "sequence",
             "group": "build",
+            "problemMatcher": []
+        },
+        // ============================================================================
+        // WORKSPACE — Maintenance
+        // ============================================================================
+        {
+            "label": "Clean: TEMP artifacts",
+            "detail": "Remove all intermediate build artifacts from TEMP for the current project",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if (Test-Path \"$env:TEMP\\${workspaceFolderBasename}\") { Remove-Item -Recurse -Force \"$env:TEMP\\${workspaceFolderBasename}\"; Write-Host 'Cleaned: ' + \"$env:TEMP\\${workspaceFolderBasename}\" } else { Write-Host 'Nothing to clean.' }"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
             "problemMatcher": []
         }
     ],

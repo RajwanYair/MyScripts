@@ -1,0 +1,7 @@
+{
+  "enabledPlugins": {
+    "context-engineering@awesome-copilot": true,
+    "doublecheck@awesome-copilot": true,
+    "testing-automation@awesome-copilot": true
+  }
+}

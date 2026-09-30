@@ -78,6 +78,26 @@ indent_size = 4
 # Shell scripts
 [*.{sh,bash,zsh}]
 indent_size = 4
+
+# TypeScript / JavaScript (web projects use 2-space indent)
+[*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}]
+indent_size = 2
+
+# CSS / SCSS
+[*.{css,scss,less}]
+indent_size = 2
+
+# HTML
+[*.{html,htm,svg}]
+indent_size = 2
+
+# Docker
+[Dockerfile*]
+indent_size = 4
+
+# GitHub Actions
+[.github/workflows/*.{yml,yaml}]
+indent_size = 2
 end_of_line = lf
 
 # Web files

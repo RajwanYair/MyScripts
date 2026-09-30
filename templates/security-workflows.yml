@@ -1,6 +1,6 @@
 # =============================================================================
 # Security Scanning Workflows — Template
-# Consolidates security best practices from CrossTide, FamilyDashBoard, Wedding.
+# Consolidates security best practices for reusable web and automation projects.
 # Copy the relevant jobs to your project's .github/workflows/security.yml
 # =============================================================================
 name: Security
@@ -93,6 +93,6 @@ jobs:
   #   steps:
   #     - uses: zaproxy/action-baseline@v0.14.0
   #       with:
-  #         target: "https://rajwanyair.github.io/<REPO_NAME>/"
+  #         target: "https://<OWNER>.github.io/<REPO_NAME>/"
   #         rules_file_name: ".zap/rules.tsv"
   #         cmd_options: "-a"
