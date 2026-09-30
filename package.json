@@ -29,7 +29,7 @@
     "dependencies": {
         "@preact/signals-core": "^1.14.2",
         "@react-pdf/renderer": "^4.5.1",
-        "@supabase/supabase-js": "^2.106.2",
+        "@supabase/supabase-js": "^2.117.2",
         "dompurify": "^3.4.5",
         "i18next": "^26.2.0",
         "react": "^19.2.6",
