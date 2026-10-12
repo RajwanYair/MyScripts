@@ -119,7 +119,7 @@ bcrypt>=4.0.1
 
 # Fuzzy string matching
 fuzzywuzzy>=0.18.0
-python-Levenshtein>=0.21.0
+python-Levenshtein>=0.27.5
 
 # Edit distance calculations
 Levenshtein>=0.20.9
