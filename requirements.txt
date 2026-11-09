@@ -108,7 +108,7 @@ Send2Trash>=1.8.2
 blake3>=0.3.4
 
 # Modern cryptographic library
-cryptography>=44.0.0
+cryptography>=50.0.2
 
 # Password hashing
 bcrypt>=4.0.1
