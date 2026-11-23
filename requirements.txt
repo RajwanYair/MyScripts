@@ -30,7 +30,7 @@ requests>=2.32.0
 urllib3>=2.3.0,<3.0.0
 
 # Data Validation
-pydantic>=2.10.0
+pydantic>=2.14.4
 pydantic-settings>=2.7.0
 
 # Async File Operations
