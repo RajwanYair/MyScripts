@@ -44,7 +44,7 @@ aiofiles>=24.1.0
 tqdm>=4.67.0
 
 # Rich console output and formatting
-rich>=14.0.0
+rich>=15.0.0
 
 # Cross-platform colored terminal output
 colorama>=0.4.6
